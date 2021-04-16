@@ -175,7 +175,7 @@ Google Cloud Platform (GCP)
 The `gcp-thumbnail-generator`_ solution uses GCP Storage Buckets and GCP Functions cloud resources.
 To deploy the application follow the steps below or navigate to `opera-examples repository`_.
 
-.. code-block:: console
+.. code-block:: bash
 
     # install Google Cloud SDK from https://cloud.google.com/sdk/docs/downloads-apt-get with apt-get
     echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
