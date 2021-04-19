@@ -1,0 +1,836 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Examples &mdash; xOpera  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="xOpera TPS (template library)" href="template_library.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> xOpera
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opera_cli.html">xOpera CLI (opera)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saas.html">xOpera SaaS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opera_api.html">xOpera API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_library.html">xOpera TPS (template library)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#private-cloud">Private cloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#iaas">IaaS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#openstack-client-setup">OpenStack client setup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#faas">FaaS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#openfaas">OpenFaaS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#public-cloud">Public cloud</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">FaaS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#amazon-web-services-aws">Amazon Web Services (AWS)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#microsoft-azure-azure">Microsoft Azure (Azure)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#google-cloud-platform-gcp">Google Cloud Platform (GCP)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connection-of-cloud-platforms">Connection of cloud platforms</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#screencast-video">Screencast video</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-and-kubernetes">Docker and Kubernetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#docker-and-minio">Docker and MinIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kubernetes-with-rancher">Kubernetes with Rancher</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#hpc">HPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tosca-csars">TOSCA CSARs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#csar-without-tosca-meta-file">CSAR without TOSCA.meta file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#csar-with-tosca-meta-file">CSAR with TOSCA.meta file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#more-templates-and-blueprints">More templates and blueprints</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tosca-examples">TOSCA examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tosca-csar-examples">TOSCA CSAR examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cloud-examples">Cloud examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#kubernetes-examples">Kubernetes examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous-examples">Miscellaneous examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">xOpera</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Examples</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/examples.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="examples">
+<span id="id1"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>In this section we show some simple examples of orchestrating with xOpera.
+All the examples are available in <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.</p>
+<div class="section" id="private-cloud">
+<h2>Private cloud<a class="headerlink" href="#private-cloud" title="Permalink to this headline">¶</a></h2>
+<p>The xOpera orchestration tool enables setting up and deployment within private cloud providers such as OpenStack or
+OpenFaaS.</p>
+<div class="section" id="iaas">
+<h3>IaaS<a class="headerlink" href="#iaas" title="Permalink to this headline">¶</a></h3>
+<p>This part contains Infrastructure as a Service (IaaS) examples for private cloud providers.</p>
+<div class="section" id="openstack-client-setup">
+<h4>OpenStack client setup<a class="headerlink" href="#openstack-client-setup" title="Permalink to this headline">¶</a></h4>
+<p>This subsection describes <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/nginx-openstack">nginx-openstack</a> example.
+Because using OpenStack modules from Ansible playbooks is quite common, we can install <code class="docutils literal notranslate"><span class="pre">opera</span></code> with all required
+OpenStack libraries by running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install -U opera<span class="o">[</span>openstack<span class="o">]</span>
+</pre></div>
+</div>
+<p>Before we can actually use the OpenStack functionality, we also need to obtain the OpenStack credentials.
+If we log into OpenStack and navigate to the <code class="docutils literal notranslate"><span class="pre">Access</span> <span class="pre">&amp;</span> <span class="pre">Security</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">Access</span></code> page, we can download the rc file
+with all required information.</p>
+<p>At the start of each session (e.g., when we open a new command line console), we must source the rc file by running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span>. openstack.rc
+</pre></div>
+</div>
+<p>After we enter the password, we are ready to start using the OpenStack modules in playbooks that implement life cycle
+operations.</p>
+</div>
+</div>
+<div class="section" id="faas">
+<h3>FaaS<a class="headerlink" href="#faas" title="Permalink to this headline">¶</a></h3>
+<p>This part contains Function as a Service (FaaS) and Serverless examples for private cloud providers.</p>
+<p>To get you started with cloud deployment we prepared a simple thumbnail generator application for different platforms
+which also supports the idea of Serverless computing in FaaS environments.
+The main functionality of this solution is the image resize functionality.
+To create thumbnails the source image must be uploaded into input bucket and then three thumbnails will be created and
+saved to another output bucket.</p>
+<div class="section" id="openfaas">
+<h4>OpenFaaS<a class="headerlink" href="#openfaas" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/openfaas/thumbnail-generator">openfaas-thumbnail-generator</a> solution is made of two parts. Since OpenFaaS can be treated as a sort of private
+cloud you have to set it up on a remote VM first.
+The second part with image-resize functionality makes use of OpenFaaS functions.</p>
+<p>To deploy the application follow the steps below or navigate to <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>install necessary prerequisites
+<span class="go">python3 -m venv .venv</span>
+<span class="go">source .venv/bin/activate</span>
+<span class="go">pip install --upgrade pip</span>
+<span class="go">pip install git+https://github.com/ansible/ansible.git@devel</span>
+<span class="go">pip install opera</span>
+
+<span class="gp"># </span>configure MinIO credentials <span class="o">(</span>here we use default example access and secret key<span class="o">)</span>
+<span class="go">echo &#39;{ &quot;minio_access_key&quot;: &quot;AKIAIOSFODNN7EXAMPLE&quot;, &quot;minio_secret_key&quot;: &quot;wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY&quot; }&#39; &gt; /tmp/credentials.json</span>
+
+<span class="gp"># </span>modify vars <span class="k">in</span> inputs.yaml and run ansible playbook build.yaml it to build and pack docker image with image-resize <span class="k">function</span> <span class="o">(</span>or use prepared tar <span class="k">in</span> examples<span class="o">)</span>
+<span class="go">cd docker-image-templates</span>
+<span class="go">ansible-playbook build.yaml</span>
+
+<span class="gp"># </span>run deployment with with xOpera <span class="o">(</span>here you should prepare a new VM on OpenStack and configure it to use passwordless ssh<span class="o">)</span>
+<span class="go">OPERA_SSH_USER=root opera deploy -i inputs.yaml service.yaml</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you want to deploy on a remote VM you should use <code class="docutils literal notranslate"><span class="pre">OPERA_SSH_USER</span></code> env var to tell xOpera as which user you
+want to connect.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="public-cloud">
+<h2>Public cloud<a class="headerlink" href="#public-cloud" title="Permalink to this headline">¶</a></h2>
+<p>xOpera and Ansible open up a great possibility to deploy solutions on different public cloud providers such as
+Amazon Web Services (AWS), Microsoft Azure (Azure) or Google Cloud Platform (GCP).</p>
+<div class="section" id="id2">
+<h3>FaaS<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>This part contains Function as a Service (FaaS) and Serverless examples for public cloud providers.</p>
+<p>To get you started with cloud deployment we prepared a simple thumbnail generator application for different cloud
+platforms which also supports the idea of Serverless computing in FaaS environments.
+The main functionality of this solution is the image resize functionality.
+To create thumbnails the source image must be uploaded into input bucket and then three thumbnails will be created and
+saved to another output bucket.</p>
+<div class="section" id="amazon-web-services-aws">
+<h4>Amazon Web Services (AWS)<a class="headerlink" href="#amazon-web-services-aws" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator">aws-thumbnail-generator</a> solution uses AWS role, AWS S3 bucket, AWS Lambda and AWS API Gateway cloud resources.
+To deploy the application follow the steps below or navigate to <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>install AWS CLI v2
+<span class="go">curl &quot;https://d1vvhvl2y92vvt.cloudfront.net/awscli-exe-linux-x86_64.zip&quot; -o &quot;awscliv2.zip&quot;</span>
+<span class="go">unzip awscliv2.zip</span>
+<span class="go">sudo ./aws/install</span>
+
+<span class="gp"># </span>configure your account with your aws credentials <span class="o">(</span>access key, secret key, region<span class="o">)</span>
+<span class="go">aws configure</span>
+
+<span class="gp"># </span>initialize virtualenv with Python <span class="m">3</span>.6 and install prerequisites
+<span class="go">cd aws</span>
+<span class="go">python3.6 -m venv .venv</span>
+<span class="go">. .venv/bin/activate</span>
+<span class="go">pip install --upgrade pip</span>
+<span class="go">pip install ansible</span>
+<span class="go">pip install opera</span>
+
+<span class="gp"># </span>run xOpera service <span class="o">(</span>make sure to setup inputs <span class="k">in</span> inputs.yaml<span class="o">)</span>
+<span class="go">opera deploy -i inputs.yaml resize_service_opera_v1_3.yaml</span>
+
+<span class="gp"># </span>you can also run the following <span class="nb">command</span> to undeploy the solution:
+<span class="go">opera undeploy</span>
+
+<span class="gp"># </span><span class="k">if</span> you want to <span class="nb">test</span> the API Gateway solution run <span class="o">(</span>make sure to modify inputs <span class="k">in</span> inputs-api.yaml<span class="o">)</span>:
+<span class="go">opera deploy -i inputs-api-gateway.yaml service-api-gateway.yaml</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="microsoft-azure-azure">
+<h4>Microsoft Azure (Azure)<a class="headerlink" href="#microsoft-azure-azure" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/azure/thumbnail-generator">azure-thumbnail-generator</a> solution uses Azure Resource Group, Azure Storage Account, Azure Containers and Azure
+Function App cloud resources.
+To deploy the application follow the steps below or navigate to <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>install Azure CLI and try to login <span class="k">in</span> your account
+<span class="go">curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash</span>
+<span class="go">az login</span>
+
+<span class="gp"># </span>install prerequisites
+<span class="go">cd azure</span>
+<span class="go">python3 -m venv .venv</span>
+<span class="go">source .venv/bin/activate</span>
+<span class="go">pip install --upgrade pip</span>
+<span class="go">pip install ansible</span>
+<span class="go">pip install opera</span>
+
+<span class="gp"># </span>setup Azure Function Tools
+<span class="go">wget -q https://packages.microsoft.com/config/ubuntu/19.04/packages-microsoft-prod.deb</span>
+<span class="go">sudo dpkg -i packages-microsoft-prod.deb</span>
+<span class="go">sudo apt-get update</span>
+<span class="go">sudo apt-get install azure-functions-core-tools</span>
+<span class="go">rm packages-microsoft-prod.deb</span>
+
+<span class="gp"># </span>run xOpera service <span class="o">(</span>make sure to setup the right inputs <span class="k">in</span> yaml file<span class="o">)</span>
+<span class="go">opera deploy -i inputs.yaml service.yaml</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="google-cloud-platform-gcp">
+<h4>Google Cloud Platform (GCP)<a class="headerlink" href="#google-cloud-platform-gcp" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/gcp/thumbnail-generator">gcp-thumbnail-generator</a> solution uses GCP Storage Buckets and GCP Functions cloud resources.
+To deploy the application follow the steps below or navigate to <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install Google Cloud SDK from https://cloud.google.com/sdk/docs/downloads-apt-get with apt-get</span>
+<span class="nb">echo</span> <span class="s2">&quot;deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main&quot;</span> <span class="p">|</span> sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+sudo apt-get install apt-transport-https ca-certificates gnupg
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg <span class="p">|</span> sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+sudo apt-get update <span class="o">&amp;&amp;</span> sudo apt-get install google-cloud-sdk
+
+<span class="c1"># create GCP service account, create a JSON file key and put to /tmp folder</span>
+cat /tmp/service_account.json
+
+<span class="c1"># install prerequisites</span>
+<span class="nb">cd</span> gcp
+python3 -m venv .venv
+<span class="nb">source</span> .venv/bin/activate
+pip install --upgrade pip
+pip install opera
+
+<span class="c1"># run xOpera service (don&#39;t forget to set the appropriate inputs in inputs.yaml)</span>
+opera deploy -i inputs.yaml service.yaml
+</pre></div>
+</div>
+</div>
+<div class="section" id="connection-of-cloud-platforms">
+<h4>Connection of cloud platforms<a class="headerlink" href="#connection-of-cloud-platforms" title="Permalink to this headline">¶</a></h4>
+<p>To show that opera can establish a connection between two cloud platforms, we created a simple
+<a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/platform-connection/aws-azure-connection">aws-azure-platform-connection</a>. example that connects Azure and AWS cloud providers.
+Moreover, there are two examples that implement data flow from Azure to AWS and vice versa (shown in
+figure <a class="reference internal" href="#aws-azure-connection"><span class="std std-numref">Fig. 13</span></a>).
+The main functionality of this solution is to sequentially execute two operations on images which are image-watermark
+and image-resize on two different platforms (Azure and AWS).
+Orchestration creates two containers on Azure and two buckets on AWS.
+Images are passed from container to bucket using AWS Lambda or Azure Function.</p>
+<div class="figure align-center" id="id3">
+<span id="aws-azure-connection"></span><a class="reference external image-reference" href="_images/platform_connection.png"><img alt="_images/platform_connection.png" src="_images/platform_connection.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">The two examples of AWS&lt;-&gt;Azure connection.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Within your Python functions you can use Python package module called <a class="reference external" href="https://pypi.org/project/object-store">object-store</a> that generalizes manipulation
+with different object store types like AWS S3, MinIO or Azure Containers. Source code and usage is also explained
+in detail on GitHub in <a class="reference external" href="https://github.com/xlab-si/python-object-store-library">python-object-store-library</a> repository.</p>
+</div>
+</div>
+</div>
+<div class="section" id="screencast-video">
+<h3>Screencast video<a class="headerlink" href="#screencast-video" title="Permalink to this headline">¶</a></h3>
+<p>This video will help you to get started with xOpera.
+It also shows an example of deploying a simple image resize solution to AWS Lambda:</p>
+<div style="text-align: center; margin-bottom: 2em;">
+<iframe width="100%" height="350" src="https://www.youtube.com/embed/cb1efi3wnpw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></div>
+</div>
+<div class="section" id="docker-and-kubernetes">
+<h2>Docker and Kubernetes<a class="headerlink" href="#docker-and-kubernetes" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">opera</span></code> orchestrator is capable of deploying blueprints that use Docker and Kubernetes.
+The following examples show some deployments to get you started.</p>
+<div class="section" id="docker-and-minio">
+<h3>Docker and MinIO<a class="headerlink" href="#docker-and-minio" title="Permalink to this headline">¶</a></h3>
+<p>xOpera orchestrator is able to run Docker containers by using the proper Ansible modules in the Ansible playbooks.
+The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/kubernetes/docker">docker</a> example was made to show how the installation of the Docker service and running Docker containers can be
+done with <code class="docutils literal notranslate"><span class="pre">opera</span></code>, TOSCA and Ansible.
+To deploy the example follow the steps below.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> kubernetes/docker
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">kubernetes/docker$ opera deploy -i inputs.yaml service.yaml</span>
+<span class="go">[Worker_0]   Deploying my-workstation_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation_0 complete</span>
+<span class="go">[Worker_0]   Deploying docker_0</span>
+<span class="go">[Worker_0]     Executing create on docker_0</span>
+<span class="go">[Worker_0]   Deployment of docker_0 complete</span>
+<span class="go">[Worker_0]   Deploying minio_0</span>
+<span class="go">[Worker_0]     Executing create on minio_0</span>
+<span class="go">[Worker_0]   Deployment of minio_0 complete</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">kubernetes/docker$ opera undeploy</span>
+<span class="go">[Worker_0]   Undeploying docker_0</span>
+<span class="go">[Worker_0]   Undeployment of docker_0 complete</span>
+<span class="go">[Worker_0]     Executing delete on docker_0</span>
+<span class="go">[Worker_0]   Undeploying minio_0</span>
+<span class="go">[Worker_0]   Undeployment of minio_0 complete</span>
+<span class="go">[Worker_0]     Executing delete on minio_0</span>
+<span class="go">[Worker_0]   Undeploying my-workstation_0</span>
+</pre></div>
+</div>
+<p>The example will install Docker on a target machine and will run <a class="reference external" href="https://min.io">MinIO object storage</a> that will be accessible on
+<code class="docutils literal notranslate"><span class="pre">localhost:9000</span></code> where you can login wit the credentials you specified in <code class="docutils literal notranslate"><span class="pre">inputs.yaml</span></code>.</p>
+</div>
+<div class="section" id="kubernetes-with-rancher">
+<h3>Kubernetes with Rancher<a class="headerlink" href="#kubernetes-with-rancher" title="Permalink to this headline">¶</a></h3>
+<p>Kubernetes can be deployed using <a class="reference external" href="https://rancher.com">Rancher platform</a>, which is the open-source multi-cluster orchestration platform.
+The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/kubernetes/rancher">rancher</a> example is can be used to deploy Rancher Docker container that will set up Kubernetes which can be
+accessed through the Rancher dashboard, where you can create your account (see <a class="reference internal" href="#rancher-kubernetes-login"><span class="std std-numref">Fig. 14</span></a>) and
+use cluster explorer (see <a class="reference internal" href="#rancher-kubernetes-cluster-explorer"><span class="std std-numref">Fig. 16</span></a>) to do manipulate with Kubernetes.</p>
+<div class="figure align-center" id="id4">
+<span id="rancher-kubernetes-login"></span><a class="reference external image-reference" href="_images/rancher-kubernetes-login.png"><img alt="_images/rancher-kubernetes-login.png" src="_images/rancher-kubernetes-login.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Log in to Rancher Kubernetes dashboard.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</div>
+<p>To deploy the example follow the steps below.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> kubernetes/rancher
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">kubernetes/rancher opera deploy -i inputs.yaml service.yaml</span>
+<span class="go">[Worker_0]   Deploying my-workstation_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation_0 complete</span>
+<span class="go">[Worker_0]   Deploying rancher_0</span>
+<span class="go">[Worker_0]     Executing create on rancher_0</span>
+<span class="go">[Worker_0]   Deployment of rancher_0 complete</span>
+<span class="go">[Worker_0]   Deploying prometheus-helm-chart_0</span>
+<span class="go">[Worker_0]     Executing create on prometheus-helm-chart_0</span>
+<span class="go">[Worker_0]   Deployment of prometheus-helm-chart_0 complete</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">kubernetes/rancher$ opera undeploy</span>
+<span class="go">[Worker_0]   Undeploying prometheus-helm-chart_0</span>
+<span class="go">[Worker_0]     Executing delete on prometheus-helm-chart_0</span>
+<span class="go">[Worker_0]   Undeployment of prometheus-helm-chart_0 complete</span>
+<span class="go">[Worker_0]   Undeploying rancher_0</span>
+<span class="go">[Worker_0]     Executing delete on rancher_0</span>
+<span class="go">[Worker_0]   Undeployment of rancher_0 complete</span>
+<span class="go">[Worker_0]   Undeploying my-workstation_0</span>
+<span class="go">[Worker_0]   Undeployment of my-workstation_0 complete</span>
+</pre></div>
+</div>
+<p>After running the example the Rancher dashboard will be accessible on <code class="docutils literal notranslate"><span class="pre">localhost:80</span></code> and <code class="docutils literal notranslate"><span class="pre">localhost:443</span></code>.
+Additionally we deploy the <a class="reference external" href="https://artifacthub.io/packages/helm/prometheus-community/prometheus">Prometheus helm chart</a> to be able to monitor the Kubernetes cluster.</p>
+<div class="figure align-center" id="id5">
+<span id="rancher-kubernetes-dashboard"></span><a class="reference external image-reference" href="_images/rancher-kubernetes-dashboard.png"><img alt="_images/rancher-kubernetes-dashboard.png" src="_images/rancher-kubernetes-dashboard.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Rancher Kubernetes dashboard.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id6">
+<span id="rancher-kubernetes-cluster-explorer"></span><a class="reference external image-reference" href="_images/rancher-kubernetes-cluster-explorer.png"><img alt="_images/rancher-kubernetes-cluster-explorer.png" src="_images/rancher-kubernetes-cluster-explorer.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Kubernetes cluster explorer in Rancher dashboard.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="hpc">
+<h2>HPC<a class="headerlink" href="#hpc" title="Permalink to this headline">¶</a></h2>
+<p>TBD.</p>
+</div>
+<div class="section" id="tosca-csars">
+<h2>TOSCA CSARs<a class="headerlink" href="#tosca-csars" title="Permalink to this headline">¶</a></h2>
+<p>xOpera orchestrator can effectively validate, initialize, deploy and undeploy compressed <a class="reference external" href="https://www.oasis-open.org/committees/download.php/46057/CSAR%20V0-1.docx">TOSCA CSAR</a>
+files which represent the main orchestration packages, containing TOSCA templates, their implementations
+(e.g. Ansible playbooks) and all the other accompanying files that are needed for the deployment.</p>
+<div class="section" id="csar-without-tosca-meta-file">
+<h3>CSAR without TOSCA.meta file<a class="headerlink" href="#csar-without-tosca-meta-file" title="Permalink to this headline">¶</a></h3>
+<p>The following example shows a deployment of the compressed TOSCA CSAR containing different TOSCA entities
+(extracted version is available here: <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/small">small-csar</a>).
+This is a type of a TOSCA CSAR that doesn’t contain a separate <code class="docutils literal notranslate"><span class="pre">TOSCA-Metadata/TOSCA-meta</span></code> file for metadata but has
+metadata specified within the TOSCA service template itself, which may be more convenient for a small TOSCA CSAR.
+The special thing about this CSAR is also that it uses JSON inputs file instead of YAML inputs file which also makes it
+smaller.</p>
+<p>The result of the example consisting of deploy and outputs operations is shown below.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> csars/small
+<span class="gp"># </span>you can also zip all files without inputs.json <span class="k">in</span> csars/small to small.csar
+<span class="gp"># </span>compressed CSAR can be deployed with: opera deploy -i inputs.json small.csar
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/small$ opera deploy -i inputs.json service.yaml</span>
+<span class="go">opera deploy -i inputs.json service.yaml</span>
+<span class="go">[Worker_0]   Deploying my_workstation_0</span>
+<span class="go">[Worker_0]     Executing pre_configure_target on test_node_0--my_workstation_0</span>
+<span class="go">[Worker_0]     Executing post_configure_target on test_node_0--my_workstation_0</span>
+<span class="go">[Worker_0]   Deployment of my_workstation_0 complete</span>
+<span class="go">[Worker_0]   Deploying test_node_0</span>
+<span class="go">[Worker_0]     Executing create on test_node_0</span>
+<span class="go">[Worker_0]     Executing pre_configure_source on test_node_0--my_workstation_0</span>
+<span class="go">[Worker_0]     Executing post_configure_source on test_node_0--my_workstation_0</span>
+<span class="go">[Worker_0]   Deployment of test_node_0 complete</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/small$ opera outputs</span>
+<span class="go">output_node_attribute:</span>
+<span class="go">  description: Node attribute output</span>
+<span class="go">  value: Node attribute</span>
+<span class="go">output_post_configure_source_attribute:</span>
+<span class="go">  description: Relationship attribute output</span>
+<span class="go">  value: Relationship attribute</span>
+<span class="go">output_post_configure_source_input_attribute:</span>
+<span class="go">  description: Relationship attribute output</span>
+<span class="go">  value: Hey, I am in relationship!</span>
+<span class="go">output_post_configure_source_property_attribute:</span>
+<span class="go">  description: Relationship attribute output</span>
+<span class="go">  value: Relationship property</span>
+<span class="go">output_post_configure_source_txt_file_attribute:</span>
+<span class="go">  description: Relationship attribute output</span>
+<span class="go">  value: This is an example file content.</span>
+<span class="go">output_post_configure_target_attribute:</span>
+<span class="go">  description: Relationship attribute output</span>
+<span class="go">  value: This is post configure target attribute</span>
+<span class="go">output_pre_configure_source_attribute:</span>
+<span class="go">  description: Relationship attribute output</span>
+<span class="go">  value: This is pre configure source attribute</span>
+<span class="go">output_pre_configure_target_attribute:</span>
+<span class="go">  description: Relationship attribute output</span>
+<span class="go">  value: This is pre configure target attribute</span>
+<span class="go">output_relationship_attribute:</span>
+<span class="go">  description: Relationship attribute output</span>
+<span class="go">  value: Relationship attribute</span>
+<span class="go">output_relationship_input:</span>
+<span class="go">  description: Relationship input output</span>
+<span class="go">  value: Hey, I am in relationship!</span>
+<span class="go">output_relationship_property:</span>
+<span class="go">  description: Relationship property output</span>
+<span class="go">  value: Relationship property</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="csar-with-tosca-meta-file">
+<h3>CSAR with TOSCA.meta file<a class="headerlink" href="#csar-with-tosca-meta-file" title="Permalink to this headline">¶</a></h3>
+<p>The next example shows a deployment of the compressed TOSCA CSAR containing different TOSCA entities
+(extracted version is available here: <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types">misc-tosca-types-csar</a>).
+This TOSCA CSAR uses <code class="docutils literal notranslate"><span class="pre">TOSCA-Metadata/TOSCA-meta</span></code> file for specifying the orchestration metadata.</p>
+<p>The result of the example consisting of deploy, outputs and undeploy operations is shown below.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> csars/misc-tosca-types
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera deploy -i inputs.yaml service.yaml</span>
+<span class="go">[Worker_0]   Deploying my-workstation1_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation1_0 complete</span>
+<span class="go">[Worker_0]   Deploying my-workstation2_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation2_0 complete</span>
+<span class="go">[Worker_0]   Deploying file_0</span>
+<span class="go">[Worker_0]     Executing create on file_0</span>
+<span class="go">[Worker_0]   Deployment of file_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello_0</span>
+<span class="go">[Worker_0]     Executing create on hello_0</span>
+<span class="go">[Worker_0]   Deployment of hello_0 complete</span>
+<span class="go">[Worker_0]   Deploying interfaces_0</span>
+<span class="go">[Worker_0]     Executing create on interfaces_0</span>
+<span class="go">[Worker_0]     Executing configure on interfaces_0</span>
+<span class="go">[Worker_0]     Executing start on interfaces_0</span>
+<span class="go">[Worker_0]   Deployment of interfaces_0 complete</span>
+<span class="go">[Worker_0]   Deploying noimpl_0</span>
+<span class="go">[Worker_0]   Deployment of noimpl_0 complete</span>
+<span class="go">[Worker_0]   Deploying setter_0</span>
+<span class="go">[Worker_0]     Executing create on setter_0</span>
+<span class="go">[Worker_0]   Deployment of setter_0 complete</span>
+<span class="go">[Worker_0]   Deploying test_0</span>
+<span class="go">[Worker_0]     Executing create on test_0</span>
+<span class="go">[Worker_0]   Deployment of test_0 complete</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera outputs</span>
+<span class="go">node_output_attr:</span>
+<span class="go">  description: Example of attribute output</span>
+<span class="go">  value: my_custom_attribute_value</span>
+<span class="go">node_output_prop:</span>
+<span class="go">  description: Example of property output</span>
+<span class="go">  value: 123</span>
+<span class="go">relationship_output_attr:</span>
+<span class="go">  description: Example of attribute output</span>
+<span class="go">  value: rel_attr_test123</span>
+<span class="go">relationship_output_prop:</span>
+<span class="go">  description: Example of attribute output</span>
+<span class="go">  value: rel_prop_test123</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera undeploy</span>
+<span class="go">[Worker_0]   Undeploying my-workstation2_0</span>
+<span class="go">[Worker_0]   Undeployment of my-workstation2_0 complete</span>
+<span class="go">[Worker_0]   Undeploying file_0</span>
+<span class="go">[Worker_0]     Executing delete on file_0</span>
+<span class="go">[Worker_0]   Undeployment of file_0 complete</span>
+<span class="go">[Worker_0]   Undeploying interfaces_0</span>
+<span class="go">[Worker_0]     Executing stop on interfaces_0</span>
+<span class="go">[Worker_0]     Executing delete on interfaces_0</span>
+<span class="go">[Worker_0]   Undeployment of interfaces_0 complete</span>
+<span class="go">[Worker_0]   Undeploying noimpl_0</span>
+<span class="go">[Worker_0]   Undeployment of noimpl_0 complete</span>
+<span class="go">[Worker_0]   Undeploying setter_0</span>
+<span class="go">[Worker_0]   Undeployment of setter_0 complete</span>
+<span class="go">[Worker_0]   Undeploying hello_0</span>
+<span class="go">[Worker_0]   Undeployment of hello_0 complete</span>
+<span class="go">[Worker_0]   Undeploying my-workstation1_0</span>
+<span class="go">[Worker_0]   Undeployment of my-workstation1_0 complete</span>
+<span class="go">[Worker_0]   Undeploying test_0</span>
+<span class="go">[Worker_0]   Undeployment of test_0 complete</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>You don’t need to initialize the CSAR with before the deployment anymore.
+The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">init</span></code> command is deprecated since <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">deploy</span></code> can be used directly with both service templates
+and compressed CSARs.</p>
+</div>
+</div>
+</div>
+<div class="section" id="more-templates-and-blueprints">
+<h2>More templates and blueprints<a class="headerlink" href="#more-templates-and-blueprints" title="Permalink to this headline">¶</a></h2>
+<p>More examples are available in <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.
+Below is a table that lists all the currently available xOpera examples and their purpose.</p>
+<div class="section" id="tosca-examples">
+<h3>TOSCA examples<a class="headerlink" href="#tosca-examples" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example name and link</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/artifacts">artifacts</a></p></td>
+<td><p>TOSCA artifacts</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/attribute-mapping">attribute-mapping</a></p></td>
+<td><p>TOSCA attribute mapping</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/capability-attributes-properties">capability-attributes-properties</a></p></td>
+<td><p>TOSCA attributes and properties for capabilities</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/intrinsic-functions">intrinsic-functions</a></p></td>
+<td><p>Intrinsic TOSCA functions</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/outputs">outputs</a></p></td>
+<td><p>TOSCA outputs</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/relationship-outputs">relationship-outputs</a></p></td>
+<td><p>TOSCA outputs for relationships</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="tosca-csar-examples">
+<h3>TOSCA CSAR examples<a class="headerlink" href="#tosca-csar-examples" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example name and link</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types">misc-tosca-types-csar</a></p></td>
+<td><p>TOSCA CSAR containing a lot of TOSCA entities</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/small">small-csar</a></p></td>
+<td><p>A minimal TOSCA CSAR example</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cloud-examples">
+<h3>Cloud examples<a class="headerlink" href="#cloud-examples" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example name and link</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator">aws-thumbnail-generator</a></p></td>
+<td><p>Thumbnail generator blueprint for AWS</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/azure/thumbnail-generator">azure-thumbnail-generator</a></p></td>
+<td><p>FaaS Thumbnail generator blueprint for Azure</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/gcp/thumbnail-generator">gcp-thumbnail-generator</a></p></td>
+<td><p>FaaS Thumbnail generator blueprint for GCP</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/openfaas/thumbnail-generator">openfaas-thumbnail-generator</a></p></td>
+<td><p>FaaS Thumbnail generator blueprint for OpenFaaS</p></td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/platform-connection/aws-azure-connection">aws-azure-platform-connection</a></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">FaaS solution that connects AWS and Azure cloud providers</div>
+<div class="line">with image-resize and image-watermark functionalities</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="kubernetes-examples">
+<h3>Kubernetes examples<a class="headerlink" href="#kubernetes-examples" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example name and link</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/kubernetes/docker">docker</a></p></td>
+<td><p>Install Docker and run a Docker container on a target machine</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/kubernetes/rancher">rancher</a></p></td>
+<td><p>Run Kubernetes service using Rancher Docker container</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="miscellaneous-examples">
+<h3>Miscellaneous examples<a class="headerlink" href="#miscellaneous-examples" title="Permalink to this headline">¶</a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40%" />
+<col style="width: 60%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Example name and link</p></th>
+<th class="head"><p>Purpose</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/compare-templates">compare-templates</a></p></td>
+<td><p>Compare and redeploy/update TOSCA templates and instances</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/concurrency">concurrency</a></p></td>
+<td><p>Use workers for concurrent deployment of TOSCA nodes</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/hello-world">hello-world</a></p></td>
+<td><p>The very first and minimal hello world xOpera example</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/nginx-openstack">nginx-openstack</a></p></td>
+<td><p>Deploy nginx site on top of OpenStack VM</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/scaling">scaling</a></p></td>
+<td><p>An example of AWS Lambda scaling with TOSCA policies</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/server-client">server-client</a></p></td>
+<td><p>Connect server and client nodes with TOSCA relationships</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="template_library.html" class="btn btn-neutral float-left" title="xOpera TPS (template library)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, XLAB d.o.o., xOpera team.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,1482 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>xOpera CLI (opera) &mdash; xOpera  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/tabs.js"></script>
+        <script src="_static/clipboard.min.js"></script>
+        <script src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="xOpera SaaS" href="saas.html" />
+    <link rel="prev" title="Quickstart" href="quickstart.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> xOpera
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">xOpera CLI (opera)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli-commands-reference">CLI commands reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deploy">deploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#undeploy">undeploy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validate">validate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outputs">outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#info">info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package">package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unpackage">unpackage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#diff">diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update">update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notify">notify</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#init-deprecated">init (deprecated)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#secrets-and-environment-variables">Secrets and Environment variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shell-completion">Shell completion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="saas.html">xOpera SaaS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opera_api.html">xOpera API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="template_library.html">xOpera TPS (template library)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">xOpera</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>xOpera CLI (opera)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/opera_cli.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="xopera-cli-opera">
+<span id="opera-cli"></span><h1>xOpera CLI (opera)<a class="headerlink" href="#xopera-cli-opera" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="installation">
+<span id="opera-cli-install"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>This section explains the installation of xOpera orchestrator.</p>
+<p><strong>Prerequisites</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span></code> requires python 3 and a virtual environment.
+In a typical modern Linux environment, we should already be set.
+In Ubuntu, however, we might need to run the following commands:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>sudo apt update
+<span class="gp">$ </span>sudo apt install -y python3-venv python3-wheel python-wheel-common
+</pre></div>
+</div>
+<p><strong>Installation</strong></p>
+<p>xOpera is distributed as Python package that is regularly published on <a class="reference external" href="https://pypi.org/project/opera/">PyPI</a>.
+So the simplest way to test <code class="docutils literal notranslate"><span class="pre">opera</span></code> is to install it into virtual environment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>mkdir ~/opera <span class="o">&amp;&amp;</span> <span class="nb">cd</span> ~/opera
+<span class="gp">$ </span>python3 -m venv .venv <span class="o">&amp;&amp;</span> . .venv/bin/activate
+<span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install --upgrade pip
+<span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install opera
+</pre></div>
+</div>
+</div>
+<div class="section" id="cli-commands-reference">
+<span id="cli-reference"></span><h2>CLI commands reference<a class="headerlink" href="#cli-commands-reference" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span></code> was originally meant to be used in a terminal as a client and it currently allows users to execute the
+following commands:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>CLI command</p></th>
+<th class="head"><p>Purpose and description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#opera-deploy">opera deploy</a></p></td>
+<td><p>deploy TOSCA service template or CSAR</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#opera-undeploy">opera undeploy</a></p></td>
+<td><p>undeploy TOSCA service template or CSAR</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#opera-validate">opera validate</a></p></td>
+<td><p>validate TOSCA service template or CSAR</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#opera-outputs">opera outputs</a></p></td>
+<td><p>retrieve outputs from service template</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#opera-info">opera info</a></p></td>
+<td><p>show information about the current project</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#opera-package">opera package</a></p></td>
+<td><p>retrieve outputs from service template</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#opera-unpackage">opera unpackage</a></p></td>
+<td><p>retrieve outputs from service template</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#opera-diff">opera diff</a></p></td>
+<td><p>compare service templates and instances</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#opera-update">opera update</a></p></td>
+<td><p>update/redeploy template and instances</p></td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><a class="reference internal" href="#opera-notify">opera notify</a></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">notify the orchestrator about changes after the</div>
+<div class="line">deployment and run triggers defined in TOSCA policies</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#opera-init">opera init</a></p></td>
+<td><p>initialize the service template or CSAR (<em>deprecated</em>)</p></td>
+</tr>
+</tbody>
+</table>
+<p>The commands can be executed in a random order and the orchestrator will warn and the orchestrator will warn you in
+case if any problems.
+Each CLI command is described more in detail in the following sections.</p>
+<hr class="docutils" />
+<div class="section" id="deploy">
+<span id="opera-deploy"></span><h3>deploy<a class="headerlink" href="#deploy" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">deploy</span></code> - used to deploy and control deployment of the application described in YAML or CSAR.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-0-0-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-0-0-0" name="0-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-0-0-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-1" name="0-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-0-0-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-0-0-2" name="0-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-0-0-0" class="sphinx-tabs-panel" id="panel-0-0-0" name="0-0" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">--resume/-r</span></code> and <code class="docutils literal notranslate"><span class="pre">--clean-state/-c</span></code> options are mutually exclusive.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">deploy</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="n">path</span> <span class="n">INSTANCE_PATH</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">inputs</span> <span class="n">INPUTS</span><span class="p">]</span>
+                    <span class="p">[</span><span class="o">--</span><span class="n">workers</span> <span class="n">WORKERS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">resume</span> <span class="o">|</span> <span class="o">--</span><span class="n">clean</span><span class="o">-</span><span class="n">state</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">force</span><span class="p">]</span>
+                    <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+                    <span class="p">[</span><span class="n">template</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h4>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>template</kbd></dt>
+<dd><p>TOSCA YAML service template file or CSAR</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--instance-path, -p</kbd></dt>
+<dd><p>Storage folder location (instead of default .opera)</p>
+</dd>
+<dt><kbd>--inputs, -i</kbd></dt>
+<dd><p>YAML or JSON file with inputs to override the inputs supplied in init</p>
+</dd>
+<dt><kbd>--workers, -w</kbd></dt>
+<dd><p>Maximum number of concurrent deployment threads (positive number, default 1)</p>
+<p>Default: 1</p>
+</dd>
+<dt><kbd>--resume, -r</kbd></dt>
+<dd><p>Resume the deployment from where it was interrupted</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--clean-state, -c</kbd></dt>
+<dd><p>Clean the previous deployment state and start over the deployment</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--force, -f</kbd></dt>
+<dd><p>Force the action and skip any possible prompts</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-0-0-1" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-1" name="0-1" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">deploy</span></code> command is used to initiate the deployment orchestration process using the supplied TOSCA
+service template or the compressed TOSCA CSAR.
+Within this CLI command the xOpera orchestrator invokes multiple <a class="reference external" href="https://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.3/cos01/TOSCA-Simple-Profile-YAML-v1.3-cos01.html#_Toc26969470">TOSCA interface operations</a> (TOSCA
+<cite>Standard interface</cite> node operations and also TOSCA <cite>Configure interface</cite> relationship operations).
+The operations are executed in the following order:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">create</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pre_configure_source</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pre_configure_target</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">configure</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_configure_source</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">post_configure_target</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">start</span></code></p></li>
+</ol>
+<p>The operation gets executed if it is defined within the TOSCA service template and has a link to the
+corresponding Ansible playbook.</p>
+<p>After the deployment the following files and folders will be created in your opera storage directory (by
+default that is <code class="docutils literal notranslate"><span class="pre">.opera</span></code> and can be changed using the <code class="docutils literal notranslate"><span class="pre">--instance-path</span></code> flag):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">root_file</span></code> file - contains the path to the service template or CSAR</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inputs</span></code> file - JSON file with the supplied inputs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">instances</span></code> folder - includes JSON files that carry the information about the status of TOSCA node and
+relationship instances</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">csars</span></code> folder contains the extracted copy of your CSAR (created only if you deployed the compressed TOSCA
+CSAR)</p></li>
+</ul>
+</div><div aria-labelledby="tab-0-0-2" class="sphinx-tabs-panel" hidden="true" id="panel-0-0-2" name="0-2" role="tabpanel" tabindex="0"><p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/hello-world">hello-world</a> example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> misc/hello-world
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/hello-world$ opera deploy service.yaml</span>
+</span><span class="go">[Worker_0]   Deploying my-workstation_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello_0</span>
+<span class="go">[Worker_0]     Executing create on hello_0</span>
+<span class="go">[Worker_0]   Deployment of hello_0 complete</span>
+</pre></div>
+</div>
+</div></div>
+<hr class="docutils" />
+</div>
+<div class="section" id="undeploy">
+<span id="opera-undeploy"></span><h3>undeploy<a class="headerlink" href="#undeploy" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">undeploy</span></code> - undeploys application; removes all application instances and components.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-1-1-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-1-1-0" name="1-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-1-1-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-1" name="1-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-1-1-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-1-1-2" name="1-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-1-1-0" class="sphinx-tabs-panel" id="panel-1-1-0" name="1-0" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">undeploy</span></code> command does not take any positional arguments.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">undeploy</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="n">path</span> <span class="n">INSTANCE_PATH</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">workers</span> <span class="n">WORKERS</span><span class="p">]</span>
+                      <span class="p">[</span><span class="o">--</span><span class="n">resume</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">force</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--instance-path, -p</kbd></dt>
+<dd><p>Storage folder location (instead of default .opera)</p>
+</dd>
+<dt><kbd>--workers, -w</kbd></dt>
+<dd><p>Maximum number of concurrent undeployment threads (positive number, default 1)</p>
+<p>Default: 1</p>
+</dd>
+<dt><kbd>--resume, -r</kbd></dt>
+<dd><p>Resume the undeployment from where it was interrupted</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--force, -f</kbd></dt>
+<dd><p>Force the action and skip any possible prompts</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-1-1-1" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-1" name="1-1" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">undeploy</span></code> command is used to tear down the deployed blueprint. Within the undeployment process the
+xOpera orchestrator invokes two TOSCA Standard interface node operations in the following order:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">stop</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delete</span></code></p></li>
+</ol>
+<p>The operation gets executed if it is defined within the TOSCA service template and has a link to the
+corresponding implementation (e.g. Ansible playbook).</p>
+</div><div aria-labelledby="tab-1-1-2" class="sphinx-tabs-panel" hidden="true" id="panel-1-1-2" name="1-2" role="tabpanel" tabindex="0"><p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/hello-world">hello-world</a> example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> misc/hello-world
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/hello-world$ opera deploy service.yaml</span>
+<span class="go">[Worker_0]   Deploying my-workstation_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello_0</span>
+<span class="go">[Worker_0]     Executing create on hello_0</span>
+<span class="go">[Worker_0]   Deployment of hello_0 complete</span>
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/hello-world$ opera undeploy</span>
+</span><span class="go">[Worker_0]   Undeploying hello_0</span>
+<span class="go">[Worker_0]     Executing delete on hello_0</span>
+<span class="go">[Worker_0]   Undeployment of hello_0 complete</span>
+<span class="go">[Worker_0]   Undeploying my-workstation_0</span>
+<span class="go">[Worker_0]   Undeployment of my-workstation_0 complete</span>
+</pre></div>
+</div>
+</div></div>
+<hr class="docutils" />
+</div>
+<div class="section" id="validate">
+<span id="opera-validate"></span><h3>validate<a class="headerlink" href="#validate" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">validate</span></code> - validates the structure of TOSCA template or CSAR.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">validate</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">inputs</span> <span class="n">INPUTS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span> <span class="n">csar</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h4>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>csar</kbd></dt>
+<dd><p>TOSCA YAML service template file or CSAR</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--inputs, -i</kbd></dt>
+<dd><p>YAML or JSON file with inputs</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-2-2-1" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-1" name="2-1" role="tabpanel" tabindex="0"><p>With <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">validate</span></code> you can validate any TOSCA template or CSAR (including its inputs) and find out whether
+it’s properly structured and deployable by opera.
+At the end of this operation you will receive the validation result where opera will warn you about TOSCA
+template inconsistencies if there was any.
+Since validation can be successful or unsuccessful the <cite>opera validate</cite> commands has corresponding return
+codes - 0 for success and 1 for failure.
+If the validation succeeds this means that your TOSCA templates are valid and that all their implementations
+(e.g. Ansible playbooks) can be invoked. However, this doesn’t mean that these operations will succeed.</p>
+</div><div aria-labelledby="tab-2-2-2" class="sphinx-tabs-panel" hidden="true" id="panel-2-2-2" name="2-2" role="tabpanel" tabindex="0"><p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types">misc-tosca-types-csar</a> example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> misc/hello-world
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera validate -i inputs.yaml service.yaml</span>
+</span><span class="go">Validating service template...</span>
+<span class="go">Done.</span>
+</pre></div>
+</div>
+</div></div>
+<hr class="docutils" />
+</div>
+<div class="section" id="outputs">
+<span id="opera-outputs"></span><h3>outputs<a class="headerlink" href="#outputs" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">outputs</span></code> - print the outputs of the deploy/undeploy.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-3-3-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-3-3-0" name="3-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-3-3-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-1" name="3-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-3-3-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-3-3-2" name="3-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-3-3-0" class="sphinx-tabs-panel" id="panel-3-3-0" name="3-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">outputs</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="n">path</span> <span class="n">INSTANCE_PATH</span><span class="p">]</span>
+                     <span class="p">[</span><span class="o">--</span><span class="nb">format</span> <span class="p">{</span><span class="n">yaml</span><span class="p">,</span><span class="n">json</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="n">OUTPUT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--instance-path, -p</kbd></dt>
+<dd><p>Storage folder location (instead of default .opera)</p>
+</dd>
+<dt><kbd>--format, -f</kbd></dt>
+<dd><p>Possible choices: yaml, json</p>
+<p>Output format</p>
+<p>Default: “yaml”</p>
+</dd>
+<dt><kbd>--output, -o</kbd></dt>
+<dd><p>Output file location</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-3-3-1" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-1" name="3-1" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">outputs</span></code> command lets you access the orchestration outputs defined in the TOSCA service template
+and print them out to the console in JSON or YAML format (used by default).</p>
+</div><div aria-labelledby="tab-3-3-2" class="sphinx-tabs-panel" hidden="true" id="panel-3-3-2" name="3-2" role="tabpanel" tabindex="0"><p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/outputs">outputs</a> example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> tosca/outputs
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">tosca/outputs$ opera deploy service.yaml</span>
+<span class="go">[Worker_0]   Deploying my_node_0</span>
+<span class="go">[Worker_0]     Executing create on my_node_0</span>
+<span class="go">[Worker_0]   Deployment of my_node_0 complete</span>
+
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">tosca/outputs$ opera outputs</span>
+</span><span class="go">output_attr:</span>
+<span class="go">description: Example of attribute output</span>
+<span class="go">value: my_custom_attribute_value</span>
+<span class="go">output_prop:</span>
+<span class="go">description: Example of property output</span>
+<span class="go">value: 123</span>
+</pre></div>
+</div>
+</div></div>
+<hr class="docutils" />
+</div>
+<div class="section" id="info">
+<span id="opera-info"></span><h3>info<a class="headerlink" href="#info" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">info</span></code> - print the details of current deployment project.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-4-4-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-4-4-0" name="4-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-4-4-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-1" name="4-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-4-4-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-4-4-2" name="4-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-4-4-0" class="sphinx-tabs-panel" id="panel-4-4-0" name="4-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">info</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="n">path</span> <span class="n">INSTANCE_PATH</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">format</span> <span class="p">{</span><span class="n">yaml</span><span class="p">,</span><span class="n">json</span><span class="p">}]</span>
+                  <span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="n">OUTPUT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+                  <span class="p">[</span><span class="n">csar_or_rootdir</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h4>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>csar_or_rootdir</kbd></dt>
+<dd><p>Path to a packed or unpacked TOSCA CSAR (defaults to the current directory if not specified)</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--instance-path, -p</kbd></dt>
+<dd><p>Storage folder location (instead of default .opera)</p>
+</dd>
+<dt><kbd>--format, -f</kbd></dt>
+<dd><p>Possible choices: yaml, json</p>
+<p>Output format</p>
+<p>Default: “yaml”</p>
+</dd>
+<dt><kbd>--output, -o</kbd></dt>
+<dd><p>Output file location</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-4-4-1" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-1" name="4-1" role="tabpanel" tabindex="0"><p>With <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">info</span></code> user can get the information about the current opera project and can access its storage and
+state.
+This included printing out the path to TOSCA service template entrypoint, extracted CSAR location, path to the
+storage inputs and status/state of the deployment.
+The output can be formatted in YAML or JSON. The created json object looks like this:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;service_template&quot;</span><span class="p">:</span>  <span class="s2">&quot;string | null&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;content_root&quot;</span><span class="p">:</span>      <span class="s2">&quot;string | null&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;inputs&quot;</span><span class="p">:</span>            <span class="s2">&quot;string | null&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;status&quot;</span><span class="p">:</span>            <span class="s2">&quot;initialized | deployed | undeployed | interrupted | null&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div><div aria-labelledby="tab-4-4-2" class="sphinx-tabs-panel" hidden="true" id="panel-4-4-2" name="4-2" role="tabpanel" tabindex="0"><p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types">misc-tosca-types-csar</a> example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> csars/misc-tosca-types
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera info</span>
+</span><span class="go">content_root: null</span>
+<span class="go">inputs: null</span>
+<span class="go">service_template: null</span>
+<span class="go">status: null</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera init -i inputs.yaml service.yaml</span>
+<span class="go">Warning: &#39;opera init&#39; command is deprecated and will probably be removed within one of the next releases. Please use &#39;opera deploy&#39; to initialize and deploy service templates or compressed CSARs.</span>
+<span class="go">Service template was initialized</span>
+
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera info</span>
+</span><span class="go">content_root: null</span>
+<span class="go">inputs: /home/user/Desktop/xopera-examples/csars/misc-tosca-types/.opera/inputs</span>
+<span class="go">service_template: service.yaml</span>
+<span class="go">status: initialized</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera deploy</span>
+<span class="go">[Worker_0]   Deploying my-workstation1_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation1_0 complete</span>
+<span class="go">[Worker_0]   Deploying my-workstation2_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation2_0 complete</span>
+<span class="go">[Worker_0]   Deploying file_0</span>
+<span class="go">[Worker_0]     Executing create on file_0</span>
+<span class="go">[Worker_0]   Deployment of file_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello_0</span>
+<span class="go">[Worker_0]     Executing create on hello_0</span>
+<span class="go">[Worker_0]   Deployment of hello_0 complete</span>
+<span class="go">[Worker_0]   Deploying interfaces_0</span>
+<span class="go">[Worker_0]     Executing create on interfaces_0</span>
+<span class="go">^C[Worker_0] ------------</span>
+<span class="go">KeyboardInterrupt</span>
+
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera info</span>
+</span>
+<span class="go">content_root: null</span>
+<span class="go">inputs: /home/user/Desktop/xopera-examples/csars/misc-tosca-types/.opera/inputs</span>
+<span class="go">service_template: service.yaml</span>
+<span class="go">status: interrupted</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera deploy -r -f</span>
+<span class="go">[Worker_0]   Deploying interfaces_0</span>
+<span class="go">[Worker_0]     Executing create on interfaces_0</span>
+<span class="go">[Worker_0]     Executing configure on interfaces_0</span>
+<span class="go">[Worker_0]     Executing start on interfaces_0</span>
+<span class="go">[Worker_0]   Deployment of interfaces_0 complete</span>
+<span class="go">[Worker_0]   Deploying noimpl_0</span>
+<span class="go">[Worker_0]   Deployment of noimpl_0 complete</span>
+<span class="go">[Worker_0]   Deploying setter_0</span>
+<span class="go">[Worker_0]     Executing create on setter_0</span>
+<span class="go">[Worker_0]   Deployment of setter_0 complete</span>
+<span class="go">[Worker_0]   Deploying test_0</span>
+<span class="go">[Worker_0]     Executing create on test_0</span>
+<span class="go">[Worker_0]   Deployment of test_0 complete</span>
+
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera info</span>
+</span>
+<span class="go">content_root: null</span>
+<span class="go">inputs: /home/user/Desktop/xopera-examples/csars/misc-tosca-types/.opera/inputs</span>
+<span class="go">service_template: service.yaml</span>
+<span class="go">status: deployed</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera undeploy</span>
+<span class="go">[Worker_0]   Undeploying my-workstation2_0</span>
+<span class="go">[Worker_0]   Undeployment of my-workstation2_0 complete</span>
+<span class="go">[Worker_0]   Undeploying file_0</span>
+<span class="go">[Worker_0]     Executing delete on file_0</span>
+<span class="go">[Worker_0]   Undeployment of file_0 complete</span>
+<span class="go">[Worker_0]   Undeploying interfaces_0</span>
+<span class="go">[Worker_0]     Executing stop on interfaces_0</span>
+<span class="go">[Worker_0]     Executing delete on interfaces_0</span>
+<span class="go">[Worker_0]   Undeployment of interfaces_0 complete</span>
+<span class="go">[Worker_0]   Undeploying noimpl_0</span>
+<span class="go">[Worker_0]   Undeployment of noimpl_0 complete</span>
+<span class="go">[Worker_0]   Undeploying setter_0</span>
+<span class="go">[Worker_0]   Undeployment of setter_0 complete</span>
+<span class="go">[Worker_0]   Undeploying hello_0</span>
+<span class="go">[Worker_0]   Undeployment of hello_0 complete</span>
+<span class="go">[Worker_0]   Undeploying my-workstation1_0</span>
+<span class="go">[Worker_0]   Undeployment of my-workstation1_0 complete</span>
+<span class="go">[Worker_0]   Undeploying test_0</span>
+<span class="go">[Worker_0]   Undeployment of test_0 complete</span>
+
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera info</span>
+</span>
+<span class="go">content_root: null</span>
+<span class="go">inputs: /home/user/Desktop/xopera-examples/csars/misc-tosca-types/.opera/inputs</span>
+<span class="go">service_template: service.yaml</span>
+<span class="go">status: undeployed</span>
+</pre></div>
+</div>
+</div></div>
+<hr class="docutils" />
+</div>
+<div class="section" id="package">
+<span id="opera-package"></span><h3>package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">package</span></code> - package TOSCA YAML templates and their accompanying files to a compressed TOSCA CSAR.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-5-5-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-5-5-0" name="5-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-5-5-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-1" name="5-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-5-5-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-5-5-2" name="5-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-5-5-0" class="sphinx-tabs-panel" id="panel-5-5-0" name="5-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">package</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">service</span><span class="o">-</span><span class="n">template</span> <span class="n">SERVICE_TEMPLATE</span><span class="p">]</span>
+                     <span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="n">OUTPUT</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">format</span> <span class="p">{</span><span class="nb">zip</span><span class="p">,</span><span class="n">tar</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+                     <span class="n">service_template_folder</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h4>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>service_template_folder</kbd></dt>
+<dd><p>Path to the root of the service template or folder you want to create the TOSCA CSAR from</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--service-template, -t</kbd></dt>
+<dd><p>Name or path to the TOSCA service template file from the root of the input folder</p>
+</dd>
+<dt><kbd>--output, -o</kbd></dt>
+<dd><p>Output CSAR file path</p>
+</dd>
+<dt><kbd>--format, -f</kbd></dt>
+<dd><p>Possible choices: zip, tar</p>
+<p>CSAR compressed file format</p>
+<p>Default: “zip”</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-5-5-1" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-1" name="5-1" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">package</span></code> command is used to create a valid TOSCA CSAR - a deployable zip (or tar) compressed
+archive file.
+TOSCA CSARs contain the blueprint of the application that we want to deploy.
+The process includes packaging together the TOSCA service template and all the accompanying files.</p>
+<p>In general, <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">package</span></code> receives a directory (where user’s TOSCA templates and other files are located)
+and produces a compressed CSAR file.
+The command can create the CSAR if there is at least one TOSCA YAML file in the input folder.
+If the CSAR structure is already present (if <cite>TOSCA-Metadata/TOSCA.meta</cite> exists and all other TOSCA CSAR
+constraints are satisfied) the CSAR is created without an additional temporary directory.
+And if not, the files are copied to the tempdir, where the CSAR structure is created and at the end the tempdir
+is compressed.
+The input folder is the mandatory positional argument, but there are also other command flags that can be used.</p>
+</div><div aria-labelledby="tab-5-5-2" class="sphinx-tabs-panel" hidden="true" id="panel-5-5-2" name="5-2" role="tabpanel" tabindex="0"><p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/hello-world">hello-world</a> and <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types">misc-tosca-types-csar</a> examples.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> misc/hello-world
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/hello-world$ opera package .</span>
+</span><span class="go">CSAR was created and packed to &#39;/home/user/Desktop/xopera-examples/misc/hello-world/opera-package-45045f.zip&#39;.</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/hello-world$ cd ../../csars</span>
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars$ opera package -t service.yaml -o misc-tosca-types  misc-tosca-types/</span>
+</span><span class="go">CSAR was created and packed to &#39;/home/user/Desktop/xopera-examples/csars/misc-tosca-types.zip&#39;.</span>
+</pre></div>
+</div>
+</div></div>
+<hr class="docutils" />
+</div>
+<div class="section" id="unpackage">
+<span id="opera-unpackage"></span><h3>unpackage<a class="headerlink" href="#unpackage" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">unpackage</span></code> - uncompress TOSCA CSAR.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-6-6-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-6-6-0" name="6-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-6-6-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-1" name="6-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-6-6-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-6-6-2" name="6-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-6-6-0" class="sphinx-tabs-panel" id="panel-6-6-0" name="6-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">unpackage</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">destination</span> <span class="n">DESTINATION</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span> <span class="n">csar</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h4>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>csar</kbd></dt>
+<dd><p>Path to the compressed TOSCA CSAR</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--destination, -d</kbd></dt>
+<dd><p>Path to the location where the CSAR file will be extracted to, the path will be generated in the current working directory if it isn’t specified</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-6-6-1" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-1" name="6-1" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">unpackage</span></code> has the opposite function of the <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">package</span></code> command.
+It  serves for unpacking (i.e. validating and extracting) the compressed TOSCA CSAR files.
+The opera unpackage command receives a compressed CSAR as a positional argument.
+It then validates and extracts the CSAR to a given location.</p>
+<p>There’s no <code class="docutils literal notranslate"><span class="pre">--format/-f</span></code> option. Rather than that, the compressed file format (that will be used to extract
+the CSAR) is determined automatically.
+Currently, the compressed CSARs can be supplied in two different compression formats - <cite>zip</cite> or <cite>tar</cite>.</p>
+</div><div aria-labelledby="tab-6-6-2" class="sphinx-tabs-panel" hidden="true" id="panel-6-6-2" name="6-2" role="tabpanel" tabindex="0"><p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types">misc-tosca-types-csar</a> and <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/small">small-csar</a> examples.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> csars
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars$ opera package -t service.yaml -o misc-tosca-types misc-tosca-types/</span>
+<span class="go">CSAR was created and packed to &#39;/home/user/Desktop/xopera-examples/csars/misc-tosca-types.zip&#39;.</span>
+
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars$ opera unpackage misc-tosca-types.zip</span>
+</span><span class="go">The CSAR was unpackaged to &#39;/home/user/Desktop/xopera-examples/csars/opera-unpackage-1cabf6&#39;.</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars$ opera package -t service.yaml -o small small/</span>
+<span class="go">CSAR was created and packed to &#39;/home/user/Desktop/xopera-examples/csars/small.zip&#39;.</span>
+
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars$ opera unpackage -d small-extracted small.zip</span>
+</span><span class="go">The CSAR was unpackaged to &#39;/home/user/Desktop/xopera-examples/csars/small-extracted&#39;.</span>
+</pre></div>
+</div>
+</div></div>
+<hr class="docutils" />
+</div>
+<div class="section" id="diff">
+<span id="opera-diff"></span><h3>diff<a class="headerlink" href="#diff" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">diff</span></code> - compare TOSCA service templates and instances.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-7-7-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-7-7-0" name="7-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-7-7-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-1" name="7-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-7-7-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-7-7-2" name="7-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-7-7-0" class="sphinx-tabs-panel" id="panel-7-7-0" name="7-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">diff</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="n">path</span> <span class="n">INSTANCE_PATH</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">inputs</span> <span class="n">INPUTS</span><span class="p">]</span>
+                  <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">template</span><span class="o">-</span><span class="n">only</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="nb">format</span> <span class="p">{</span><span class="n">yaml</span><span class="p">,</span><span class="n">json</span><span class="p">}]</span>
+                  <span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="n">OUTPUT</span><span class="p">]</span>
+                  <span class="p">[</span><span class="n">template</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h4>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>template</kbd></dt>
+<dd><p>TOSCA YAML service template file</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--instance-path, -p</kbd></dt>
+<dd><p>Storage folder location (instead of default .opera)</p>
+</dd>
+<dt><kbd>--inputs, -i</kbd></dt>
+<dd><p>Optional: YAML or JSON file with inputs that will be used along with the comparison</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--template-only, -t</kbd></dt>
+<dd><p>Compare only templates without instances</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--format, -f</kbd></dt>
+<dd><p>Possible choices: yaml, json</p>
+<p>Output format</p>
+<p>Default: “yaml”</p>
+</dd>
+<dt><kbd>--output, -o</kbd></dt>
+<dd><p>Output file location</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-7-7-1" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-1" name="7-1" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">diff</span></code> CLI command holds the functionality to find the differences between the deployed TOSCA
+service template and the updated TOSCA service template that you wish to redeploy.
+Moreover, this operation compares the desired TOSCA service template to the one from the opera project storage
+(by default this one is located in <code class="docutils literal notranslate"><span class="pre">.opera</span></code>) and print out their differences.</p>
+<p>The command includes two sub-operations that invoke template and instance comparers.
+The template comparer allows the comparison of changed blueprint (and changed inputs) in a folder containing
+the existing TOSCA service template that was deployed before.
+The instance comparer looks for changes in instance states and also traverses the dependency graph in order to
+propagate changes from parent to child nodes.
+If a parent node is marked as changed, then child node is also considered changed.</p>
+<p>The output of <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">diff</span></code> is a human readable representation of templates differences, is formatted either
+as JSON or YAML (default) and can be optionally saved in a file.</p>
+</div><div aria-labelledby="tab-7-7-2" class="sphinx-tabs-panel" hidden="true" id="panel-7-7-2" name="7-2" role="tabpanel" tabindex="0"><p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/compare-templates">compare-templates</a> example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> misc/compare-templates
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/compare-templates$ opera deploy -i inputs1.yaml service1.yaml</span>
+<span class="go">[Worker_0]   Deploying my-workstation_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-1_0</span>
+<span class="go">[Worker_0]     Executing create on hello-1_0</span>
+<span class="go">[Worker_0]   Deployment of hello-1_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-2_0</span>
+<span class="go">[Worker_0]     Executing create on hello-2_0</span>
+<span class="go">[Worker_0]   Deployment of hello-2_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-3_0</span>
+<span class="go">[Worker_0]     Executing create on hello-3_0</span>
+<span class="go">[Worker_0]   Deployment of hello-3_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-4_0</span>
+<span class="go">[Worker_0]     Executing create on hello-4_0</span>
+<span class="go">[Worker_0]   Deployment of hello-4_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-6_0</span>
+<span class="go">[Worker_0]     Executing create on hello-6_0</span>
+<span class="go">[Worker_0]   Deployment of hello-6_0 complete</span>
+
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/compare-templates$ opera diff -i inputs2.yaml service2.yaml</span>
+</span><span class="go">nodes:</span>
+<span class="go">added:</span>
+<span class="go">- hello-5</span>
+<span class="go">changed:</span>
+<span class="go"> hello-1:</span>
+<span class="go">   capabilities:</span>
+<span class="go">     deleted:</span>
+<span class="go">     - test</span>
+<span class="go">   interfaces:</span>
+<span class="go">     Standard:</span>
+<span class="go">       operations:</span>
+<span class="go">         create:</span>
+<span class="go">           artifacts:</span>
+<span class="go">             added:</span>
+<span class="go">             - lib/files/file1_2.yaml</span>
+<span class="go">             deleted:</span>
+<span class="go">             - lib/files/file1_1.yaml</span>
+<span class="go">           inputs:</span>
+<span class="go">             marker:</span>
+<span class="go">             - marker1</span>
+<span class="go">             - marker2</span>
+<span class="go">             time:</span>
+<span class="go">             - &#39;0&#39;</span>
+<span class="go">             - &#39;1&#39;</span>
+<span class="go">         delete:</span>
+<span class="go">           artifacts:</span>
+<span class="go">             added:</span>
+<span class="go">             - lib/files/file1_2.yaml</span>
+<span class="go">             deleted:</span>
+<span class="go">             - lib/files/file1_1.yaml</span>
+<span class="go">           inputs:</span>
+<span class="go">             marker:</span>
+<span class="go">             - marker1</span>
+<span class="go">             - marker2</span>
+<span class="go">             time:</span>
+<span class="go">             - &#39;0&#39;</span>
+<span class="go">             - &#39;1&#39;</span>
+<span class="go">   properties:</span>
+<span class="go">     time:</span>
+<span class="go">     - &#39;0&#39;</span>
+<span class="go">     - &#39;1&#39;</span>
+<span class="go"> hello-2:</span>
+<span class="go">   capabilities:</span>
+<span class="go">     test:</span>
+<span class="go">       properties:</span>
+<span class="go">         test1:</span>
+<span class="go">         - &#39;2&#39;</span>
+<span class="go">         - &#39;3&#39;</span>
+<span class="go">         test2:</span>
+<span class="go">         - &#39;2&#39;</span>
+<span class="go">         - &#39;3&#39;</span>
+<span class="go">   dependencies:</span>
+<span class="go">   - hello-2</span>
+<span class="go">   interfaces:</span>
+<span class="go">     Standard:</span>
+<span class="go">       operations:</span>
+<span class="go">         create:</span>
+<span class="go">           artifacts:</span>
+<span class="go">             added:</span>
+<span class="go">             - lib/files/file2.yaml</span>
+<span class="go">             deleted:</span>
+<span class="go">             - lib/files/file1_1.yaml</span>
+<span class="go">           inputs:</span>
+<span class="go">             marker:</span>
+<span class="go">             - marker1</span>
+<span class="go">             - marker2</span>
+<span class="go">         delete:</span>
+<span class="go">           artifacts:</span>
+<span class="go">             added:</span>
+<span class="go">             - lib/files/file2.yaml</span>
+<span class="go">             deleted:</span>
+<span class="go">             - lib/files/file1_1.yaml</span>
+<span class="go">           inputs:</span>
+<span class="go">             marker:</span>
+<span class="go">             - marker1</span>
+<span class="go">             - marker2</span>
+<span class="go">   properties:</span>
+<span class="go">     day:</span>
+<span class="go">     - &#39;1&#39;</span>
+<span class="go">     - &#39;2&#39;</span>
+<span class="go">   requirements:</span>
+<span class="go">     added:</span>
+<span class="go">     - dependency</span>
+<span class="go">   types:</span>
+<span class="go">   - hello_type_old</span>
+<span class="go">   - hello_type_new</span>
+<span class="go"> hello-3:</span>
+<span class="go">   interfaces:</span>
+<span class="go">     Standard:</span>
+<span class="go">       operations:</span>
+<span class="go">         create:</span>
+<span class="go">           inputs:</span>
+<span class="go">             marker:</span>
+<span class="go">             - marker1</span>
+<span class="go">             - marker2</span>
+<span class="go">         delete:</span>
+<span class="go">           inputs:</span>
+<span class="go">             marker:</span>
+<span class="go">             - marker1</span>
+<span class="go">             - marker2</span>
+<span class="go"> hello-6:</span>
+<span class="go">   dependencies:</span>
+<span class="go">   - hello-6</span>
+<span class="go">   interfaces:</span>
+<span class="go">     Standard:</span>
+<span class="go">       operations:</span>
+<span class="go">         create:</span>
+<span class="go">           inputs:</span>
+<span class="go">             marker:</span>
+<span class="go">             - marker1</span>
+<span class="go">             - marker2</span>
+<span class="go">         delete:</span>
+<span class="go">           inputs:</span>
+<span class="go">             marker:</span>
+<span class="go">             - marker1</span>
+<span class="go">             - marker2</span>
+<span class="go">   requirements:</span>
+<span class="go">     dependency:</span>
+<span class="go">       target:</span>
+<span class="go">       - hello-1</span>
+<span class="go">       - hello-2</span>
+<span class="go">deleted:</span>
+<span class="go">- hello-4</span>
+</pre></div>
+</div>
+</div></div>
+<hr class="docutils" />
+</div>
+<div class="section" id="update">
+<span id="opera-update"></span><h3>update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">update</span></code> - update the deployed TOSCA service template and redeploy it according to the discovered template diff.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-8-8-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-8-8-0" name="8-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-8-8-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-1" name="8-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-8-8-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-8-8-2" name="8-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-8-8-0" class="sphinx-tabs-panel" id="panel-8-8-0" name="8-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">update</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="n">path</span> <span class="n">INSTANCE_PATH</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">inputs</span> <span class="n">INPUTS</span><span class="p">]</span>
+                    <span class="p">[</span><span class="o">--</span><span class="n">workers</span> <span class="n">WORKERS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+                    <span class="p">[</span><span class="n">template</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h4>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>template</kbd></dt>
+<dd><p>TOSCA YAML service template file</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--instance-path, -p</kbd></dt>
+<dd><p>Storage folder location (instead of default .opera)</p>
+</dd>
+<dt><kbd>--inputs, -i</kbd></dt>
+<dd><p>Optional: YAML or JSON file with inputs that will be used for deployment update</p>
+</dd>
+<dt><kbd>--workers, -w</kbd></dt>
+<dd><p>Maximum number of concurrent update threads (positive number, default 1)</p>
+<p>Default: 1</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-8-8-1" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-1" name="8-1" role="tabpanel" tabindex="0"><p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">update</span></code> command extends the usage of <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">diff</span></code> and is able to redeploy the update TOSCA
+service template according to the changes that were made to the previously deployed template.
+This means that <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">update</span></code> will first compare the two templates and instances with and then redeploy.</p>
+<p>The user is able to run update command providing a changed blueprint and inputs in a folder containing existing
+service template that was deployed before.
+The result of the execution would be undeployment of the nodes that were removed from the service template,
+deployment of the nodes that were added to the service template and consequential undeployment/deployment of
+changed nodes.</p>
+</div><div aria-labelledby="tab-8-8-2" class="sphinx-tabs-panel" hidden="true" id="panel-8-8-2" name="8-2" role="tabpanel" tabindex="0"><p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/compare-templates">compare-templates</a> example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> misc/compare-templates
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/compare-templates$ opera deploy -i inputs1.yaml service1.yaml</span>
+<span class="go">[Worker_0]   Deploying my-workstation_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-1_0</span>
+<span class="go">[Worker_0]     Executing create on hello-1_0</span>
+<span class="go">[Worker_0]   Deployment of hello-1_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-2_0</span>
+<span class="go">[Worker_0]     Executing create on hello-2_0</span>
+<span class="go">[Worker_0]   Deployment of hello-2_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-3_0</span>
+<span class="go">[Worker_0]     Executing create on hello-3_0</span>
+<span class="go">[Worker_0]   Deployment of hello-3_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-4_0</span>
+<span class="go">[Worker_0]     Executing create on hello-4_0</span>
+<span class="go">[Worker_0]   Deployment of hello-4_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-6_0</span>
+<span class="go">[Worker_0]     Executing create on hello-6_0</span>
+<span class="go">[Worker_0]   Deployment of hello-6_0 complete</span>
+
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/compare-templates$ opera update -i inputs2.yaml service2.yaml</span>
+</span><span class="go">[Worker_0]   Undeploying hello-2_0</span>
+<span class="go">[Worker_0]     Executing delete on hello-2_0</span>
+<span class="go">[Worker_0]   Undeployment of hello-2_0 complete</span>
+<span class="go">[Worker_0]   Undeploying hello-3_0</span>
+<span class="go">[Worker_0]     Executing delete on hello-3_0</span>
+<span class="go">[Worker_0]   Undeployment of hello-3_0 complete</span>
+<span class="go">[Worker_0]   Undeploying hello-4_0</span>
+<span class="go">[Worker_0]     Executing delete on hello-4_0</span>
+<span class="go">[Worker_0]   Undeployment of hello-4_0 complete</span>
+<span class="go">[Worker_0]   Undeploying hello-6_0</span>
+<span class="go">[Worker_0]     Executing delete on hello-6_0</span>
+<span class="go">[Worker_0]   Undeployment of hello-6_0 complete</span>
+<span class="go">[Worker_0]   Undeploying hello-1_0</span>
+<span class="go">[Worker_0]     Executing delete on hello-1_0</span>
+<span class="go">[Worker_0]   Undeployment of hello-1_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-1_0</span>
+<span class="go">[Worker_0]     Executing create on hello-1_0</span>
+<span class="go">[Worker_0]   Deployment of hello-1_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-2_0</span>
+<span class="go">[Worker_0]     Executing create on hello-2_0</span>
+<span class="go">[Worker_0]   Deployment of hello-2_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-3_0</span>
+<span class="go">[Worker_0]     Executing create on hello-3_0</span>
+<span class="go">[Worker_0]   Deployment of hello-3_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-5_0</span>
+<span class="go">[Worker_0]     Executing create on hello-5_0</span>
+<span class="go">[Worker_0]   Deployment of hello-5_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello-6_0</span>
+<span class="go">[Worker_0]     Executing create on hello-6_0</span>
+<span class="go">[Worker_0]   Deployment of hello-6_0 complete</span>
+</pre></div>
+</div>
+</div></div>
+<hr class="docutils" />
+</div>
+<div class="section" id="notify">
+<span id="opera-notify"></span><h3>notify<a class="headerlink" href="#notify" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">notify</span></code> - notify the orchestrator about changes after deployment and run triggers defined in TOSCA policies.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-9-9-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-9-9-0" name="9-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-9-9-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-1" name="9-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-9-9-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-9-9-2" name="9-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-9-9-0" class="sphinx-tabs-panel" id="panel-9-9-0" name="9-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">notify</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="n">path</span> <span class="n">INSTANCE_PATH</span><span class="p">]</span> <span class="o">--</span><span class="n">trigger</span>
+                    <span class="n">TRIGGER_OR_EVENT</span> <span class="p">[</span><span class="o">--</span><span class="n">notification</span> <span class="n">NOTIFICATION</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">force</span><span class="p">]</span>
+                    <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--instance-path, -p</kbd></dt>
+<dd><p>Storage folder location (instead of default .opera)</p>
+</dd>
+<dt><kbd>--trigger, -t, --event, -e</kbd></dt>
+<dd><p>TOSCA policy trigger name or event that will invoke all the actions (interface operations) on policy</p>
+</dd>
+<dt><kbd>--notification, -n</kbd></dt>
+<dd><p>Notification file (usually JSON) with changes that will be exposed to TOSCA interfaces</p>
+</dd>
+<dt><kbd>--force, -f</kbd></dt>
+<dd><p>Skip any prompts and force execution</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Enable verbose mode</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-9-9-1" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-1" name="9-1" role="tabpanel" tabindex="0"><p>There are cases when the user would want to execute some tasks after the deployment based on the changes that
+occur on already deployed instances at runtime.
+With <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">notify</span></code> command, the user can inform the orchestrator about the changes (e.g. CPU load has
+increased) and the orchestrator will invoke the operations that are needed to make necessary actions (e.g.
+horizontal or vertical scaling of the instances).</p>
+<p>In general <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">notify</span></code> is meant to be used after the deployment (after running <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">deploy</span></code>) to notify
+the orchestrator about some changes after the deployment.
+According to these changes (metrics) that can be specified in the notification file, the orchestrator can the
+execute the desired actions.
+In other words, <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">notify</span></code> introduces a use case for TOSCA policies and their TOSCA triggers as it
+enables running TOSCA policy trigger actions (these are basically just pointing to TOSCA interface operations
+from TOSCA nodes).
+Notification process is invoked on every node similar to deploy or undeploy workflows.</p>
+<p>As mentioned above the commands should be used after the deployment but this is not the limit as it can also be
+used during other stages of orchestration (at the beginning, before deployment, after undeployment and so on).
+The orchestrator will warn users in these non-standard scenarios because the consequences of notify can be
+crucial.</p>
+<p>For the CLI command, there is one mandatory positional argument called <code class="docutils literal notranslate"><span class="pre">--trigger/-t</span></code> (you can also use the
+<code class="docutils literal notranslate"><span class="pre">--event/-e</span></code> alias for this option), which stands for trigger or event name.
+So, the CLI command cannot be invoked just with <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">notify</span></code> and this is because you probably won’t need to
+use all policy triggers, but just one or two, which you can specify with by trigger’s full name or its event
+using <code class="docutils literal notranslate"><span class="pre">--trigger/-t</span></code> option.
+It is also recommended that you use the <code class="docutils literal notranslate"><span class="pre">--notification/-n</span></code> switch for the path to the notification file
+(usually a JSON file) that includes changes (e.g. metrics from monitoring tool) that will be exposed to TOSCA
+interfaces as <code class="docutils literal notranslate"><span class="pre">notification</span></code> variable (for example in Ansible playbooks you can use Jinja2
+<code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">notification</span> <span class="pre">}}</span></code> template to retrieve and parse the notification file contents).</p>
+</div><div aria-labelledby="tab-9-9-2" class="sphinx-tabs-panel" hidden="true" id="panel-9-9-2" name="9-2" role="tabpanel" tabindex="0"><p>With <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">notify</span></code> and by empowering the orchestrator with the practical usage of TOSCA policies and
+triggers we wanted to enable scaling and other similar use cases that are based on policies and triggers.
+Many applications and services (e.g. AWS Lambda, Docker containers, Kubernetes solutions etc.) that are
+deployed with xOpera orchestrator often include the configuration of monitoring tool (e.g. Prometheus) that is
+able to collect certain metrics like CPU load or memory usage.
+We wanted to ensure scaling of the solutions when certain limits (from TOSCA policies) are reached (like too
+high CPU usage).
+By running opera notify the scaling scripts (e.g Ansible playbooks) are invoked and scaling can be performed
+(the metrics from monitoring tool can also be provided as a notification file).</p>
+<p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/scaling">scaling</a> example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> misc/scaling
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/scaling$ opera deploy service.yaml</span>
+<span class="go">[Worker_0]   Deploying aws_lambda_0</span>
+<span class="go">[Worker_0]     Executing create on aws_lambda_0</span>
+<span class="go">[Worker_0]   Deployment of aws_lambda_0 complete</span>
+<span class="go">[Worker_0]   Deploying configure_monitoring_0</span>
+<span class="go">[Worker_0]     Executing configure on configure_monitoring_0</span>
+<span class="go">[Worker_0]   Deployment of configure_monitoring_0 complete</span>
+
+<span class="gp"># </span>scale down by calling scale_down_trigger event with notification_scale_down.json notification file
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/scaling$ opera notify -e scale_down_trigger -n files/notification_scale_down.json</span>
+</span><span class="go">[Worker_0]   Notifying aws_lambda_0</span>
+<span class="go">[Worker_0]    Calling trigger radon.triggers.scaling.ScaleDown with event scale_down_trigger</span>
+<span class="go">[Worker_0]     Executing scale_down on aws_lambda_0</span>
+<span class="go">[Worker_0]    Calling trigger actions with event scale_down_trigger complete</span>
+<span class="go">[Worker_0]   Notification on aws_lambda_0 complete</span>
+<span class="go">[Worker_0]   Notifying configure_monitoring_0</span>
+<span class="go">[Worker_0]   Notification on configure_monitoring_0 complete</span>
+
+<span class="gp"># </span>scale up by calling scale_up_trigger event with notification_scale_up.json notification file
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/scaling$ opera notify -e scale_up_trigger -n files/notification_scale_up.json</span>
+</span><span class="go">[Worker_0]   Notifying aws_lambda_0</span>
+<span class="go">[Worker_0]    Calling trigger radon.triggers.scaling.ScaleUp with event scale_up_trigger</span>
+<span class="go">[Worker_0]     Executing scale_up on aws_lambda_0</span>
+<span class="go">[Worker_0]    Calling trigger actions with event scale_up_trigger complete</span>
+<span class="go">[Worker_0]   Notification on aws_lambda_0 complete</span>
+<span class="go">[Worker_0]   Notifying configure_monitoring_0</span>
+<span class="go">[Worker_0]   Notification on configure_monitoring_0 complete</span>
+</pre></div>
+</div>
+<p>You can also try to deploy the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/policy-triggers">policy-triggers</a> example with the CLI instructions below.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> tosca/policy-triggers
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">tosca/policy-triggers$ opera deploy service.yaml</span>
+<span class="go">[Worker_0]   Deploying workstation_0</span>
+<span class="go">[Worker_0]   Deployment of workstation_0 complete</span>
+<span class="go">[Worker_0]   Deploying openstack_vm_0</span>
+<span class="go">[Worker_0]     Executing create on openstack_vm_0</span>
+<span class="go">[Worker_0]   Deployment of openstack_vm_0 complete</span>
+
+<span class="gp"># </span>invoke TOSCA policy scale down trigger interface operations with opera notify
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">tosca/policy-triggers$ opera notify -t radon.triggers.scaling.ScaleDown</span>
+</span><span class="go">[Worker_0]   Notifying workstation_0</span>
+<span class="go">[Worker_0]   Notification on workstation_0 complete</span>
+<span class="go">[Worker_0]   Notifying openstack_vm_0</span>
+<span class="go">[Worker_0]    Calling trigger radon.triggers.scaling.ScaleDown with event scale_down_trigger</span>
+<span class="go">[Worker_0]     Executing scale_down on openstack_vm_0</span>
+<span class="go">[Worker_0]    Calling trigger actions with event scale_down_trigger complete</span>
+<span class="go">[Worker_0]   Notification on openstack_vm_0 complete</span>
+
+<span class="gp"># </span>invoke TOSCA policy scale up trigger interface operations with opera notify
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">tosca/policy-triggers$ opera notify -t radon.triggers.scaling.ScaleUp</span>
+</span><span class="go">[Worker_0]   Notifying workstation_0</span>
+<span class="go">[Worker_0]   Notification on workstation_0 complete</span>
+<span class="go">[Worker_0]   Notifying openstack_vm_0</span>
+<span class="go">[Worker_0]    Calling trigger radon.triggers.scaling.ScaleUp with event scale_up_trigger</span>
+<span class="go">[Worker_0]     Executing scale_up on openstack_vm_0</span>
+<span class="go">[Worker_0]    Calling trigger actions with event scale_up_trigger complete</span>
+<span class="go">[Worker_0]   Notification on openstack_vm_0 complete</span>
+
+<span class="gp"># </span>invoke TOSCA policy auto-scale trigger interface operations with opera notify
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">tosca/policy-triggers$ opera notify -t radon.triggers.scaling.AutoScale</span>
+</span><span class="go">[Worker_0]   Notifying workstation_0</span>
+<span class="go">[Worker_0]   Notification on workstation_0 complete</span>
+<span class="go">[Worker_0]   Notifying openstack_vm_0</span>
+<span class="go">[Worker_0]    Calling trigger radon.triggers.scaling.AutoScale with event auto_scale_trigger</span>
+<span class="go">[Worker_0]     Executing retrieve_info on openstack_vm_0</span>
+<span class="go">[Worker_0]     Executing autoscale on openstack_vm_0</span>
+<span class="go">[Worker_0]    Calling trigger actions with event auto_scale_trigger complete</span>
+<span class="go">[Worker_0]   Notification on openstack_vm_0 complete</span>
+</pre></div>
+</div>
+</div></div>
+<hr class="docutils" />
+</div>
+<div class="section" id="init-deprecated">
+<span id="opera-init"></span><h3>init (deprecated)<a class="headerlink" href="#init-deprecated" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">init</span></code> - initialize TOSCA CSAR or service template.</p>
+<div class="sphinx-tabs docutils container">
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-10-10-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-10-10-0" name="10-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-10-10-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-1" name="10-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-10-10-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-10-10-2" name="10-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-10-10-0" class="sphinx-tabs-panel" id="panel-10-10-0" name="10-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">init</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="n">path</span> <span class="n">INSTANCE_PATH</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">inputs</span> <span class="n">INPUTS</span><span class="p">]</span>
+                  <span class="p">[</span><span class="o">--</span><span class="n">clean</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+                  <span class="n">csar</span>
+</pre></div>
+</div>
+<div class="section" id="Positional Arguments">
+<h4>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>csar</kbd></dt>
+<dd><p>TOSCA YAML service template file or CSAR</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="Named Arguments">
+<h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
+<dl class="option-list">
+<dt><kbd>--instance-path, -p</kbd></dt>
+<dd><p>Storage folder location (instead of default .opera)</p>
+</dd>
+<dt><kbd>--inputs, -i</kbd></dt>
+<dd><p>YAML or JSON file with inputs</p>
+</dd>
+<dt><kbd>--clean, -c</kbd></dt>
+<dd><p>Clean storage by removing previously initialized TOSCA service template or CSAR</p>
+<p>Default: False</p>
+</dd>
+<dt><kbd>--verbose, -v</kbd></dt>
+<dd><p>Turns on verbose mode</p>
+<p>Default: False</p>
+</dd>
+</dl>
+</div>
+</div><div aria-labelledby="tab-10-10-1" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-1" name="10-1" role="tabpanel" tabindex="0"><p>The deprecated <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">init</span></code> command is used to initialize the deployment.
+It either takes a TOSCA template file or a compressed (zipped CSAR) file (and an optional YAML file with
+inputs).</p>
+<p>When the compressed CSAR is provided to the <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">init</span></code> command it is then validated to be sure that the
+CSAR is compliant with TOSCA.</p>
+<p>After the initialization the following files and folders will be created in your opera storage directory (by
+default that is <code class="docutils literal notranslate"><span class="pre">.opera</span></code> and can be changed using the <code class="docutils literal notranslate"><span class="pre">--instance-path</span></code> flag):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">root_file</span></code> file - contains the path to the service template or CSAR</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">inputs</span></code> file - JSON file with the supplied inputs</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">csars</span></code> folder contains the extracted copy of your CSAR (created only if you deployed the compressed TOSCA
+CSAR)</p></li>
+</ul>
+<p>After running <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">init</span></code> you will be able to initiate the deployment process using just the
+<code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">deploy</span></code> command without any positional arguments (however, you can still supply inputs or override
+TOSCA service template/CSAR).</p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 0.6.1.</span></p>
+</div>
+</div><div aria-labelledby="tab-10-10-2" class="sphinx-tabs-panel" hidden="true" id="panel-10-10-2" name="10-2" role="tabpanel" tabindex="0"><p>Follow the next CLI instructions and results for the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types">misc-tosca-types-csar</a> example.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> csars/misc-tosca-types
+<span class="hll"><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">csars/misc-tosca-types$ opera init -i inputs.yaml service.yaml</span>
+</span><span class="go">Warning: &#39;opera init&#39; command is deprecated and will probably be removed within one of the next releases. Please use &#39;opera deploy&#39; to initialize and deploy service templates or compressed CSARs.</span>
+<span class="go">Service template was initialized</span>
+</pre></div>
+</div>
+</div></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">init</span></code> command is deprecated (since version <em>0.6.1</em>) and will probably be removed within one of the
+next releases.
+Please use <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">deploy</span></code> to initialize and deploy service templates or compressed CSARs.</p>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="secrets-and-environment-variables">
+<h2>Secrets and Environment variables<a class="headerlink" href="#secrets-and-environment-variables" title="Permalink to this headline">¶</a></h2>
+<p>You can use the following environment variables:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 34%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Environment variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">OPERA_SSH_USER</span></code></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Username for the Ansible ssh</div>
+<div class="line">connection to a remote VM</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">ubuntu</span></code></div>
+<div class="line">(default is <code class="docutils literal notranslate"><span class="pre">centos</span></code>)</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">OPERA_SSH_IDENTITY_FILE</span></code></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Path to the file containing</div>
+<div class="line">your private ssh key that</div>
+<div class="line">will be used for a</div>
+<div class="line">connection to a remote VM</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">~/.ssh/id_ed25519</span></code></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">OPERA_SSH_HOST_KEY_CHECKING</span></code></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">Disable Ansible host key</div>
+<div class="line">checking (not recommended)</div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">false</span></code> or <code class="docutils literal notranslate"><span class="pre">f</span></code></div>
+<div class="line">(not case sensitive)</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Be very careful with your orchestration secrets (such as SSH private keys, cloud credentials, passwords ans so on)
+that are stored as opera inputs.
+To avoid exposing them don’t share the inputs file and the created opera storage folder with anyone.</p>
+</div>
+</div>
+<div class="section" id="shell-completion">
+<h2>Shell completion<a class="headerlink" href="#shell-completion" title="Permalink to this headline">¶</a></h2>
+<p>For easier usage of the CLI tool <code class="docutils literal notranslate"><span class="pre">opera</span></code> enables tab completion for all CLI commands and arguments.
+We use <a class="reference external" href="https://github.com/iterative/shtab">shtab</a> in our code to generate a shell completion script.
+We don’t have a separate command to do that since but rather a global optional argument that will print out the
+completion script for the main parser.
+This flag is called <code class="docutils literal notranslate"><span class="pre">--shell-completion/-s</span></code> and it receives a shell type to generate completion for.
+Shtab currently supports <cite>bash</cite> and <cite>zsh</cite> so those are the options.
+So, after running <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">-s</span> <span class="pre">bash|zsh</span></code> the generated tab completion script will be printed out.
+To activate it you must source the contents which can be done with <code class="docutils literal notranslate"><span class="pre">eval</span> <span class="pre">&quot;$(opera</span> <span class="pre">-s</span> <span class="pre">bash)&quot;</span></code> or you can save it to a
+file and then source it.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>print out completion script <span class="k">for</span> bash shell
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span>opera -s bash
+<span class="gp">#</span>!/usr/bin/env bash
+<span class="gp"># </span>AUTOMATCALLY GENERATED by <span class="sb">`</span>shtab<span class="sb">`</span>
+
+<span class="go">_shtab_opera_options_=&#39;-h --help -s --shell-completion&#39;</span>
+<span class="go">_shtab_opera_commands_=&#39;deploy diff info init outputs package undeploy unpackage update validate&#39;</span>
+
+<span class="go">_shtab_opera_deploy=&#39;-h --help --instance-path -p --inputs -i --workers -w --resume -r --clean-state -c --force -f --verbose -v&#39;</span>
+<span class="go">_shtab_opera_deploy_COMPGEN=_shtab_compgen_files</span>
+<span class="go">...</span>
+
+<span class="gp"># </span>print out completion script <span class="k">for</span> zsh shell
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span>opera -s zsh
+<span class="gp">#</span>compdef opera
+
+<span class="gp"># </span>AUTOMATCALLY GENERATED by <span class="sb">`</span>shtab<span class="sb">`</span>
+
+<span class="go">_shtab_opera_options_=(</span>
+<span class="go">&quot;(- :)&quot;{-h,--help}&quot;[show this help message and exit]&quot;</span>
+<span class="go">{-s,--shell-completion}&quot;[Generate tab completion script for your shell]:shell_completion:(bash zsh)&quot;</span>
+<span class="go">)</span>
+
+<span class="go">_shtab_opera_commands_() {</span>
+<span class="go">local _commands=(</span>
+<span class="go">&quot;deploy:&quot;</span>
+<span class="go">&quot;diff:&quot;</span>
+<span class="go">&quot;info:&quot;</span>
+<span class="go">...</span>
+
+<span class="gp"># </span>activate completion <span class="k">for</span> bash directly
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>opera -s bash<span class="k">)</span><span class="s2">&quot;</span>
+
+<span class="gp"># </span>activate completion <span class="k">for</span> zsh directly
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">eval</span> <span class="s2">&quot;</span><span class="k">$(</span>opera -s zsh<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>Every CLI command is equipped with <code class="docutils literal notranslate"><span class="pre">--help/-h</span></code> switch that displays the information about it and its arguments, and
+with <code class="docutils literal notranslate"><span class="pre">--verbose/-v</span></code> switch which turns on debug mode and prints out the orchestration parameters and the results from
+the executed Ansible playbooks.
+Consider using the two switches if you face any problems.
+If the issue persists please have a look at the existing <a class="reference external" href="https://github.com/xlab-si/xopera-opera/issues">opera issues</a> or open a new one yourself.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="saas.html" class="btn btn-neutral float-right" title="xOpera SaaS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, XLAB d.o.o., xOpera team.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
