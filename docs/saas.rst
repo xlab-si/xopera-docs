@@ -4,7 +4,7 @@
 xOpera SaaS
 ***********
 
-The Software as a Service edition of xOpera is available at `xopera-radon.xlab.si`_.
+The Software as a Service edition of xOpera is available at `saas-xopera.xlab.si/ui/`_.
 
 It is a multi-user service offering all capabilities of the console-based ``opera``, providing all of its
 functionalities as a service of Web 3.0 where you can interact with it through the browser, or an API, if you so desire.
@@ -193,8 +193,8 @@ the `SaaS API page`_.
 The following code block shows a complete example of using the xOpera SaaS API through ``curl``::
 
     csar_base64="$(base64 --wrap 0 test.csar)"
-    api="https://xopera-radon.xlab.si/api"
-    auth_base_url="https://openid-radon.xlab.si"
+    api="https://saas-xopera.xlab.si/api"
+    auth_base_url="https://openid-xopera.xlab.si"
     secret_base64="$(echo 'hello!' | base64 -)"
 
     your_username=YOUR_USERNAME
@@ -274,6 +274,6 @@ to access the secrets.
 Whenever possible, use temporary secrets with limited access to the smallest required set of capabilities
 to improve your security.
 
-.. _xopera-radon.xlab.si: https://xopera-radon.xlab.si/ui/
-.. _SaaS API page: https://xopera-radon.xlab.si/apibrowser/
+.. _saas-xopera.xlab.si/ui/: https://saas-xopera.xlab.si/ui/
+.. _SaaS API page: https://saas-xopera.xlab.si/apibrowser/
 .. _xopera-api specification: https://github.com/xlab-si/xopera-api/blob/master/openapi-spec.yml
