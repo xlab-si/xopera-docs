@@ -1,12 +1,14 @@
-.. _opera api:
+.. _xOpera API:
 
 ***********
 xOpera API
 ***********
 
-=================
+.. _API installation:
+
+============
 Installation
-=================
+============
 
 This section explains the installation of xOpera orchestrator API (available on GitHub in `xopera-api`_ repository).
 

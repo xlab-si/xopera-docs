@@ -7,6 +7,8 @@ Examples
 In this section we show some simple examples of orchestrating with xOpera.
 All the examples are available in `opera-examples repository`_.
 
+.. _Examples private cloud:
+
 =============
 Private cloud
 =============
@@ -14,10 +16,14 @@ Private cloud
 The xOpera orchestration tool enables setting up and deployment within private cloud providers such as OpenStack or
 OpenFaaS.
 
+.. _Examples IaaS:
+
 IaaS
 ####
 
 This part contains Infrastructure as a Service (IaaS) examples for private cloud providers.
+
+.. _Examples OpenStack client setup:
 
 OpenStack client setup
 ----------------------
@@ -43,6 +49,8 @@ At the start of each session (e.g., when we open a new command line console), we
 After we enter the password, we are ready to start using the OpenStack modules in playbooks that implement life cycle
 operations.
 
+.. _Examples private cloud FaaS:
+
 FaaS
 ####
 
@@ -53,6 +61,8 @@ which also supports the idea of Serverless computing in FaaS environments.
 The main functionality of this solution is the image resize functionality.
 To create thumbnails the source image must be uploaded into input bucket and then three thumbnails will be created and
 saved to another output bucket.
+
+.. _Examples OpenFaaS:
 
 OpenFaaS
 --------
@@ -87,12 +97,16 @@ To deploy the application follow the steps below or navigate to `opera-examples 
     If you want to deploy on a remote VM you should use ``OPERA_SSH_USER`` env var to tell xOpera as which user you
     want to connect.
 
+.. _Examples public cloud:
+
 ============
 Public cloud
 ============
 
 xOpera and Ansible open up a great possibility to deploy solutions on different public cloud providers such as
 Amazon Web Services (AWS), Microsoft Azure (Azure) or Google Cloud Platform (GCP).
+
+.. _Public cloud FaaS:
 
 FaaS
 ####
@@ -104,6 +118,8 @@ platforms which also supports the idea of Serverless computing in FaaS environme
 The main functionality of this solution is the image resize functionality.
 To create thumbnails the source image must be uploaded into input bucket and then three thumbnails will be created and
 saved to another output bucket.
+
+.. _Examples Amazon Web Services (AWS):
 
 Amazon Web Services (AWS)
 -------------------------
@@ -138,6 +154,8 @@ To deploy the application follow the steps below or navigate to `opera-examples 
     # if you want to test the API Gateway solution run (make sure to modify inputs in inputs-api.yaml):
     opera deploy -i inputs-api-gateway.yaml service-api-gateway.yaml
 
+.. _Examples Microsoft Azure (Azure):
+
 Microsoft Azure (Azure)
 -----------------------
 
@@ -169,6 +187,8 @@ To deploy the application follow the steps below or navigate to `opera-examples 
     # run xOpera service (make sure to setup the right inputs in yaml file)
     opera deploy -i inputs.yaml service.yaml
 
+.. _Examples Google Cloud Platform (GCP):
+
 Google Cloud Platform (GCP)
 ---------------------------
 
@@ -195,6 +215,8 @@ To deploy the application follow the steps below or navigate to `opera-examples 
 
     # run xOpera service (don't forget to set the appropriate inputs in inputs.yaml)
     opera deploy -i inputs.yaml service.yaml
+
+.. _Examples Connection of cloud platforms:
 
 Connection of cloud platforms
 -----------------------------
@@ -223,6 +245,8 @@ Images are passed from container to bucket using AWS Lambda or Azure Function.
     with different object store types like AWS S3, MinIO or Azure Containers. Source code and usage is also explained
     in detail on GitHub in `python-object-store-library`_ repository.
 
+.. _Examples screencast video:
+
 Screencast video
 ################
 
@@ -235,12 +259,16 @@ It also shows an example of deploying a simple image resize solution to AWS Lamb
     <iframe width="100%" height="350" src="https://www.youtube.com/embed/cb1efi3wnpw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
+.. _Examples Docker and Kubernetes:
+
 =====================
 Docker and Kubernetes
 =====================
 
 The ``opera`` orchestrator is capable of deploying blueprints that use Docker and Kubernetes.
 The following examples show some deployments to get you started.
+
+.. _Examples Docker and MinIO:
 
 Docker and MinIO
 ################
@@ -274,6 +302,8 @@ To deploy the example follow the steps below.
 
 The example will install Docker on a target machine and will run `MinIO object storage`_ that will be accessible on
 ``localhost:9000`` where you can login wit the credentials you specified in ``inputs.yaml``.
+
+.. _Examples Kubernetes with Rancher:
 
 Kubernetes with Rancher
 #######################
@@ -338,11 +368,15 @@ Additionally we deploy the `Prometheus helm chart`_ to be able to monitor the Ku
 
     Kubernetes cluster explorer in Rancher dashboard.
 
+.. _Examples HPC:
+
 ===
 HPC
 ===
 
 TBD.
+
+.. _Examples TOSCA CSARs:
 
 ===========
 TOSCA CSARs
@@ -351,6 +385,8 @@ TOSCA CSARs
 xOpera orchestrator can effectively validate, initialize, deploy and undeploy compressed `TOSCA CSAR <https://www.oasis-open.org/committees/download.php/46057/CSAR%20V0-1.docx>`_
 files which represent the main orchestration packages, containing TOSCA templates, their implementations
 (e.g. Ansible playbooks) and all the other accompanying files that are needed for the deployment.
+
+.. _CExamples SAR without TOSCA.meta file:
 
 CSAR without TOSCA.meta file
 ############################
@@ -416,8 +452,10 @@ The result of the example consisting of deploy and outputs operations is shown b
       description: Relationship property output
       value: Relationship property
 
+.. _Examples CSAR with TOSCA.meta file:
+
 CSAR with TOSCA.meta file
-##########################
+#########################
 
 The next example shows a deployment of the compressed TOSCA CSAR containing different TOSCA entities
 (extracted version is available here: `misc-tosca-types-csar`_).
@@ -494,12 +532,16 @@ The result of the example consisting of deploy, outputs and undeploy operations 
     The ``opera init`` command is deprecated since ``opera deploy`` can be used directly with both service templates
     and compressed CSARs.
 
+.. _Examples more templates and blueprints:
+
 =============================
 More templates and blueprints
 =============================
 
 More examples are available in `opera-examples repository`_.
 Below is a table that lists all the currently available xOpera examples and their purpose.
+
+.. _TOSCA examples:
 
 TOSCA examples
 ##############
@@ -517,6 +559,8 @@ TOSCA examples
 +--------------------------------------------+-----------------------------------------------------------------+
 | `outputs`_                                 | TOSCA outputs                                                   |
 +--------------------------------------------+-----------------------------------------------------------------+
+| `policy-triggers`_                         | TOSCA policies and triggers                                     |
++--------------------------------------------+-----------------------------------------------------------------+
 | `relationship-outputs`_                    | TOSCA outputs for relationships                                 |
 +--------------------------------------------+-----------------------------------------------------------------+
 
@@ -527,6 +571,8 @@ TOSCA examples
 .. _outputs: https://github.com/xlab-si/xopera-examples/tree/master/tosca/outputs
 .. _policy-triggers: https://github.com/xlab-si/xopera-examples/tree/master/tosca/policy-triggers
 .. _relationship-outputs: https://github.com/xlab-si/xopera-examples/tree/master/tosca/relationship-outputs
+
+.. _TOSCA CSAR examples:
 
 TOSCA CSAR examples
 ###################
@@ -542,32 +588,43 @@ TOSCA CSAR examples
 .. _misc-tosca-types-csar: https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types
 .. _small-csar: https://github.com/xlab-si/xopera-examples/tree/master/csars/small
 
+.. _Cloud examples:
+
 Cloud examples
 ##############
 
-+--------------------------------------------+-----------------------------------------------------------------+
-| Example name and link                      | Purpose                                                         |
-+============================================+=================================================================+
-| `aws-thumbnail-generator`_                 | Thumbnail generator blueprint for AWS                           |
-+--------------------------------------------+-----------------------------------------------------------------+
-| `azure-thumbnail-generator`_               | FaaS Thumbnail generator blueprint for Azure                    |
-+--------------------------------------------+-----------------------------------------------------------------+
-| `gcp-thumbnail-generator`_                 | FaaS Thumbnail generator blueprint for GCP                      |
-+--------------------------------------------+-----------------------------------------------------------------+
-| `openfaas-thumbnail-generator`_            | FaaS Thumbnail generator blueprint for OpenFaaS                 |
-+--------------------------------------------+-----------------------------------------------------------------+
-|| `aws-azure-platform-connection`_          || FaaS solution that connects AWS and Azure cloud providers      |
-||                                           || with image-resize and image-watermark functionalities          |
-+--------------------------------------------+-----------------------------------------------------------------+
++---------------------------------------------+-----------------------------------------------------------------+
+| Example name and link                       | Purpose                                                         |
++=============================================+=================================================================+
+| `aws-thumbnail-generator`_                  | FaaS thumbnail generator blueprint for AWS                      |
++---------------------------------------------+-----------------------------------------------------------------+
+| `aws-thumbnail-generator-with-api-gateway`_ | FaaS thumbnail generator blueprint for AWS with API Gateway     |
++---------------------------------------------+-----------------------------------------------------------------+
+| `aws-thumbnail-generator-with-vm`_          | FaaS thumbnail generator blueprint for AWS with EC2 VM          |
++---------------------------------------------+-----------------------------------------------------------------+
+| `azure-thumbnail-generator`_                | FaaS thumbnail generator blueprint for Azure                    |
++---------------------------------------------+-----------------------------------------------------------------+
+| `gcp-thumbnail-generator`_                  | FaaS thumbnail generator blueprint for GCP                      |
++---------------------------------------------+-----------------------------------------------------------------+
+| `openfaas-thumbnail-generator`_             | FaaS thumbnail generator blueprint for OpenFaaS                 |
++---------------------------------------------+-----------------------------------------------------------------+
+|| `aws-azure-platform-connection`_           || FaaS solution that connects AWS and Azure cloud providers      |
+||                                            || with image-resize and image-watermark functionalities          |
++---------------------------------------------+-----------------------------------------------------------------+
+
 
 .. _aws-thumbnail-generator: https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator
+.. _aws-thumbnail-generator-with-api-gateway: https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator-with-api-gateway
+.. _aws-thumbnail-generator-with-vm: https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator-with-vm
 .. _azure-thumbnail-generator: https://github.com/xlab-si/xopera-examples/tree/master/cloud/azure/thumbnail-generator
 .. _gcp-thumbnail-generator: https://github.com/xlab-si/xopera-examples/tree/master/cloud/gcp/thumbnail-generator
 .. _openfaas-thumbnail-generator: https://github.com/xlab-si/xopera-examples/tree/master/cloud/openfaas/thumbnail-generator
 .. _aws-azure-platform-connection: https://github.com/xlab-si/xopera-examples/tree/master/cloud/platform-connection/aws-azure-connection
 
+.. _Kubernetes examples:
+
 Kubernetes examples
-######################
+###################
 
 +--------------------------------------------+-----------------------------------------------------------------+
 | Example name and link                      | Purpose                                                         |
@@ -580,8 +637,10 @@ Kubernetes examples
 .. _docker: https://github.com/xlab-si/xopera-examples/tree/master/kubernetes/docker
 .. _rancher: https://github.com/xlab-si/xopera-examples/tree/master/kubernetes/rancher
 
-Miscellaneous examples
-######################
+.. _Other miscellaneous examples:
+
+Other miscellaneous examples
+############################
 
 +--------------------------------------------+-----------------------------------------------------------------+
 | Example name and link                      | Purpose                                                         |
