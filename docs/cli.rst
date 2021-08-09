@@ -1,14 +1,14 @@
-.. _Opera CLI:
+.. _xOpera CLI (opera):
 
 ******************
 xOpera CLI (opera)
 ******************
 
-.. _Opera CLI install:
+.. _CLI installation:
 
-=================
+============
 Installation
-=================
+============
 
 This section explains the installation of xOpera orchestrator.
 
@@ -35,7 +35,114 @@ So the simplest way to test ``opera`` is to install it into virtual environment:
     (.venv) $ pip install --upgrade pip
     (.venv) $ pip install opera
 
-.. _CLI Reference:
+
+.. _CLI Quickstart:
+
+==========
+Quickstart
+==========
+
+After you `installed xOpera CLI <CLI installation>`_ into virtual environment you can test if everything is working
+as expected. We can now explain how to deploy the `hello-world`_ example.
+
+The hello world TOSCA service template is below.
+
+.. code-block:: yaml
+
+    ---
+    tosca_definitions_version: tosca_simple_yaml_1_3
+
+    node_types:
+      hello_type:
+        derived_from: tosca.nodes.SoftwareComponent
+        interfaces:
+          Standard:
+            inputs:
+              content:
+                default: { get_input: content }
+                type: string
+            operations:
+              create: playbooks/create.yml
+              delete: playbooks/delete.yml
+
+    topology_template:
+      inputs:
+        content:
+          type: string
+          default: "Hello from Ansible and xOpera!\n"
+
+      node_templates:
+        my-workstation:
+          type: tosca.nodes.Compute
+          attributes:
+            private_address: localhost
+            public_address: localhost
+
+        hello:
+          type: hello_type
+          requirements:
+            - host: my-workstation
+    ...
+
+As you can see it is has only one node type defined. This `hello_type` here has two linked implementations that are
+actually two TOSCA operations (create and delete) that are implemented in a form of Ansible playbooks. The Ansible
+playbook for creation is shown below and it is used to create a new folder and hello world file in `/tmp` directory.
+
+The deployment operation returns the following output:
+
+.. code-block:: console
+
+   (.venv) $ git clone git@github.com:xlab-si/xopera-opera.git
+   (.venv) $ cd examples/hello
+   (.venv) examples/hello$ opera deploy service.yaml
+   [Worker_0]   Deploying my-workstation_0
+   [Worker_0]   Deployment of my-workstation_0 complete
+   [Worker_0]   Deploying hello_0
+   [Worker_0]     Executing create on hello_0
+   [Worker_0]   Deployment of hello_0 complete
+
+If nothing went wrong, new empty file has been created at ``/tmp/playing-opera/hello/hello.txt``.
+
+.. code-block:: console
+
+   (venv) examples/hello$ ls -lh /tmp/playing-opera/hello/
+   total 0
+   -rw-rw-rw- 1 user user 0 Feb 20 16:02 hello.txt
+
+And the playbook for destroying the service is below.
+
+.. code-block:: yaml
+
+    ---
+    - hosts: all
+      gather_facts: false
+
+      tasks:
+        - name: Remove the location
+          file:
+            path: /tmp/opera-test
+            state: absent
+    ...
+
+To delete the created directory, we can undeploy our stuff by running:
+
+.. code-block:: console
+
+   (venv) examples/hello$ opera undeploy
+   [Worker_0]   Undeploying hello_0
+   [Worker_0]     Executing delete on hello_0
+   [Worker_0]   Undeployment of hello_0 complete
+   [Worker_0]   Undeploying my-workstation_0
+   [Worker_0]   Undeployment of my-workstation_0 complete
+
+After that the created directory and file are deleted:
+
+.. code-block:: console
+
+   (venv) examples/hello$ ls -lh /tmp/playing-opera/hello/
+   ls: cannot access '/tmp/playing-opera/hello/': No such file or directory
+
+.. _CLI commands reference:
 
 ======================
 CLI commands reference
@@ -995,9 +1102,11 @@ init (deprecated)
 
 ------------------------------------------------------------------------------------------------------------------------
 
-====================================
+.. _CLI secrets and Environment variables:
+
+=================================
 Secrets and Environment variables
-====================================
+=================================
 
 You can use the following environment variables:
 
@@ -1022,9 +1131,11 @@ You can use the following environment variables:
     that are stored as opera inputs.
     To avoid exposing them don't share the inputs file and the created opera storage folder with anyone.
 
-==========================
+.. _CLI shell completion:
+
+================
 Shell completion
-==========================
+================
 
 For easier usage of the CLI tool ``opera`` enables tab completion for all CLI commands and arguments.
 We use `shtab`_ in our code to generate a shell completion script.
@@ -1074,15 +1185,33 @@ file and then source it.
     # activate completion for zsh directly
     (venv) $ eval "$(opera -s zsh)"
 
-==========================
+.. _CLI troubleshooting:
+
+===============
 Troubleshooting
-==========================
+===============
 
 Every CLI command is equipped with ``--help/-h`` switch that displays the information about it and its arguments, and
 with ``--verbose/-v`` switch which turns on debug mode and prints out the orchestration parameters and the results from
 the executed Ansible playbooks.
 Consider using the two switches if you face any problems.
 If the issue persists please have a look at the existing `opera issues`_ or open a new one yourself.
+
+.. _CLI video:
+
+=====
+Video
+=====
+
+This video will help you to get started with xOpera.
+It also shows an example of deploying a simple image resize solution to AWS Lambda:
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/cb1efi3wnpw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
 
 .. _PyPI: https://pypi.org/project/opera/
 .. _opera issues: https://github.com/xlab-si/xopera-opera/issues

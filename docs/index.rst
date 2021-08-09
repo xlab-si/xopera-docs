@@ -10,11 +10,10 @@ Just go to :ref:`Examples` or follow the Table of Contents below.
     :caption: Table of Contents
 
     introduction
-    quickstart
-    opera_cli
+    cli
+    api
     saas
-    opera_api
-    template_library
+    tps
     examples
 
 ..
@@ -25,17 +24,21 @@ Just go to :ref:`Examples` or follow the Table of Contents below.
     * :ref:`modindex`
     * :ref:`search`
 
-===========
+.. _References:
+
+==========
 References
-===========
+==========
 
 - Carbonell, Maria: `xOpera - an agile orchestrator`_
 - Cankar, Matija et. al.: `Auto-scaling Using TOSCA Infrastructure as Code`_
 - Luzar, Anže et. al.: `Examination and Comparison of TOSCA Orchestration Tools`_
 
-===========
+.. _Contact:
+
+=======
 Contact
-===========
+=======
 
 The list of contributors:
 
@@ -50,9 +53,11 @@ The list of contributors:
     - Matija Cankar (https://github.com/cankarm/): `RADON`_ Horizon 2020 project
     - Dragan Radolović (https://github.com/dradX/): `SODALITE`_ Horizon 2020 project
 
-================
+.. _Acknowledgments:
+
+===============
 Acknowledgments
-================
+===============
 
 - This work is being supported by the European Union’s Horizon 2020 research and innovation programme
   (grant no. 825040, `RADON`_).
@@ -64,6 +69,5 @@ Acknowledgments
 .. _xOpera - an agile orchestrator: https://www.sodalite.eu/content/xopera-agile-orchestrator
 .. _Auto-scaling Using TOSCA Infrastructure as Code: https://link.springer.com/chapter/10.1007/978-3-030-59155-7_20
 .. _Examination and Comparison of TOSCA Orchestration Tools: https://link.springer.com/chapter/10.1007/978-3-030-59155-7_19
-
 .. _RADON: https://radon-h2020.eu/
 .. _SODALITE: https://sodalite.eu/

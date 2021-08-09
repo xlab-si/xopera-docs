@@ -1,4 +1,4 @@
-.. _SaaS:
+.. _xOpera SaaS:
 
 ***********
 xOpera SaaS
@@ -9,12 +9,14 @@ The Software as a Service edition of xOpera is available at `saas-xopera.xlab.si
 It is a multi-user service offering all capabilities of the console-based ``opera``, providing all of its
 functionalities as a service of Web 3.0 where you can interact with it through the browser, or an API, if you so desire.
 
-Please read the `warnings <xopera_saas_warnings_>`_ at the bottom, as you accept some inherent risks when using xOpera
-SaaS.
+Please read the `warnings <SaaS warnings about your secrets and general security_>`_ at the bottom, as you accept some
+inherent risks when using xOpera SaaS.
 
-=================
-Browser interface
-=================
+.. _xOpera SaaS GUI:
+
+===
+GUI
+===
 
 Using the browser version is straightforward.
 Let's go through the basic workflow, where you:
@@ -102,9 +104,20 @@ so you can attempt to reproduce (and hopefully, fix) the error locally.
 
 To undeploy or delete the project, press the corresponding button.
 
-===================================
-Eclipse Che plugin for xOpera SaaS
-===================================
+
+In the following video we present the xOpera SaaS and show how to use it natively from GUI.
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/T4XviKWLc-A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+.. _Eclipse Che/VS Code plugin for xOpera SaaS:
+
+==========================================
+Eclipse Che/VS Code plugin for xOpera SaaS
+==========================================
 
 Most operations can be performed directly from an Eclipse Che/Visual Studio Code plugin.
 
@@ -174,9 +187,19 @@ As a final step, you can choose to deploy the project immediately, or postpone i
 
 Finally, you are redirected to the xOpera SaaS dashboard for finer control over your project.
 
-=======
-The API
-=======
+In the following video we present the xOpera SaaS and show how to use it through the Eclipse Che (RADON IDE).
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/SIiLOe5dSqc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+.. _xOpera SaaS API:
+
+========
+SaaS API
+========
 
 A preview of the API reference is presented in :numref:`xopera_saas_api_excerpt` and the whole reference is located at
 the `SaaS API page`_.
@@ -251,7 +274,7 @@ The following code block shows a complete example of using the xOpera SaaS API t
 
 For further interaction with each project, see the `xopera-api specification`_
 
-.. _xopera_saas_warnings:
+.. _SaaS warnings about your secrets and general security:
 
 ================================================
 Warnings about your secrets and general security
