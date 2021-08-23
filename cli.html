@@ -43,8 +43,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="xOpera SaaS" href="saas.html" />
-    <link rel="prev" title="Quickstart" href="quickstart.html" /> 
+    <link rel="next" title="xOpera API" href="api.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -92,9 +92,9 @@
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">xOpera CLI (opera)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quickstart">Quickstart</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cli-commands-reference">CLI commands reference</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#deploy">deploy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#undeploy">undeploy</a></li>
@@ -112,11 +112,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#secrets-and-environment-variables">Secrets and Environment variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#shell-completion">Shell completion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#video">Video</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">xOpera API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saas.html">xOpera SaaS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opera_api.html">xOpera API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="template_library.html">xOpera TPS (template library)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tps.html">xOpera TPS (Template Library)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
@@ -172,7 +173,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/opera_cli.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/cli.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -186,9 +187,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="xopera-cli-opera">
-<span id="opera-cli"></span><h1>xOpera CLI (opera)<a class="headerlink" href="#xopera-cli-opera" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>xOpera CLI (opera)<a class="headerlink" href="#xopera-cli-opera" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="installation">
-<span id="opera-cli-install"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<span id="cli-installation"></span><h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>This section explains the installation of xOpera orchestrator.</p>
 <p><strong>Prerequisites</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">opera</span></code> requires python 3 and a virtual environment.
@@ -208,8 +209,97 @@ So the simplest way to test <code class="docutils literal notranslate"><span cla
 </pre></div>
 </div>
 </div>
+<div class="section" id="quickstart">
+<span id="cli-quickstart"></span><h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>After you <a class="reference external" href="CLIinstallation">installed xOpera CLI</a> into virtual environment you can test if everything is working
+as expected. We can now explain how to deploy the <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/hello-world">hello-world</a> example.</p>
+<p>The hello world TOSCA service template is below.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">tosca_definitions_version</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tosca_simple_yaml_1_3</span>
+
+<span class="nt">node_types</span><span class="p">:</span>
+  <span class="nt">hello_type</span><span class="p">:</span>
+    <span class="nt">derived_from</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tosca.nodes.SoftwareComponent</span>
+    <span class="nt">interfaces</span><span class="p">:</span>
+      <span class="nt">Standard</span><span class="p">:</span>
+        <span class="nt">inputs</span><span class="p">:</span>
+          <span class="nt">content</span><span class="p">:</span>
+            <span class="nt">default</span><span class="p">:</span> <span class="p p-Indicator">{</span><span class="nt"> get_input</span><span class="p">:</span> <span class="nv">content</span> <span class="p p-Indicator">}</span>
+            <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+        <span class="nt">operations</span><span class="p">:</span>
+          <span class="nt">create</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">playbooks/create.yml</span>
+          <span class="nt">delete</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">playbooks/delete.yml</span>
+
+<span class="nt">topology_template</span><span class="p">:</span>
+  <span class="nt">inputs</span><span class="p">:</span>
+    <span class="nt">content</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">string</span>
+      <span class="nt">default</span><span class="p">:</span> <span class="s">&quot;Hello</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">Ansible</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">xOpera!\n&quot;</span>
+
+  <span class="nt">node_templates</span><span class="p">:</span>
+    <span class="nt">my-workstation</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">tosca.nodes.Compute</span>
+      <span class="nt">attributes</span><span class="p">:</span>
+        <span class="nt">private_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span>
+        <span class="nt">public_address</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span>
+
+    <span class="nt">hello</span><span class="p">:</span>
+      <span class="nt">type</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">hello_type</span>
+      <span class="nt">requirements</span><span class="p">:</span>
+        <span class="p p-Indicator">-</span> <span class="nt">host</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my-workstation</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+<p>As you can see it is has only one node type defined. This <cite>hello_type</cite> here has two linked implementations that are
+actually two TOSCA operations (create and delete) that are implemented in a form of Ansible playbooks. The Ansible
+playbook for creation is shown below and it is used to create a new folder and hello world file in <cite>/tmp</cite> directory.</p>
+<p>The deployment operation returns the following output:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>git clone git@github.com:xlab-si/xopera-opera.git
+<span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span><span class="nb">cd</span> examples/hello
+<span class="gp gp-VirtualEnv">(.venv)</span> <span class="go">examples/hello$ opera deploy service.yaml</span>
+<span class="go">[Worker_0]   Deploying my-workstation_0</span>
+<span class="go">[Worker_0]   Deployment of my-workstation_0 complete</span>
+<span class="go">[Worker_0]   Deploying hello_0</span>
+<span class="go">[Worker_0]     Executing create on hello_0</span>
+<span class="go">[Worker_0]   Deployment of hello_0 complete</span>
+</pre></div>
+</div>
+<p>If nothing went wrong, new empty file has been created at <code class="docutils literal notranslate"><span class="pre">/tmp/playing-opera/hello/hello.txt</span></code>.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">examples/hello$ ls -lh /tmp/playing-opera/hello/</span>
+<span class="go">total 0</span>
+<span class="go">-rw-rw-rw- 1 user user 0 Feb 20 16:02 hello.txt</span>
+</pre></div>
+</div>
+<p>And the playbook for destroying the service is below.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="nt">hosts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="nt">gather_facts</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+  <span class="nt">tasks</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Remove the location</span>
+      <span class="nt">file</span><span class="p">:</span>
+        <span class="nt">path</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/tmp/opera-test</span>
+        <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">absent</span>
+<span class="nn">...</span>
+</pre></div>
+</div>
+<p>To delete the created directory, we can undeploy our stuff by running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">examples/hello$ opera undeploy</span>
+<span class="go">[Worker_0]   Undeploying hello_0</span>
+<span class="go">[Worker_0]     Executing delete on hello_0</span>
+<span class="go">[Worker_0]   Undeployment of hello_0 complete</span>
+<span class="go">[Worker_0]   Undeploying my-workstation_0</span>
+<span class="go">[Worker_0]   Undeployment of my-workstation_0 complete</span>
+</pre></div>
+</div>
+<p>After that the created directory and file are deleted:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="go">examples/hello$ ls -lh /tmp/playing-opera/hello/</span>
+<span class="go">ls: cannot access &#39;/tmp/playing-opera/hello/&#39;: No such file or directory</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="cli-commands-reference">
-<span id="cli-reference"></span><h2>CLI commands reference<a class="headerlink" href="#cli-commands-reference" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>CLI commands reference<a class="headerlink" href="#cli-commands-reference" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">opera</span></code> was originally meant to be used in a terminal as a client and it currently allows users to execute the
 following commands:</p>
 <table class="docutils align-default">
@@ -423,13 +513,14 @@ corresponding implementation (e.g. Ansible playbook).</p>
 <span id="opera-validate"></span><h3>validate<a class="headerlink" href="#validate" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">validate</span></code> - validates the structure of TOSCA template or CSAR.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">validate</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">inputs</span> <span class="n">INPUTS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span> <span class="n">csar</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">validate</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">inputs</span> <span class="n">INPUTS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+                      <span class="p">[</span><span class="n">csar_or_service_template</span><span class="p">]</span>
 </pre></div>
 </div>
 <div class="section" id="Positional Arguments">
 <h4>Positional Arguments<a class="headerlink" href="#Positional Arguments" title="Permalink to this headline">¶</a></h4>
 <dl class="option-list">
-<dt><kbd>csar</kbd></dt>
+<dt><kbd>csar_or_service_template</kbd></dt>
 <dd><p>TOSCA YAML service template file or CSAR</p>
 </dd>
 </dl>
@@ -1290,11 +1381,11 @@ TOSCA service template/CSAR).</p>
 next releases.
 Please use <code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">deploy</span></code> to initialize and deploy service templates or compressed CSARs.</p>
 </div>
-</div>
-</div>
 <hr class="docutils" />
+</div>
+</div>
 <div class="section" id="secrets-and-environment-variables">
-<h2>Secrets and Environment variables<a class="headerlink" href="#secrets-and-environment-variables" title="Permalink to this headline">¶</a></h2>
+<span id="cli-secrets-and-environment-variables"></span><h2>Secrets and Environment variables<a class="headerlink" href="#secrets-and-environment-variables" title="Permalink to this headline">¶</a></h2>
 <p>You can use the following environment variables:</p>
 <table class="docutils align-default">
 <colgroup>
@@ -1373,7 +1464,7 @@ To avoid exposing them don’t share the inputs file and the created opera stora
 </div>
 </div>
 <div class="section" id="shell-completion">
-<h2>Shell completion<a class="headerlink" href="#shell-completion" title="Permalink to this headline">¶</a></h2>
+<span id="cli-shell-completion"></span><h2>Shell completion<a class="headerlink" href="#shell-completion" title="Permalink to this headline">¶</a></h2>
 <p>For easier usage of the CLI tool <code class="docutils literal notranslate"><span class="pre">opera</span></code> enables tab completion for all CLI commands and arguments.
 We use <a class="reference external" href="https://github.com/iterative/shtab">shtab</a> in our code to generate a shell completion script.
 We don’t have a separate command to do that since but rather a global optional argument that will print out the
@@ -1422,13 +1513,20 @@ file and then source it.</p>
 </div>
 </div>
 <div class="section" id="troubleshooting">
-<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<span id="cli-troubleshooting"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
 <p>Every CLI command is equipped with <code class="docutils literal notranslate"><span class="pre">--help/-h</span></code> switch that displays the information about it and its arguments, and
 with <code class="docutils literal notranslate"><span class="pre">--verbose/-v</span></code> switch which turns on debug mode and prints out the orchestration parameters and the results from
 the executed Ansible playbooks.
 Consider using the two switches if you face any problems.
 If the issue persists please have a look at the existing <a class="reference external" href="https://github.com/xlab-si/xopera-opera/issues">opera issues</a> or open a new one yourself.</p>
 </div>
+<div class="section" id="video">
+<span id="cli-video"></span><h2>Video<a class="headerlink" href="#video" title="Permalink to this headline">¶</a></h2>
+<p>This video will help you to get started with xOpera.
+It also shows an example of deploying a simple image resize solution to AWS Lambda:</p>
+<div style="text-align: center; margin-bottom: 2em;">
+<iframe width="100%" height="350" src="https://www.youtube.com/embed/cb1efi3wnpw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></div>
 </div>
 
 
@@ -1437,8 +1535,8 @@ If the issue persists please have a look at the existing <a class="reference ext
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="saas.html" class="btn btn-neutral float-right" title="xOpera SaaS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="quickstart.html" class="btn btn-neutral float-left" title="Quickstart" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api.html" class="btn btn-neutral float-right" title="xOpera API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Quickstart" href="quickstart.html" />
+    <link rel="next" title="xOpera CLI (opera)" href="cli.html" />
     <link rel="prev" title="Welcome to xOpera’s documentation!" href="index.html" /> 
 </head>
 
@@ -93,13 +93,13 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#background">Background</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#parser">Parser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xopera-saas-and-template-library-overview">xOpera SaaS and Template Library overview</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opera_cli.html">xOpera CLI (opera)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">xOpera CLI (opera)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">xOpera API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saas.html">xOpera SaaS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opera_api.html">xOpera API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="template_library.html">xOpera TPS (template library)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tps.html">xOpera TPS (Template Library)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 </ul>
 
@@ -183,9 +183,9 @@ applications and therefore reduce human factor.</p>
 currently reside on GitHub inside <a class="reference external" href="https://github.com/xlab-si/xopera-opera">xopera-opera</a> and <a class="reference external" href="https://github.com/xlab-si/xopera-api">xopera-api</a> repositories.
 As an orchestration tool xOpera uses <a class="reference external" href="https://www.ansible.com/">Ansible</a> automation tool to implement the the TOSCA standard and to run its
 interface operations via Ansible playbook actuators which again opens a lot of new possibilities.</p>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id5">
 <span id="xopera-architecture"></span><a class="reference external image-reference" href="_images/xopera-architecture.png"><img alt="_images/xopera-architecture.png" src="_images/xopera-architecture.png" style="width: 95%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The xOpera components.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The xOpera components.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>Currently a set of components is presented in figure <a class="reference internal" href="#xopera-architecture"><span class="std std-numref">Fig. 1</span></a>, where we can point out:</p>
 <ul class="simple">
@@ -197,7 +197,7 @@ through GUI and API.</p></li>
 </ul>
 <p>Each component is covered by corresponding This documentation will cover all xOpera components.</p>
 <div class="section" id="background">
-<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
 <p>xOpera is a TOSCA standard compliant orchestrator that is following the paradigm of having a minimal set of
 features and is currently focusing on Ansible.
 xOpera is following the traditional UNIX philosophy of having a tool that does one thing, and does it right.
@@ -223,17 +223,54 @@ xOpera, in its capacity, takes care of all the untidy inter-playbook coordinatio
 </div>
 </div>
 <div class="section" id="parser">
-<span id="id2"></span><h2>Parser<a class="headerlink" href="#parser" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Parser<a class="headerlink" href="#parser" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><em>TBD</em>: This part of the documentation will be improved in the future.</p>
 </div>
 <p>xOpera orchestrator has its own YAML and TOSCA parser which is shown on the image below
 (<a class="reference internal" href="#opera-parser-structure"><span class="std std-numref">Fig. 2</span></a>.)</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id6">
 <span id="opera-parser-structure"></span><a class="reference external image-reference" href="_images/opera_parser_structure.png"><img alt="_images/opera_parser_structure.png" src="_images/opera_parser_structure.png" style="width: 50%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">xOpera parser and executor</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">xOpera parser and executor</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
+</div>
+<div class="section" id="xopera-saas-and-template-library-overview">
+<span id="id4"></span><h2>xOpera SaaS and Template Library overview<a class="headerlink" href="#xopera-saas-and-template-library-overview" title="Permalink to this headline">¶</a></h2>
+<p>The <a class="reference external" href="https://xlab-si.github.io/xopera-docs/">xOpera</a> ecosystem includes tools that target optimizing deployment processes and reducing the human factor along
+with a faster preparation of deployment scripts.
+The video presented in this blog points out the most crucial functionalities of xOpera SaaS and TPS:</p>
+<ul class="simple">
+<li><p>Template Library Publishing Service (TPS) opens up a place for publishing, storing, managing, downloading and
+versioning of OASIS TOSCA modules and blueprints (i.e., TOSCA CSARs).</p></li>
+<li><p>Similar templates can be grouped together to form a FaaS abstraction layer such as a bundle of ready to use templates
+for deployment to cloud providers (e.g., AWS, Azure, GCP, OpenFaaS, etc.).</p></li>
+<li><p>Template groups in TPS can be used for connecting to corresponding groups of users and therefore enable working on
+different templates in a team and sharing them with other teams later.</p></li>
+<li><p>TPS brings different modes of interaction such as REST API, CLI client, browser-based GUI and Eclipse Che/VS Code
+plugin.</p></li>
+<li><p>Published deployment scripts in TPS can orchestrate the deployment with xOpera SaaS, which introduces a browser
+service for orchestration with a lightweight opera orchestrator compliant with OASIS TOSCA standard and powered by
+Ansible automation engine.</p></li>
+<li><p>Users can choose the corresponding templates and create a new project, secrets and credentials for deployment. Then
+they can deploy the application and observe the progress and status of the deployment.</p></li>
+<li><p>It is possible to organize multiple projects in multiple workspaces, manage provider credentials and assign them
+directly to workspaces. They can all run concurrently and users can even share the workspaces with other members.</p></li>
+<li><p>Apart from standard validation, deployment and un-deployment, xOpera SaaS also offers more complex orchestration
+actions such as redeployment, discovering template differences or invoking TOSCA policy triggers to enable vertical
+or horizontal scaling.</p></li>
+<li><p>The SaaS component is available through an API, GUI or Eclipse Che/VS Code plugin. The core part of the SaaS is the
+<a class="reference external" href="https://pypi.org/project/opera/">opera</a> orchestrator, which is CLI and can be installed as a Python package from PyPI.</p></li>
+</ul>
+<div style="text-align: center; margin-bottom: 2em;">
+<iframe width="100%" height="350" src="https://www.youtube.com/embed/0hpKJ_LBlk8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div><p>The following videos show how xOpera SaaS and Template Library work in action:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://youtu.be/28eTwojw5ac">TPS with CLI</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/vCjfZ4Iue0E">TPS with Eclipse Che</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/T4XviKWLc-A">xOpera SaaS with GUI</a></p></li>
+<li><p><a class="reference external" href="https://youtu.be/SIiLOe5dSqc">xOpera SaaS with Eclipse Che</a></p></li>
+</ul>
 </div>
 </div>
 
@@ -243,7 +280,7 @@ xOpera, in its capacity, takes care of all the untidy inter-playbook coordinatio
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="quickstart.html" class="btn btn-neutral float-right" title="Quickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="cli.html" class="btn btn-neutral float-right" title="xOpera CLI (opera)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="index.html" class="btn btn-neutral float-left" title="Welcome to xOpera’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

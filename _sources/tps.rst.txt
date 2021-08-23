@@ -1,10 +1,10 @@
-.. _tps:
+.. _xOpera TPS (Template Library):
 
 *****************************
-xOpera TPS (template library)
+xOpera TPS (Template Library)
 *****************************
 
-xOpera TPS is a TOSCA Template Publishing service available online at `template-library-xopera.xlab.si`_.
+xOpera TPS is a TOSCA Template Publishing Service available online at `template-library-xopera.xlab.si`_.
 It includes templates of TOSCA service templates in form of CSARs and TOSCA artifacts to build applications.
 
 More details are available at the `TPS Documentation page`_.

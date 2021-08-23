@@ -39,9 +39,11 @@ Currently a set of components is presented in figure :numref:`xopera_architectur
 
 Each component is covered by corresponding This documentation will cover all xOpera components.
 
-================
+.. _Background:
+
+==========
 Background
-================
+==========
 
 xOpera is a TOSCA standard compliant orchestrator that is following the paradigm of having a minimal set of
 features and is currently focusing on Ansible.
@@ -73,9 +75,9 @@ xOpera, in its capacity, takes care of all the untidy inter-playbook coordinatio
 
 .. _Parser:
 
-================
+======
 Parser
-================
+======
 
 .. note::
 
@@ -93,9 +95,60 @@ xOpera orchestrator has its own YAML and TOSCA parser which is shown on the imag
 
     xOpera parser and executor
 
+
+.. _xOpera SaaS and Template Library overview:
+
+=========================================
+xOpera SaaS and Template Library overview
+=========================================
+
+The `xOpera`_ ecosystem includes tools that target optimizing deployment processes and reducing the human factor along
+with a faster preparation of deployment scripts.
+The video presented in this blog points out the most crucial functionalities of xOpera SaaS and TPS:
+
+- Template Library Publishing Service (TPS) opens up a place for publishing, storing, managing, downloading and
+  versioning of OASIS TOSCA modules and blueprints (i.e., TOSCA CSARs).
+- Similar templates can be grouped together to form a FaaS abstraction layer such as a bundle of ready to use templates
+  for deployment to cloud providers (e.g., AWS, Azure, GCP, OpenFaaS, etc.).
+- Template groups in TPS can be used for connecting to corresponding groups of users and therefore enable working on
+  different templates in a team and sharing them with other teams later.
+- TPS brings different modes of interaction such as REST API, CLI client, browser-based GUI and Eclipse Che/VS Code
+  plugin.
+- Published deployment scripts in TPS can orchestrate the deployment with xOpera SaaS, which introduces a browser
+  service for orchestration with a lightweight opera orchestrator compliant with OASIS TOSCA standard and powered by
+  Ansible automation engine.
+- Users can choose the corresponding templates and create a new project, secrets and credentials for deployment. Then
+  they can deploy the application and observe the progress and status of the deployment.
+- It is possible to organize multiple projects in multiple workspaces, manage provider credentials and assign them
+  directly to workspaces. They can all run concurrently and users can even share the workspaces with other members.
+- Apart from standard validation, deployment and un-deployment, xOpera SaaS also offers more complex orchestration
+  actions such as redeployment, discovering template differences or invoking TOSCA policy triggers to enable vertical
+  or horizontal scaling.
+- The SaaS component is available through an API, GUI or Eclipse Che/VS Code plugin. The core part of the SaaS is the
+  `opera`_ orchestrator, which is CLI and can be installed as a Python package from PyPI.
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/0hpKJ_LBlk8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
+The following videos show how xOpera SaaS and Template Library work in action:
+
+- `TPS with CLI`_
+- `TPS with Eclipse Che`_
+- `xOpera SaaS with GUI`_
+- `xOpera SaaS with Eclipse Che`_
+
 .. _OASIS TOSCA: https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=tosca
 .. _TOSCA Simple Profile in YAML v1.3: https://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.3/TOSCA-Simple-Profile-YAML-v1.3.html
 .. _xopera-opera: https://github.com/xlab-si/xopera-opera
 .. _xopera-api: https://github.com/xlab-si/xopera-api
 .. _Ansible: https://www.ansible.com/
 .. _xOpera - an agile orchestrator: https://www.sodalite.eu/content/xopera-agile-orchestrator
+.. _opera: https://pypi.org/project/opera/
+.. _xOpera: https://xlab-si.github.io/xopera-docs/
+.. _TPS with CLI: https://youtu.be/28eTwojw5ac
+.. _TPS with Eclipse Che: https://youtu.be/vCjfZ4Iue0E
+.. _xOpera SaaS with GUI: https://youtu.be/T4XviKWLc-A
+.. _xOpera SaaS with Eclipse Che: https://youtu.be/SIiLOe5dSqc

@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="xOpera TPS (template library)" href="template_library.html" /> 
+    <link rel="prev" title="xOpera TPS (Template Library)" href="tps.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,11 +90,10 @@
               <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quickstart</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opera_cli.html">xOpera CLI (opera)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">xOpera CLI (opera)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">xOpera API</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saas.html">xOpera SaaS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opera_api.html">xOpera API</a></li>
-<li class="toctree-l1"><a class="reference internal" href="template_library.html">xOpera TPS (template library)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tps.html">xOpera TPS (Template Library)</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#private-cloud">Private cloud</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#iaas">IaaS</a><ul>
@@ -108,7 +107,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#public-cloud">Public cloud</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id2">FaaS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#public-cloud-faas">FaaS</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#amazon-web-services-aws">Amazon Web Services (AWS)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#microsoft-azure-azure">Microsoft Azure (Azure)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#google-cloud-platform-gcp">Google Cloud Platform (GCP)</a></li>
@@ -134,7 +133,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#tosca-csar-examples">TOSCA CSAR examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cloud-examples">Cloud examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#kubernetes-examples">Kubernetes examples</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#miscellaneous-examples">Miscellaneous examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-miscellaneous-examples">Other miscellaneous examples</a></li>
 </ul>
 </li>
 </ul>
@@ -211,14 +210,14 @@
 <p>In this section we show some simple examples of orchestrating with xOpera.
 All the examples are available in <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.</p>
 <div class="section" id="private-cloud">
-<h2>Private cloud<a class="headerlink" href="#private-cloud" title="Permalink to this headline">¶</a></h2>
+<span id="examples-private-cloud"></span><h2>Private cloud<a class="headerlink" href="#private-cloud" title="Permalink to this headline">¶</a></h2>
 <p>The xOpera orchestration tool enables setting up and deployment within private cloud providers such as OpenStack or
 OpenFaaS.</p>
 <div class="section" id="iaas">
-<h3>IaaS<a class="headerlink" href="#iaas" title="Permalink to this headline">¶</a></h3>
+<span id="examples-iaas"></span><h3>IaaS<a class="headerlink" href="#iaas" title="Permalink to this headline">¶</a></h3>
 <p>This part contains Infrastructure as a Service (IaaS) examples for private cloud providers.</p>
 <div class="section" id="openstack-client-setup">
-<h4>OpenStack client setup<a class="headerlink" href="#openstack-client-setup" title="Permalink to this headline">¶</a></h4>
+<span id="examples-openstack-client-setup"></span><h4>OpenStack client setup<a class="headerlink" href="#openstack-client-setup" title="Permalink to this headline">¶</a></h4>
 <p>This subsection describes <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/nginx-openstack">nginx-openstack</a> example.
 Because using OpenStack modules from Ansible playbooks is quite common, we can install <code class="docutils literal notranslate"><span class="pre">opera</span></code> with all required
 OpenStack libraries by running:</p>
@@ -237,7 +236,7 @@ operations.</p>
 </div>
 </div>
 <div class="section" id="faas">
-<h3>FaaS<a class="headerlink" href="#faas" title="Permalink to this headline">¶</a></h3>
+<span id="examples-private-cloud-faas"></span><h3>FaaS<a class="headerlink" href="#faas" title="Permalink to this headline">¶</a></h3>
 <p>This part contains Function as a Service (FaaS) and Serverless examples for private cloud providers.</p>
 <p>To get you started with cloud deployment we prepared a simple thumbnail generator application for different platforms
 which also supports the idea of Serverless computing in FaaS environments.
@@ -245,7 +244,7 @@ The main functionality of this solution is the image resize functionality.
 To create thumbnails the source image must be uploaded into input bucket and then three thumbnails will be created and
 saved to another output bucket.</p>
 <div class="section" id="openfaas">
-<h4>OpenFaaS<a class="headerlink" href="#openfaas" title="Permalink to this headline">¶</a></h4>
+<span id="examples-openfaas"></span><h4>OpenFaaS<a class="headerlink" href="#openfaas" title="Permalink to this headline">¶</a></h4>
 <p>The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/openfaas/thumbnail-generator">openfaas-thumbnail-generator</a> solution is made of two parts. Since OpenFaaS can be treated as a sort of private
 cloud you have to set it up on a remote VM first.
 The second part with image-resize functionality makes use of OpenFaaS functions.</p>
@@ -277,11 +276,11 @@ want to connect.</p>
 </div>
 </div>
 <div class="section" id="public-cloud">
-<h2>Public cloud<a class="headerlink" href="#public-cloud" title="Permalink to this headline">¶</a></h2>
+<span id="examples-public-cloud"></span><h2>Public cloud<a class="headerlink" href="#public-cloud" title="Permalink to this headline">¶</a></h2>
 <p>xOpera and Ansible open up a great possibility to deploy solutions on different public cloud providers such as
 Amazon Web Services (AWS), Microsoft Azure (Azure) or Google Cloud Platform (GCP).</p>
-<div class="section" id="id2">
-<h3>FaaS<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="public-cloud-faas">
+<span id="id2"></span><h3>FaaS<a class="headerlink" href="#public-cloud-faas" title="Permalink to this headline">¶</a></h3>
 <p>This part contains Function as a Service (FaaS) and Serverless examples for public cloud providers.</p>
 <p>To get you started with cloud deployment we prepared a simple thumbnail generator application for different cloud
 platforms which also supports the idea of Serverless computing in FaaS environments.
@@ -289,7 +288,7 @@ The main functionality of this solution is the image resize functionality.
 To create thumbnails the source image must be uploaded into input bucket and then three thumbnails will be created and
 saved to another output bucket.</p>
 <div class="section" id="amazon-web-services-aws">
-<h4>Amazon Web Services (AWS)<a class="headerlink" href="#amazon-web-services-aws" title="Permalink to this headline">¶</a></h4>
+<span id="examples-amazon-web-services-aws"></span><h4>Amazon Web Services (AWS)<a class="headerlink" href="#amazon-web-services-aws" title="Permalink to this headline">¶</a></h4>
 <p>The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator">aws-thumbnail-generator</a> solution uses AWS role, AWS S3 bucket, AWS Lambda and AWS API Gateway cloud resources.
 To deploy the application follow the steps below or navigate to <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>install AWS CLI v2
@@ -320,7 +319,7 @@ To deploy the application follow the steps below or navigate to <a class="refere
 </div>
 </div>
 <div class="section" id="microsoft-azure-azure">
-<h4>Microsoft Azure (Azure)<a class="headerlink" href="#microsoft-azure-azure" title="Permalink to this headline">¶</a></h4>
+<span id="examples-microsoft-azure-azure"></span><h4>Microsoft Azure (Azure)<a class="headerlink" href="#microsoft-azure-azure" title="Permalink to this headline">¶</a></h4>
 <p>The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/azure/thumbnail-generator">azure-thumbnail-generator</a> solution uses Azure Resource Group, Azure Storage Account, Azure Containers and Azure
 Function App cloud resources.
 To deploy the application follow the steps below or navigate to <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.</p>
@@ -349,7 +348,7 @@ To deploy the application follow the steps below or navigate to <a class="refere
 </div>
 </div>
 <div class="section" id="google-cloud-platform-gcp">
-<h4>Google Cloud Platform (GCP)<a class="headerlink" href="#google-cloud-platform-gcp" title="Permalink to this headline">¶</a></h4>
+<span id="examples-google-cloud-platform-gcp"></span><h4>Google Cloud Platform (GCP)<a class="headerlink" href="#google-cloud-platform-gcp" title="Permalink to this headline">¶</a></h4>
 <p>The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/gcp/thumbnail-generator">gcp-thumbnail-generator</a> solution uses GCP Storage Buckets and GCP Functions cloud resources.
 To deploy the application follow the steps below or navigate to <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install Google Cloud SDK from https://cloud.google.com/sdk/docs/downloads-apt-get with apt-get</span>
@@ -374,7 +373,7 @@ opera deploy -i inputs.yaml service.yaml
 </div>
 </div>
 <div class="section" id="connection-of-cloud-platforms">
-<h4>Connection of cloud platforms<a class="headerlink" href="#connection-of-cloud-platforms" title="Permalink to this headline">¶</a></h4>
+<span id="examples-connection-of-cloud-platforms"></span><h4>Connection of cloud platforms<a class="headerlink" href="#connection-of-cloud-platforms" title="Permalink to this headline">¶</a></h4>
 <p>To show that opera can establish a connection between two cloud platforms, we created a simple
 <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/platform-connection/aws-azure-connection">aws-azure-platform-connection</a>. example that connects Azure and AWS cloud providers.
 Moreover, there are two examples that implement data flow from Azure to AWS and vice versa (shown in
@@ -383,9 +382,9 @@ The main functionality of this solution is to sequentially execute two operation
 and image-resize on two different platforms (Azure and AWS).
 Orchestration creates two containers on Azure and two buckets on AWS.
 Images are passed from container to bucket using AWS Lambda or Azure Function.</p>
-<div class="figure align-center" id="id3">
+<div class="figure align-center" id="id8">
 <span id="aws-azure-connection"></span><a class="reference external image-reference" href="_images/platform_connection.png"><img alt="_images/platform_connection.png" src="_images/platform_connection.png" style="width: 95%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">The two examples of AWS&lt;-&gt;Azure connection.</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">The two examples of AWS&lt;-&gt;Azure connection.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -396,7 +395,7 @@ in detail on GitHub in <a class="reference external" href="https://github.com/xl
 </div>
 </div>
 <div class="section" id="screencast-video">
-<h3>Screencast video<a class="headerlink" href="#screencast-video" title="Permalink to this headline">¶</a></h3>
+<span id="examples-screencast-video"></span><h3>Screencast video<a class="headerlink" href="#screencast-video" title="Permalink to this headline">¶</a></h3>
 <p>This video will help you to get started with xOpera.
 It also shows an example of deploying a simple image resize solution to AWS Lambda:</p>
 <div style="text-align: center; margin-bottom: 2em;">
@@ -404,11 +403,11 @@ It also shows an example of deploying a simple image resize solution to AWS Lamb
 </div></div>
 </div>
 <div class="section" id="docker-and-kubernetes">
-<h2>Docker and Kubernetes<a class="headerlink" href="#docker-and-kubernetes" title="Permalink to this headline">¶</a></h2>
+<span id="examples-docker-and-kubernetes"></span><h2>Docker and Kubernetes<a class="headerlink" href="#docker-and-kubernetes" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">opera</span></code> orchestrator is capable of deploying blueprints that use Docker and Kubernetes.
 The following examples show some deployments to get you started.</p>
 <div class="section" id="docker-and-minio">
-<h3>Docker and MinIO<a class="headerlink" href="#docker-and-minio" title="Permalink to this headline">¶</a></h3>
+<span id="examples-docker-and-minio"></span><h3>Docker and MinIO<a class="headerlink" href="#docker-and-minio" title="Permalink to this headline">¶</a></h3>
 <p>xOpera orchestrator is able to run Docker containers by using the proper Ansible modules in the Ansible playbooks.
 The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/kubernetes/docker">docker</a> example was made to show how the installation of the Docker service and running Docker containers can be
 done with <code class="docutils literal notranslate"><span class="pre">opera</span></code>, TOSCA and Ansible.
@@ -438,14 +437,14 @@ To deploy the example follow the steps below.</p>
 <code class="docutils literal notranslate"><span class="pre">localhost:9000</span></code> where you can login wit the credentials you specified in <code class="docutils literal notranslate"><span class="pre">inputs.yaml</span></code>.</p>
 </div>
 <div class="section" id="kubernetes-with-rancher">
-<h3>Kubernetes with Rancher<a class="headerlink" href="#kubernetes-with-rancher" title="Permalink to this headline">¶</a></h3>
+<span id="examples-kubernetes-with-rancher"></span><h3>Kubernetes with Rancher<a class="headerlink" href="#kubernetes-with-rancher" title="Permalink to this headline">¶</a></h3>
 <p>Kubernetes can be deployed using <a class="reference external" href="https://rancher.com">Rancher platform</a>, which is the open-source multi-cluster orchestration platform.
 The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/kubernetes/rancher">rancher</a> example is can be used to deploy Rancher Docker container that will set up Kubernetes which can be
 accessed through the Rancher dashboard, where you can create your account (see <a class="reference internal" href="#rancher-kubernetes-login"><span class="std std-numref">Fig. 14</span></a>) and
 use cluster explorer (see <a class="reference internal" href="#rancher-kubernetes-cluster-explorer"><span class="std std-numref">Fig. 16</span></a>) to do manipulate with Kubernetes.</p>
-<div class="figure align-center" id="id4">
+<div class="figure align-center" id="id9">
 <span id="rancher-kubernetes-login"></span><a class="reference external image-reference" href="_images/rancher-kubernetes-login.png"><img alt="_images/rancher-kubernetes-login.png" src="_images/rancher-kubernetes-login.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Log in to Rancher Kubernetes dashboard.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Log in to Rancher Kubernetes dashboard.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <p>To deploy the example follow the steps below.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> kubernetes/rancher
@@ -472,27 +471,27 @@ use cluster explorer (see <a class="reference internal" href="#rancher-kubernete
 </div>
 <p>After running the example the Rancher dashboard will be accessible on <code class="docutils literal notranslate"><span class="pre">localhost:80</span></code> and <code class="docutils literal notranslate"><span class="pre">localhost:443</span></code>.
 Additionally we deploy the <a class="reference external" href="https://artifacthub.io/packages/helm/prometheus-community/prometheus">Prometheus helm chart</a> to be able to monitor the Kubernetes cluster.</p>
-<div class="figure align-center" id="id5">
+<div class="figure align-center" id="id10">
 <span id="rancher-kubernetes-dashboard"></span><a class="reference external image-reference" href="_images/rancher-kubernetes-dashboard.png"><img alt="_images/rancher-kubernetes-dashboard.png" src="_images/rancher-kubernetes-dashboard.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Rancher Kubernetes dashboard.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Rancher Kubernetes dashboard.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-center" id="id6">
+<div class="figure align-center" id="id11">
 <span id="rancher-kubernetes-cluster-explorer"></span><a class="reference external image-reference" href="_images/rancher-kubernetes-cluster-explorer.png"><img alt="_images/rancher-kubernetes-cluster-explorer.png" src="_images/rancher-kubernetes-cluster-explorer.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Kubernetes cluster explorer in Rancher dashboard.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Kubernetes cluster explorer in Rancher dashboard.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
 <div class="section" id="hpc">
-<h2>HPC<a class="headerlink" href="#hpc" title="Permalink to this headline">¶</a></h2>
+<span id="examples-hpc"></span><h2>HPC<a class="headerlink" href="#hpc" title="Permalink to this headline">¶</a></h2>
 <p>TBD.</p>
 </div>
 <div class="section" id="tosca-csars">
-<h2>TOSCA CSARs<a class="headerlink" href="#tosca-csars" title="Permalink to this headline">¶</a></h2>
+<span id="examples-tosca-csars"></span><h2>TOSCA CSARs<a class="headerlink" href="#tosca-csars" title="Permalink to this headline">¶</a></h2>
 <p>xOpera orchestrator can effectively validate, initialize, deploy and undeploy compressed <a class="reference external" href="https://www.oasis-open.org/committees/download.php/46057/CSAR%20V0-1.docx">TOSCA CSAR</a>
 files which represent the main orchestration packages, containing TOSCA templates, their implementations
 (e.g. Ansible playbooks) and all the other accompanying files that are needed for the deployment.</p>
 <div class="section" id="csar-without-tosca-meta-file">
-<h3>CSAR without TOSCA.meta file<a class="headerlink" href="#csar-without-tosca-meta-file" title="Permalink to this headline">¶</a></h3>
+<span id="cexamples-sar-without-tosca-meta-file"></span><h3>CSAR without TOSCA.meta file<a class="headerlink" href="#csar-without-tosca-meta-file" title="Permalink to this headline">¶</a></h3>
 <p>The following example shows a deployment of the compressed TOSCA CSAR containing different TOSCA entities
 (extracted version is available here: <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/small">small-csar</a>).
 This is a type of a TOSCA CSAR that doesn’t contain a separate <code class="docutils literal notranslate"><span class="pre">TOSCA-Metadata/TOSCA-meta</span></code> file for metadata but has
@@ -553,7 +552,7 @@ smaller.</p>
 </div>
 </div>
 <div class="section" id="csar-with-tosca-meta-file">
-<h3>CSAR with TOSCA.meta file<a class="headerlink" href="#csar-with-tosca-meta-file" title="Permalink to this headline">¶</a></h3>
+<span id="examples-csar-with-tosca-meta-file"></span><h3>CSAR with TOSCA.meta file<a class="headerlink" href="#csar-with-tosca-meta-file" title="Permalink to this headline">¶</a></h3>
 <p>The next example shows a deployment of the compressed TOSCA CSAR containing different TOSCA entities
 (extracted version is available here: <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types">misc-tosca-types-csar</a>).
 This TOSCA CSAR uses <code class="docutils literal notranslate"><span class="pre">TOSCA-Metadata/TOSCA-meta</span></code> file for specifying the orchestration metadata.</p>
@@ -629,11 +628,11 @@ and compressed CSARs.</p>
 </div>
 </div>
 <div class="section" id="more-templates-and-blueprints">
-<h2>More templates and blueprints<a class="headerlink" href="#more-templates-and-blueprints" title="Permalink to this headline">¶</a></h2>
+<span id="examples-more-templates-and-blueprints"></span><h2>More templates and blueprints<a class="headerlink" href="#more-templates-and-blueprints" title="Permalink to this headline">¶</a></h2>
 <p>More examples are available in <a class="reference external" href="https://github.com/xlab-si/xopera-examples">opera-examples repository</a>.
 Below is a table that lists all the currently available xOpera examples and their purpose.</p>
 <div class="section" id="tosca-examples">
-<h3>TOSCA examples<a class="headerlink" href="#tosca-examples" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>TOSCA examples<a class="headerlink" href="#tosca-examples" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
@@ -660,14 +659,17 @@ Below is a table that lists all the currently available xOpera examples and thei
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/outputs">outputs</a></p></td>
 <td><p>TOSCA outputs</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/relationship-outputs">relationship-outputs</a></p></td>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/policy-triggers">policy-triggers</a></p></td>
+<td><p>TOSCA policies and triggers</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/tosca/relationship-outputs">relationship-outputs</a></p></td>
 <td><p>TOSCA outputs for relationships</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="tosca-csar-examples">
-<h3>TOSCA CSAR examples<a class="headerlink" href="#tosca-csar-examples" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>TOSCA CSAR examples<a class="headerlink" href="#tosca-csar-examples" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
@@ -689,11 +691,11 @@ Below is a table that lists all the currently available xOpera examples and thei
 </table>
 </div>
 <div class="section" id="cloud-examples">
-<h3>Cloud examples<a class="headerlink" href="#cloud-examples" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>Cloud examples<a class="headerlink" href="#cloud-examples" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 40%" />
-<col style="width: 60%" />
+<col style="width: 41%" />
+<col style="width: 59%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Example name and link</p></th>
@@ -702,16 +704,22 @@ Below is a table that lists all the currently available xOpera examples and thei
 </thead>
 <tbody>
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator">aws-thumbnail-generator</a></p></td>
-<td><p>Thumbnail generator blueprint for AWS</p></td>
+<td><p>FaaS thumbnail generator blueprint for AWS</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator-with-api-gateway">aws-thumbnail-generator-with-api-gateway</a></p></td>
+<td><p>FaaS thumbnail generator blueprint for AWS with API Gateway</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator-with-vm">aws-thumbnail-generator-with-vm</a></p></td>
+<td><p>FaaS thumbnail generator blueprint for AWS with EC2 VM</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/azure/thumbnail-generator">azure-thumbnail-generator</a></p></td>
-<td><p>FaaS Thumbnail generator blueprint for Azure</p></td>
+<td><p>FaaS thumbnail generator blueprint for Azure</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/gcp/thumbnail-generator">gcp-thumbnail-generator</a></p></td>
-<td><p>FaaS Thumbnail generator blueprint for GCP</p></td>
+<td><p>FaaS thumbnail generator blueprint for GCP</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/openfaas/thumbnail-generator">openfaas-thumbnail-generator</a></p></td>
-<td><p>FaaS Thumbnail generator blueprint for OpenFaaS</p></td>
+<td><p>FaaS thumbnail generator blueprint for OpenFaaS</p></td>
 </tr>
 <tr class="row-even"><td><div class="line-block">
 <div class="line"><a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/platform-connection/aws-azure-connection">aws-azure-platform-connection</a></div>
@@ -728,7 +736,7 @@ Below is a table that lists all the currently available xOpera examples and thei
 </table>
 </div>
 <div class="section" id="kubernetes-examples">
-<h3>Kubernetes examples<a class="headerlink" href="#kubernetes-examples" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>Kubernetes examples<a class="headerlink" href="#kubernetes-examples" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
@@ -749,8 +757,8 @@ Below is a table that lists all the currently available xOpera examples and thei
 </tbody>
 </table>
 </div>
-<div class="section" id="miscellaneous-examples">
-<h3>Miscellaneous examples<a class="headerlink" href="#miscellaneous-examples" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="other-miscellaneous-examples">
+<span id="id7"></span><h3>Other miscellaneous examples<a class="headerlink" href="#other-miscellaneous-examples" title="Permalink to this headline">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 40%" />
@@ -792,7 +800,7 @@ Below is a table that lists all the currently available xOpera examples and thei
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="template_library.html" class="btn btn-neutral float-left" title="xOpera TPS (template library)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tps.html" class="btn btn-neutral float-left" title="xOpera TPS (Template Library)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
