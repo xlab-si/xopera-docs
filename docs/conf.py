@@ -97,6 +97,8 @@ html_static_path = []
 #
 # html_sidebars = {}
 
+# favicon
+html_favicon = 'images/xlab-favicon-16x16.png'
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
