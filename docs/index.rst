@@ -59,6 +59,8 @@ The list of contributors:
 Acknowledgments
 ===============
 
+This project is being developed by `XLAB`_'s xOpera team.
+
 - This work is being supported by the European Union’s Horizon 2020 research and innovation programme
   (grant no. 825040, `RADON`_).
 
@@ -69,5 +71,6 @@ Acknowledgments
 .. _xOpera - an agile orchestrator: https://www.sodalite.eu/content/xopera-agile-orchestrator
 .. _Auto-scaling Using TOSCA Infrastructure as Code: https://link.springer.com/chapter/10.1007/978-3-030-59155-7_20
 .. _Examination and Comparison of TOSCA Orchestration Tools: https://link.springer.com/chapter/10.1007/978-3-030-59155-7_19
+.. _XLAB: https://www.xlab.si/
 .. _RADON: https://radon-h2020.eu/
 .. _SODALITE: https://sodalite.eu/

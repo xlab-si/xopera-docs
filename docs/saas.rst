@@ -104,95 +104,12 @@ so you can attempt to reproduce (and hopefully, fix) the error locally.
 
 To undeploy or delete the project, press the corresponding button.
 
-
 In the following video we present the xOpera SaaS and show how to use it natively from GUI.
 
 .. raw:: html
 
     <div style="text-align: center; margin-bottom: 2em;">
     <iframe width="100%" height="350" src="https://www.youtube.com/embed/T4XviKWLc-A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-.. _Eclipse Che/VS Code plugin for xOpera SaaS:
-
-==========================================
-Eclipse Che/VS Code plugin for xOpera SaaS
-==========================================
-
-Most operations can be performed directly from an Eclipse Che/Visual Studio Code plugin.
-
-.. _xopera_saas_ide_fileselector:
-
-.. figure:: /images/xopera-saas-che-fileselector.png
-    :target: _images/xopera-saas-che-fileselector.png
-    :width: 80%
-    :align: center
-
-    The file selector, activated on CSAR files.
-
-Right clicking a CSAR brings up the option to create an xOpera SaaS project based on it.
-
-.. _xopera_saas_ide_login:
-
-.. figure:: /images/xopera-saas-che-login.png
-    :target: _images/xopera-saas-che-login.png
-    :width: 80%
-    :align: center
-
-    The Che plugin login dialog.
-
-Upon logging in, you are presented with a choice of workspaces, where you can decide between using a new workspace
-or choosing an existing one.
-After that, you enter the name of the project, and CSAR upload and project creation begins.
-
-.. _xopera_saas_ide_workspaces:
-
-.. figure:: /images/xopera-saas-che-workspaces.png
-    :target: _images/xopera-saas-che-workspaces.png
-    :width: 80%
-    :align: center
-
-    Che plugin workspace selection.
-
-.. _xopera_saas_ide_project:
-
-.. figure:: /images/xopera-saas-che-project.png
-    :target: _images/xopera-saas-che-project.png
-    :width: 80%
-    :align: center
-
-    Enter your project name in this dialog.
-
-Project creation progress is shown in the bottom right corner along with all other Che notifications.
-
-.. _xopera_saas_ide_progress:
-
-.. figure:: /images/xopera-saas-che-progress.png
-    :target: _images/xopera-saas-che-progress.png
-    :width: 80%
-    :align: center
-
-    The start and finish notifications for project creation.
-
-As a final step, you can choose to deploy the project immediately, or postpone it.
-
-.. _xopera_saas_ide_deployment:
-
-.. figure:: /images/xopera-saas-che-deployment.png
-    :target: _images/xopera-saas-che-deployment.png
-    :width: 80%
-    :align: center
-
-    Choose whether or not to deploy the new project immediately.
-
-Finally, you are redirected to the xOpera SaaS dashboard for finer control over your project.
-
-In the following video we present the xOpera SaaS and show how to use it through the Eclipse Che (RADON IDE).
-
-.. raw:: html
-
-    <div style="text-align: center; margin-bottom: 2em;">
-    <iframe width="100%" height="350" src="https://www.youtube.com/embed/SIiLOe5dSqc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
 .. _xOpera SaaS API:
@@ -274,6 +191,127 @@ The following code block shows a complete example of using the xOpera SaaS API t
 
 For further interaction with each project, see the `xopera-api specification`_
 
+.. _Eclipse Che/VS Code plugin for xOpera SaaS:
+
+==========================================
+Eclipse Che/VS Code plugin for xOpera SaaS
+==========================================
+
+The SaaS orchestrator has also `Eclipse Che`_ (`Eclipse Theia`_) and `Visual Studio Code`_ plugin that provides the
+ability to create and run deployment projects created inside the SaaS orchestrator.
+
+The xOpera SaaS plugin is available on `Open VSX Registry`_ and `VS Marketplace`_.
+The code can also be explored in `xopera-saas-vscode-plugin`_ GitHub repository.
+
+There are currently two commands that can be invoked from the explorer Eclipse Che Theia/Visual Studio Code context.
+These are:
+
+- ``xOpera SaaS: Create project from CSAR``
+- ``xOpera SaaS: Delete login info``
+
+The authentication to the SaaS component is performed through `Keycloak`_ IAM.
+This means that when using the SaaS plugin the first time, the user will be prompted to select his preferred way of
+logging in.
+This can be either through the default Keycloak instance or through any of the connected Keycloak identity providers.
+After that the login data will be saved and the user will be able to invoke the plugin commands (if the user would want
+to remove his saved login data he could click on the ``xOpera SaaS: Delete login info`` option).
+
+The main command is ``xOpera SaaS: Create project from CSAR``. By invoking this, the plugin currently allows users to:
+
+- create a new workspace
+- create a new project in a new or existing workspace
+- deploy a project
+
+The functions through the plugin are a bit limited, as it is more convenient than other actions are performed through
+the Opera SaaS web interface.
+
+Most operations can be performed directly from an Eclipse Che/Visual Studio Code plugin.
+
+.. _xopera_saas_ide_fileselector:
+
+.. figure:: /images/xopera-saas-che-fileselector.png
+    :target: _images/xopera-saas-che-fileselector.png
+    :width: 80%
+    :align: center
+
+    The file selector, activated on CSAR files.
+
+User can invoke the main plugin actions by right clicking on the compressed TOSCA CSAR (file should include `.zip` or
+`.csar` extension).
+Then the plugin will interactively guide him through the creation of workspace and the project.
+
+.. _xopera_saas_ide_login:
+
+.. figure:: /images/xopera-saas-che-login.png
+    :target: _images/xopera-saas-che-login.png
+    :width: 80%
+    :align: center
+
+    The Che plugin login dialog.
+
+Upon logging in, you are presented with a choice of workspaces, where you can decide between using a new workspace
+or choosing an existing one.
+After that, you enter the name of the project, and CSAR upload and project creation begins.
+
+.. _xopera_saas_ide_workspaces:
+
+.. figure:: /images/xopera-saas-che-workspaces.png
+    :target: _images/xopera-saas-che-workspaces.png
+    :width: 80%
+    :align: center
+
+    Che plugin workspace selection.
+
+.. _xopera_saas_ide_project:
+
+.. figure:: /images/xopera-saas-che-project.png
+    :target: _images/xopera-saas-che-project.png
+    :width: 80%
+    :align: center
+
+    Enter your project name in this dialog.
+
+Project creation progress is shown in the bottom right corner along with all other Che notifications.
+
+.. _xopera_saas_ide_progress:
+
+.. figure:: /images/xopera-saas-che-progress.png
+    :target: _images/xopera-saas-che-progress.png
+    :width: 80%
+    :align: center
+
+    The start and finish notifications for project creation.
+
+As a final step, you can choose to deploy the project immediately, or postpone it.
+
+.. _xopera_saas_ide_deployment:
+
+.. figure:: /images/xopera-saas-che-deployment.png
+    :target: _images/xopera-saas-che-deployment.png
+    :width: 80%
+    :align: center
+
+    Choose whether or not to deploy the new project immediately.
+
+Finally, you are redirected to the xOpera SaaS dashboard for finer control over your project.
+
+.. _xopera_saas_ide_redirect:
+
+.. figure:: /images/xopera-saas-che-redirect.png
+    :target: _images/xopera-saas-che-redirect.png
+    :width: 80%
+    :align: center
+
+    Choose whether or not to deploy the new project immediately.
+
+In the following video we present the xOpera SaaS and show how to use it through the Eclipse Che.
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/SIiLOe5dSqc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
 .. _SaaS warnings about your secrets and general security:
 
 ================================================
@@ -300,3 +338,10 @@ to improve your security.
 .. _saas-xopera.xlab.si/ui/: https://saas-xopera.xlab.si/ui/
 .. _SaaS API page: https://saas-xopera.xlab.si/apibrowser/
 .. _xopera-api specification: https://github.com/xlab-si/xopera-api/blob/master/openapi-spec.yml
+.. _Keycloak: https://www.keycloak.org/
+.. _Eclipse Che: https://www.eclipse.org/che
+.. _Eclipse Theia: https://theia-ide.org
+.. _Visual Studio Code: https://code.visualstudio.com
+.. _xopera-saas-vscode-plugin: https://github.com/xlab-si/xopera-saas-vscode-plugin
+.. _Open VSX Registry: https://open-vsx.org/extension/xlab/xopera-saas
+.. _VS Marketplace: https://marketplace.visualstudio.com/items?itemName=xlab.xopera-saas
