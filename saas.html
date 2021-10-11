@@ -100,8 +100,8 @@
 <li class="toctree-l1"><a class="reference internal" href="api.html">xOpera API</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">xOpera SaaS</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#gui">GUI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#eclipse-che-vs-code-plugin-for-xopera-saas">Eclipse Che/VS Code plugin for xOpera SaaS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#saas-api">SaaS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eclipse-che-vs-code-plugin-for-xopera-saas">Eclipse Che/VS Code plugin for xOpera SaaS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#warnings-about-your-secrets-and-general-security">Warnings about your secrets and general security</a></li>
 </ul>
 </li>
@@ -244,51 +244,13 @@ so you can attempt to reproduce (and hopefully, fix) the error locally.</p>
 <div style="text-align: center; margin-bottom: 2em;">
 <iframe width="100%" height="350" src="https://www.youtube.com/embed/T4XviKWLc-A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div></div>
-<div class="section" id="eclipse-che-vs-code-plugin-for-xopera-saas">
-<span id="id2"></span><h2>Eclipse Che/VS Code plugin for xOpera SaaS<a class="headerlink" href="#eclipse-che-vs-code-plugin-for-xopera-saas" title="Permalink to this headline">¶</a></h2>
-<p>Most operations can be performed directly from an Eclipse Che/Visual Studio Code plugin.</p>
-<div class="figure align-center" id="id6">
-<span id="xopera-saas-ide-fileselector"></span><a class="reference external image-reference" href="_images/xopera-saas-che-fileselector.png"><img alt="_images/xopera-saas-che-fileselector.png" src="_images/xopera-saas-che-fileselector.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The file selector, activated on CSAR files.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
-</div>
-<p>Right clicking a CSAR brings up the option to create an xOpera SaaS project based on it.</p>
-<div class="figure align-center" id="id7">
-<span id="xopera-saas-ide-login"></span><a class="reference external image-reference" href="_images/xopera-saas-che-login.png"><img alt="_images/xopera-saas-che-login.png" src="_images/xopera-saas-che-login.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">The Che plugin login dialog.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
-</div>
-<p>Upon logging in, you are presented with a choice of workspaces, where you can decide between using a new workspace
-or choosing an existing one.
-After that, you enter the name of the project, and CSAR upload and project creation begins.</p>
-<div class="figure align-center" id="id8">
-<span id="xopera-saas-ide-workspaces"></span><a class="reference external image-reference" href="_images/xopera-saas-che-workspaces.png"><img alt="_images/xopera-saas-che-workspaces.png" src="_images/xopera-saas-che-workspaces.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Che plugin workspace selection.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
-</div>
-<div class="figure align-center" id="id9">
-<span id="xopera-saas-ide-project"></span><a class="reference external image-reference" href="_images/xopera-saas-che-project.png"><img alt="_images/xopera-saas-che-project.png" src="_images/xopera-saas-che-project.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Enter your project name in this dialog.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
-</div>
-<p>Project creation progress is shown in the bottom right corner along with all other Che notifications.</p>
-<div class="figure align-center" id="id10">
-<span id="xopera-saas-ide-progress"></span><a class="reference external image-reference" href="_images/xopera-saas-che-progress.png"><img alt="_images/xopera-saas-che-progress.png" src="_images/xopera-saas-che-progress.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">The start and finish notifications for project creation.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
-</div>
-<p>As a final step, you can choose to deploy the project immediately, or postpone it.</p>
-<div class="figure align-center" id="id11">
-<span id="xopera-saas-ide-deployment"></span><a class="reference external image-reference" href="_images/xopera-saas-che-deployment.png"><img alt="_images/xopera-saas-che-deployment.png" src="_images/xopera-saas-che-deployment.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Choose whether or not to deploy the new project immediately.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
-</div>
-<p>Finally, you are redirected to the xOpera SaaS dashboard for finer control over your project.</p>
-<p>In the following video we present the xOpera SaaS and show how to use it through the Eclipse Che (RADON IDE).</p>
-<div style="text-align: center; margin-bottom: 2em;">
-<iframe width="100%" height="350" src="https://www.youtube.com/embed/SIiLOe5dSqc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div></div>
 <div class="section" id="saas-api">
 <span id="xopera-saas-api"></span><h2>SaaS API<a class="headerlink" href="#saas-api" title="Permalink to this headline">¶</a></h2>
-<p>A preview of the API reference is presented in <a class="reference internal" href="#xopera-saas-api-excerpt"><span class="std std-numref">Fig. 12</span></a> and the whole reference is located at
+<p>A preview of the API reference is presented in <a class="reference internal" href="#xopera-saas-api-excerpt"><span class="std std-numref">Fig. 6</span></a> and the whole reference is located at
 the <a class="reference external" href="https://saas-xopera.xlab.si/apibrowser/">SaaS API page</a>.</p>
-<div class="figure align-center" id="id12">
+<div class="figure align-center" id="id6">
 <span id="xopera-saas-api-excerpt"></span><a class="reference external image-reference" href="_images/xopera-saas-api.png"><img alt="_images/xopera-saas-api.png" src="_images/xopera-saas-api.png" style="width: 95%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">An excerpt of the xOpera SaaS API.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">An excerpt of the xOpera SaaS API.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 <p>The following code block shows a complete example of using the xOpera SaaS API through <code class="docutils literal notranslate"><span class="pre">curl</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">csar_base64</span><span class="o">=</span><span class="s2">&quot;$(base64 --wrap 0 test.csar)&quot;</span>
@@ -351,6 +313,74 @@ the <a class="reference external" href="https://saas-xopera.xlab.si/apibrowser/"
 </div>
 <p>For further interaction with each project, see the <a class="reference external" href="https://github.com/xlab-si/xopera-api/blob/master/openapi-spec.yml">xopera-api specification</a></p>
 </div>
+<div class="section" id="eclipse-che-vs-code-plugin-for-xopera-saas">
+<span id="id2"></span><h2>Eclipse Che/VS Code plugin for xOpera SaaS<a class="headerlink" href="#eclipse-che-vs-code-plugin-for-xopera-saas" title="Permalink to this headline">¶</a></h2>
+<p>The SaaS orchestrator has also <a class="reference external" href="https://www.eclipse.org/che">Eclipse Che</a> (<a class="reference external" href="https://theia-ide.org">Eclipse Theia</a>) and <a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a> plugin that provides the
+ability to create and run deployment projects created inside the SaaS orchestrator.</p>
+<p>The xOpera SaaS plugin is available on <a class="reference external" href="https://open-vsx.org/extension/xlab/xopera-saas">Open VSX Registry</a> and <a class="reference external" href="https://marketplace.visualstudio.com/items?itemName=xlab.xopera-saas">VS Marketplace</a>.
+The code can also be explored in <a class="reference external" href="https://github.com/xlab-si/xopera-saas-vscode-plugin">xopera-saas-vscode-plugin</a> GitHub repository.</p>
+<p>There are currently two commands that can be invoked from the explorer Eclipse Che Theia/Visual Studio Code context.
+These are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xOpera</span> <span class="pre">SaaS:</span> <span class="pre">Create</span> <span class="pre">project</span> <span class="pre">from</span> <span class="pre">CSAR</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xOpera</span> <span class="pre">SaaS:</span> <span class="pre">Delete</span> <span class="pre">login</span> <span class="pre">info</span></code></p></li>
+</ul>
+<p>The authentication to the SaaS component is performed through <a class="reference external" href="https://www.keycloak.org/">Keycloak</a> IAM.
+This means that when using the SaaS plugin the first time, the user will be prompted to select his preferred way of
+logging in.
+This can be either through the default Keycloak instance or through any of the connected Keycloak identity providers.
+After that the login data will be saved and the user will be able to invoke the plugin commands (if the user would want
+to remove his saved login data he could click on the <code class="docutils literal notranslate"><span class="pre">xOpera</span> <span class="pre">SaaS:</span> <span class="pre">Delete</span> <span class="pre">login</span> <span class="pre">info</span></code> option).</p>
+<p>The main command is <code class="docutils literal notranslate"><span class="pre">xOpera</span> <span class="pre">SaaS:</span> <span class="pre">Create</span> <span class="pre">project</span> <span class="pre">from</span> <span class="pre">CSAR</span></code>. By invoking this, the plugin currently allows users to:</p>
+<ul class="simple">
+<li><p>create a new workspace</p></li>
+<li><p>create a new project in a new or existing workspace</p></li>
+<li><p>deploy a project</p></li>
+</ul>
+<p>The functions through the plugin are a bit limited, as it is more convenient than other actions are performed through
+the Opera SaaS web interface.</p>
+<p>Most operations can be performed directly from an Eclipse Che/Visual Studio Code plugin.</p>
+<div class="figure align-center" id="id7">
+<span id="xopera-saas-ide-fileselector"></span><a class="reference external image-reference" href="_images/xopera-saas-che-fileselector.png"><img alt="_images/xopera-saas-che-fileselector.png" src="_images/xopera-saas-che-fileselector.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">The file selector, activated on CSAR files.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<p>User can invoke the main plugin actions by right clicking on the compressed TOSCA CSAR (file should include <cite>.zip</cite> or
+<cite>.csar</cite> extension).
+Then the plugin will interactively guide him through the creation of workspace and the project.</p>
+<div class="figure align-center" id="id8">
+<span id="xopera-saas-ide-login"></span><a class="reference external image-reference" href="_images/xopera-saas-che-login.png"><img alt="_images/xopera-saas-che-login.png" src="_images/xopera-saas-che-login.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">The Che plugin login dialog.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+<p>Upon logging in, you are presented with a choice of workspaces, where you can decide between using a new workspace
+or choosing an existing one.
+After that, you enter the name of the project, and CSAR upload and project creation begins.</p>
+<div class="figure align-center" id="id9">
+<span id="xopera-saas-ide-workspaces"></span><a class="reference external image-reference" href="_images/xopera-saas-che-workspaces.png"><img alt="_images/xopera-saas-che-workspaces.png" src="_images/xopera-saas-che-workspaces.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Che plugin workspace selection.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id10">
+<span id="xopera-saas-ide-project"></span><a class="reference external image-reference" href="_images/xopera-saas-che-project.png"><img alt="_images/xopera-saas-che-project.png" src="_images/xopera-saas-che-project.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Enter your project name in this dialog.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<p>Project creation progress is shown in the bottom right corner along with all other Che notifications.</p>
+<div class="figure align-center" id="id11">
+<span id="xopera-saas-ide-progress"></span><a class="reference external image-reference" href="_images/xopera-saas-che-progress.png"><img alt="_images/xopera-saas-che-progress.png" src="_images/xopera-saas-che-progress.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">The start and finish notifications for project creation.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+<p>As a final step, you can choose to deploy the project immediately, or postpone it.</p>
+<div class="figure align-center" id="id12">
+<span id="xopera-saas-ide-deployment"></span><a class="reference external image-reference" href="_images/xopera-saas-che-deployment.png"><img alt="_images/xopera-saas-che-deployment.png" src="_images/xopera-saas-che-deployment.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Choose whether or not to deploy the new project immediately.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</div>
+<p>Finally, you are redirected to the xOpera SaaS dashboard for finer control over your project.</p>
+<div class="figure align-center" id="id13">
+<span id="xopera-saas-ide-redirect"></span><a class="reference external image-reference" href="_images/xopera-saas-che-redirect.png"><img alt="_images/xopera-saas-che-redirect.png" src="_images/xopera-saas-che-redirect.png" style="width: 80%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Choose whether or not to deploy the new project immediately.</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</div>
+<p>In the following video we present the xOpera SaaS and show how to use it through the Eclipse Che.</p>
+<div style="text-align: center; margin-bottom: 2em;">
+<iframe width="100%" height="350" src="https://www.youtube.com/embed/SIiLOe5dSqc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div></div>
 <div class="section" id="warnings-about-your-secrets-and-general-security">
 <span id="saas-warnings-about-your-secrets-and-general-security"></span><h2>Warnings about your secrets and general security<a class="headerlink" href="#warnings-about-your-secrets-and-general-security" title="Permalink to this headline">¶</a></h2>
 <p>Your secrets - not for xOpera SaaS, but those you add for services you access in CSARs etc - are stored in

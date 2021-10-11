@@ -382,14 +382,14 @@ opera deploy -i inputs.yaml service.yaml
 <p>To show that opera can establish a connection between two cloud platforms, we created a simple
 <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/cloud/platform-connection/aws-azure-connection">aws-azure-platform-connection</a>. example that connects Azure and AWS cloud providers.
 Moreover, there are two examples that implement data flow from Azure to AWS and vice versa (shown in
-figure <a class="reference internal" href="#aws-azure-connection"><span class="std std-numref">Fig. 13</span></a>).
+figure <a class="reference internal" href="#aws-azure-connection"><span class="std std-numref">Fig. 14</span></a>).
 The main functionality of this solution is to sequentially execute two operations on images which are image-watermark
 and image-resize on two different platforms (Azure and AWS).
 Orchestration creates two containers on Azure and two buckets on AWS.
 Images are passed from container to bucket using AWS Lambda or Azure Function.</p>
 <div class="figure align-center" id="id8">
 <span id="aws-azure-connection"></span><a class="reference external image-reference" href="_images/platform_connection.png"><img alt="_images/platform_connection.png" src="_images/platform_connection.png" style="width: 95%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">The two examples of AWS&lt;-&gt;Azure connection.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">The two examples of AWS&lt;-&gt;Azure connection.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
@@ -445,11 +445,11 @@ To deploy the example follow the steps below.</p>
 <span id="examples-kubernetes-with-rancher"></span><h3>Kubernetes with Rancher<a class="headerlink" href="#kubernetes-with-rancher" title="Permalink to this headline">¶</a></h3>
 <p>Kubernetes can be deployed using <a class="reference external" href="https://rancher.com">Rancher platform</a>, which is the open-source multi-cluster orchestration platform.
 The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/kubernetes/rancher">rancher</a> example is can be used to deploy Rancher Docker container that will set up Kubernetes which can be
-accessed through the Rancher dashboard, where you can create your account (see <a class="reference internal" href="#rancher-kubernetes-login"><span class="std std-numref">Fig. 14</span></a>) and
-use cluster explorer (see <a class="reference internal" href="#rancher-kubernetes-cluster-explorer"><span class="std std-numref">Fig. 16</span></a>) to do manipulate with Kubernetes.</p>
+accessed through the Rancher dashboard, where you can create your account (see <a class="reference internal" href="#rancher-kubernetes-login"><span class="std std-numref">Fig. 15</span></a>) and
+use cluster explorer (see <a class="reference internal" href="#rancher-kubernetes-cluster-explorer"><span class="std std-numref">Fig. 17</span></a>) to do manipulate with Kubernetes.</p>
 <div class="figure align-center" id="id9">
 <span id="rancher-kubernetes-login"></span><a class="reference external image-reference" href="_images/rancher-kubernetes-login.png"><img alt="_images/rancher-kubernetes-login.png" src="_images/rancher-kubernetes-login.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text">Log in to Rancher Kubernetes dashboard.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Log in to Rancher Kubernetes dashboard.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </div>
 <p>To deploy the example follow the steps below.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> kubernetes/rancher
@@ -478,11 +478,11 @@ use cluster explorer (see <a class="reference internal" href="#rancher-kubernete
 Additionally we deploy the <a class="reference external" href="https://artifacthub.io/packages/helm/prometheus-community/prometheus">Prometheus helm chart</a> to be able to monitor the Kubernetes cluster.</p>
 <div class="figure align-center" id="id10">
 <span id="rancher-kubernetes-dashboard"></span><a class="reference external image-reference" href="_images/rancher-kubernetes-dashboard.png"><img alt="_images/rancher-kubernetes-dashboard.png" src="_images/rancher-kubernetes-dashboard.png" style="width: 80%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text">Rancher Kubernetes dashboard.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Rancher Kubernetes dashboard.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </div>
 <div class="figure align-center" id="id11">
 <span id="rancher-kubernetes-cluster-explorer"></span><a class="reference external image-reference" href="_images/rancher-kubernetes-cluster-explorer.png"><img alt="_images/rancher-kubernetes-cluster-explorer.png" src="_images/rancher-kubernetes-cluster-explorer.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Kubernetes cluster explorer in Rancher dashboard.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Kubernetes cluster explorer in Rancher dashboard.</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </div>
 </div>
 </div>
