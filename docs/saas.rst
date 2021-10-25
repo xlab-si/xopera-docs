@@ -4,14 +4,12 @@
 xOpera SaaS
 ***********
 
-.. only:: html
+.. _xopera_saas_logo:
 
-    .. _xopera_saas_logo:
-
-    .. figure:: /images/xopera-saas-mark-black-text-mid.svg
-        :target: _images/xopera-saas-mark-black-text-mid.svg
-        :width: 50%
-        :align: center
+.. figure:: /images/xopera-saas-mark-black-text-mid.png
+    :target: _images/xopera-saas-mark-black-text-mid.png
+    :width: 50%
+    :align: center
 
 The Software as a Service edition of xOpera is available at `saas-xopera.xlab.si/ui/`_.
 

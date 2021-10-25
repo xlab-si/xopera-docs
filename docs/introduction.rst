@@ -7,13 +7,11 @@ Introduction
 **xOpera project** includes a set of tools for advanced orchestration with an orchestration tool
 **xOpera orchestrator** or shorter **opera**.
 
-.. only:: html
+.. _xopera_side_logo:
 
-    .. _xopera_side_logo:
-
-    .. figure:: /images/xopera-black-text-side-mid.svg
-        :target: _images/xopera-black-text-side-mid.svg
-        :align: center
+.. figure:: /images/xopera-black-text-side-mid.png
+    :target: _images/xopera-black-text-side-mid.png
+    :align: center
 
 ``opera`` aims to be a lightweight orchestrator compliant with `OASIS TOSCA`_ and the current compliance is with the
 `TOSCA Simple Profile in YAML v1.3`_.
