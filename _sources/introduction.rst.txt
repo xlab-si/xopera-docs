@@ -7,6 +7,14 @@ Introduction
 **xOpera project** includes a set of tools for advanced orchestration with an orchestration tool
 **xOpera orchestrator** or shorter **opera**.
 
+.. only:: html
+
+    .. _xopera_side_logo:
+
+    .. figure:: /images/xopera-black-text-side-mid.svg
+        :target: _images/xopera-black-text-side-mid.svg
+        :align: center
+
 ``opera`` aims to be a lightweight orchestrator compliant with `OASIS TOSCA`_ and the current compliance is with the
 `TOSCA Simple Profile in YAML v1.3`_.
 ``opera`` is by following TOSCA primarily a (TOSCA) cloud orchestrator which enables orchestration of automated tasks
@@ -88,8 +96,8 @@ xOpera orchestrator has its own YAML and TOSCA parser which is shown on the imag
 
 .. _opera_parser_structure:
 
-.. figure:: /images/opera_parser_structure.png
-    :target: _images/opera_parser_structure.png
+.. figure:: /images/opera-parser-structure.png
+    :target: _images/opera-parser-structure.png
     :width: 50%
     :align: center
 

@@ -232,8 +232,8 @@ Images are passed from container to bucket using AWS Lambda or Azure Function.
 
 .. _aws_azure_connection:
 
-.. figure:: /images/platform_connection.png
-    :target: _images/platform_connection.png
+.. figure:: /images/platform-connection.png
+    :target: _images/platform-connection.png
     :width: 95%
     :align: center
 
