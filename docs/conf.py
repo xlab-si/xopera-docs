@@ -87,6 +87,9 @@ html_theme = 'sphinx_rtd_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []
 
+# xOpera logo
+html_logo = "images/xopera-mark-black-mid.svg"
+
 # Custom sidebar templates, must be a dictionary that maps document names
 # to template names.
 #

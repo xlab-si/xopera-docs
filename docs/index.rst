@@ -2,6 +2,15 @@
 Welcome to xOpera's documentation!
 **********************************
 
+.. only:: html
+
+    .. _xopera_logo:
+
+    .. figure:: /images/xopera-black-text-mid.svg
+        :target: _images/xopera-black-text-mid.svg
+        :width: 70%
+        :align: center
+
 The following documentation explains the usage of xOpera TOSCA orchestrator.
 Want to try it right away?
 Just go to :ref:`Examples` or follow the Table of Contents below.
