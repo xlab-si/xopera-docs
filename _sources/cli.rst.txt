@@ -4,6 +4,13 @@
 xOpera CLI (opera)
 ******************
 
+.. _xopera_cli_logo:
+
+.. figure:: /images/xopera-mark-black-text-mid.png
+    :target: _images/xopera-mark-black-text-mid.png
+    :width: 50%
+    :align: center
+
 .. _CLI installation:
 
 ============
