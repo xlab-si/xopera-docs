@@ -524,7 +524,8 @@ corresponding implementation (e.g. Ansible playbook).</p>
 <span id="opera-validate"></span><h3>validate<a class="headerlink" href="#validate" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">opera</span> <span class="pre">validate</span></code> - validates the structure of TOSCA template or CSAR.</p>
 <div class="sphinx-tabs docutils container">
-<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">validate</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">inputs</span> <span class="n">INPUTS</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
+<div aria-label="Tabbed content" class="closeable" role="tablist"><button aria-controls="panel-2-2-0" aria-selected="true" class="sphinx-tabs-tab" id="tab-2-2-0" name="2-0" role="tab" tabindex="0">Usage</button><button aria-controls="panel-2-2-1" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-1" name="2-1" role="tab" tabindex="-1">Description</button><button aria-controls="panel-2-2-2" aria-selected="false" class="sphinx-tabs-tab" id="tab-2-2-2" name="2-2" role="tab" tabindex="-1">Example</button></div><div aria-labelledby="tab-2-2-0" class="sphinx-tabs-panel" id="panel-2-2-0" name="2-0" role="tabpanel" tabindex="0"><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usage</span><span class="p">:</span> <span class="n">opera</span> <span class="n">validate</span> <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">instance</span><span class="o">-</span><span class="n">path</span> <span class="n">INSTANCE_PATH</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">inputs</span> <span class="n">INPUTS</span><span class="p">]</span>
+                      <span class="p">[</span><span class="o">--</span><span class="n">tosca</span><span class="o">-</span><span class="n">only</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">verbose</span><span class="p">]</span>
                       <span class="p">[</span><span class="n">csar_or_service_template</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -539,8 +540,15 @@ corresponding implementation (e.g. Ansible playbook).</p>
 <div class="section" id="Named Arguments">
 <h4>Named Arguments<a class="headerlink" href="#Named Arguments" title="Permalink to this headline">¶</a></h4>
 <dl class="option-list">
+<dt><kbd>--instance-path, -p</kbd></dt>
+<dd><p>Storage folder location (instead of default .opera)</p>
+</dd>
 <dt><kbd>--inputs, -i</kbd></dt>
 <dd><p>YAML or JSON file with inputs</p>
+</dd>
+<dt><kbd>--tosca-only</kbd></dt>
+<dd><p>Validate only TOSCA templates without the executors behind them</p>
+<p>Default: False</p>
 </dd>
 <dt><kbd>--verbose, -v</kbd></dt>
 <dd><p>Turns on verbose mode</p>
