@@ -5,7 +5,7 @@ Introduction
 ************
 
 **xOpera project** includes a set of tools for advanced orchestration with an orchestration tool
-**xOpera orchestrator** or shorter **opera**.
+**xOpera orchestrator** (or shorter **opera**).
 
 .. _xopera_side_logo:
 
@@ -30,18 +30,19 @@ interface operations via Ansible playbook actuators which again opens a lot of n
 
 .. figure:: /images/xopera-architecture.png
     :target: _images/xopera-architecture.png
-    :width: 95%
     :align: center
 
     The xOpera components.
 
 Currently a set of components is presented in figure :numref:`xopera_architecture`, where we can point out:
 
-- Opera CLI is a command line interface to the **xOpera library** for deploying TOSCA templates and CSARs
-- Opera API allows integration of **xOpera library**.
-- xOpera SaaS is a standalone service for application lifecycle management with xOpera orchestrator
+- :ref:`xOpera CLI (opera)` is a command line interface to the **xOpera library** for deploying TOSCA templates and
+  CSARs.
+- :ref:`xOpera API` API allows integration of **xOpera library**.
+- :ref:`xOpera SaaS` is a standalone service for application lifecycle management with xOpera orchestrator
   through GUI and API.
-- TPS or Template Publishing Service is a library of published TOSCA templates and CSARs
+- :ref:`xOpera TPS (Template Library)` or Template Publishing Service is a library of published TOSCA templates and
+  CSARs.
 
 Each component is covered by corresponding This documentation will cover all xOpera components.
 
@@ -50,6 +51,13 @@ Each component is covered by corresponding This documentation will cover all xOp
 ==========
 Background
 ==========
+
+.. _xopera_core_logo:
+
+.. figure:: /images/xopera-core-mark-black-text-mid.png
+    :target: _images/xopera-core-mark-black-text-mid.png
+    :width: 40%
+    :align: center
 
 xOpera is a TOSCA standard compliant orchestrator that is following the paradigm of having a minimal set of
 features and is currently focusing on Ansible.
@@ -96,7 +104,7 @@ xOpera orchestrator has its own YAML and TOSCA parser which is shown on the imag
 
 .. figure:: /images/opera-parser-structure.png
     :target: _images/opera-parser-structure.png
-    :width: 50%
+    :width: 40%
     :align: center
 
     xOpera parser and executor
