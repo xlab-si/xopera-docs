@@ -34,7 +34,10 @@ interface operations via Ansible playbook actuators which again opens a lot of n
 
     The xOpera components.
 
-Currently a set of components is presented in figure :numref:`xopera_architecture`, where we can point out:
+Currently a set of components is presented in figure :numref:`xopera_architecture`.
+This documentation covers all the xOpera tools.
+
+We can point out the following tools:
 
 - :ref:`xOpera CLI (opera)` is a command line interface to the **xOpera library** for deploying TOSCA templates and
   CSARs.
@@ -45,7 +48,14 @@ Currently a set of components is presented in figure :numref:`xopera_architectur
   CSARs.
 - :ref:`IaC Scanner` is a service that check your IaC for known vulnerabilities.
 
-Each component is covered by corresponding This documentation will cover all xOpera components.
+The xOpera project was also presented within the `TOSCA Implementation Stories`_.
+The following video displays how users can benefit from xOpera project.
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/NZLYWB9uxjk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
 
 .. _Background:
 
@@ -86,7 +96,10 @@ xOpera, in its capacity, takes care of all the untidy inter-playbook coordinatio
 
 .. note::
 
-    More about xOpera's background, its origins and goals can be found here: `xOpera - an agile orchestrator`_
+    More about xOpera's background, its origins and goals can be found here:
+
+    - `xOpera - Get your orchestra(tor) pitch perfect`_
+    - `xOpera - an agile orchestrator`_
 
 .. _Parser:
 
@@ -109,6 +122,25 @@ xOpera orchestrator has its own YAML and TOSCA parser which is shown on the imag
     :align: center
 
     xOpera parser and executor
+
+.. _Business value:
+
+==============
+Business value
+==============
+
+Orchestrator xOpera is a tool that follows OASIS TOSCA standard and unlocks its benefits of providing multi-cloud
+orchestration support.
+According to this business value of this tool can be seen through different perspectives.
+Firstly, the aim is to have an orchestration tool which is easy to install and easy to use.
+Installation process is very simple and requires only python and possibly a virtual environment.
+Opera package is visible on PyPI so even older versions can be installed.
+Secondly, opera is a very dynamic tool which can be used for simple or complex orchestration of applications because
+one can prepare his own TOSCA templates that are unique and based on his use case.
+All of the templates can also be modified and reused with xOpera.
+And lastly, as opera is evolving, there are many different CLI commands that can be used with it.
+Besides deploying and undeploying a solution, opera can be used for TOSCA CSAR service template validation or for
+printing out outputs of the orchestration.
 
 .. _xOpera SaaS and Template Library overview:
 
@@ -159,7 +191,9 @@ The following videos show how xOpera SaaS and Template Library work in action:
 .. _xopera-opera: https://github.com/xlab-si/xopera-opera
 .. _xopera-api: https://github.com/xlab-si/xopera-api
 .. _Ansible: https://www.ansible.com/
+.. _TOSCA Implementation Stories: https://www.oasis-open.org/tosca-implementation-stories/
 .. _xOpera - an agile orchestrator: https://www.sodalite.eu/content/xopera-agile-orchestrator
+.. _xOpera - Get your orchestra(tor) pitch perfect: https://www.xlab.si/sl/blog/xopera-get-your-orchestrator-pitch-perfect/
 .. _opera: https://pypi.org/project/opera/
 .. _xOpera: https://xlab-si.github.io/xopera-docs/
 .. _TPS with CLI: https://youtu.be/28eTwojw5ac

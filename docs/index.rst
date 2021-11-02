@@ -38,6 +38,7 @@ Just go to :ref:`Examples` or follow the Table of Contents below.
 References
 ==========
 
+- Bat Nejc et. al.: `xOpera - Get your orchestra(tor) pitch perfect`_
 - Carbonell, Maria: `xOpera - an agile orchestrator`_
 - Cankar, Matija et. al.: `Auto-scaling Using TOSCA Infrastructure as Code`_
 - Luzar, Anže et. al.: `Examination and Comparison of TOSCA Orchestration Tools`_
@@ -79,6 +80,7 @@ This project is being developed by `XLAB`_'s `xOpera`_ team.
 - This work is being supported by the European Union’s Horizon 2020 research and innovation programme
   (grant no. 101000162, `PIACERE`_).
 
+.. _xOpera - Get your orchestra(tor) pitch perfect: https://www.xlab.si/sl/blog/xopera-get-your-orchestrator-pitch-perfect/
 .. _xOpera - an agile orchestrator: https://www.sodalite.eu/content/xopera-agile-orchestrator
 .. _Auto-scaling Using TOSCA Infrastructure as Code: https://link.springer.com/chapter/10.1007/978-3-030-59155-7_20
 .. _Examination and Comparison of TOSCA Orchestration Tools: https://link.springer.com/chapter/10.1007/978-3-030-59155-7_19
