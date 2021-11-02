@@ -21,6 +21,7 @@ Just go to :ref:`Examples` or follow the Table of Contents below.
     api
     saas
     tps
+    scanner
     examples
 
 ..

@@ -43,6 +43,7 @@ Currently a set of components is presented in figure :numref:`xopera_architectur
   through GUI and API.
 - :ref:`xOpera TPS (Template Library)` or Template Publishing Service is a library of published TOSCA templates and
   CSARs.
+- :ref:`IaC Scanner` is a service that check your IaC for known vulnerabilities.
 
 Each component is covered by corresponding This documentation will cover all xOpera components.
 
