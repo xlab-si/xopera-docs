@@ -6,7 +6,7 @@ Welcome to xOpera's documentation!
 
 .. figure:: /images/xopera-black-text-mid.png
     :target: _images/xopera-black-text-mid.png
-    :width: 70%
+    :width: 60%
     :align: center
 
 The following documentation explains the usage of xOpera TOSCA orchestrator.
@@ -21,6 +21,7 @@ Just go to :ref:`Examples` or follow the Table of Contents below.
     api
     saas
     tps
+    scanner
     examples
 
 ..
@@ -66,18 +67,23 @@ The list of contributors:
 Acknowledgments
 ===============
 
-This project is being developed by `XLAB`_'s xOpera team.
+This project is being developed by `XLAB`_'s `xOpera`_ team.
 
-- This work is being supported by the European Union’s Horizon 2020 research and innovation programme
+- This work is has been supported by the European Union’s Horizon 2020 research and innovation programme
   (grant no. 825040, `RADON`_).
 
 - The work described here has been conducted within the Research & Innovation action `SODALITE`_ (project no. 825480),
   started in February 2019, and co-funded by the European Commission under the Information and Communication
   Technologies (ICT) theme of the H2020 framework programme (H2020-ICT-16-2018: Software Technologies)
 
+- This work is being supported by the European Union’s Horizon 2020 research and innovation programme
+  (grant no. 101000162, `PIACERE`_).
+
 .. _xOpera - an agile orchestrator: https://www.sodalite.eu/content/xopera-agile-orchestrator
 .. _Auto-scaling Using TOSCA Infrastructure as Code: https://link.springer.com/chapter/10.1007/978-3-030-59155-7_20
 .. _Examination and Comparison of TOSCA Orchestration Tools: https://link.springer.com/chapter/10.1007/978-3-030-59155-7_19
 .. _XLAB: https://www.xlab.si/
+.. _xOpera: https://www.xlab.si/solutions/orchestrator/
 .. _RADON: https://radon-h2020.eu/
 .. _SODALITE: https://sodalite.eu/
+.. _PIACERE: https://www.piacere-project.eu/
