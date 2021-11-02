@@ -8,7 +8,7 @@ xOpera TPS (Template Library)
 
 .. figure:: /images/xopera-tps-mark-black-text-mid.png
     :target: _images/xopera-tps-mark-black-text-mid.png
-    :width: 50%
+    :width: 40%
     :align: center
 
 xOpera TPS is a TOSCA Template Publishing Service available online at `template-library-xopera.xlab.si`_.

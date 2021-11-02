@@ -179,7 +179,7 @@
   <div class="section" id="introduction">
 <span id="id1"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <p><strong>xOpera project</strong> includes a set of tools for advanced orchestration with an orchestration tool
-<strong>xOpera orchestrator</strong> or shorter <strong>opera</strong>.</p>
+<strong>xOpera orchestrator</strong> (or shorter <strong>opera</strong>).</p>
 <div class="figure align-center" id="xopera-side-logo">
 <a class="reference external image-reference" href="_images/xopera-black-text-side-mid.png"><img alt="_images/xopera-black-text-side-mid.png" src="_images/xopera-black-text-side-mid.png" /></a>
 </div>
@@ -195,20 +195,25 @@ currently reside on GitHub inside <a class="reference external" href="https://gi
 As an orchestration tool xOpera uses <a class="reference external" href="https://www.ansible.com/">Ansible</a> automation tool to implement the the TOSCA standard and to run its
 interface operations via Ansible playbook actuators which again opens a lot of new possibilities.</p>
 <div class="figure align-center" id="id5">
-<span id="xopera-architecture"></span><a class="reference external image-reference" href="_images/xopera-architecture.png"><img alt="_images/xopera-architecture.png" src="_images/xopera-architecture.png" style="width: 95%;" /></a>
+<span id="xopera-architecture"></span><a class="reference external image-reference" href="_images/xopera-architecture.png"><img alt="_images/xopera-architecture.png" src="_images/xopera-architecture.png" /></a>
 <p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">The xOpera components.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </div>
 <p>Currently a set of components is presented in figure <a class="reference internal" href="#xopera-architecture"><span class="std std-numref">Fig. 1</span></a>, where we can point out:</p>
 <ul class="simple">
-<li><p>Opera CLI is a command line interface to the <strong>xOpera library</strong> for deploying TOSCA templates and CSARs</p></li>
-<li><p>Opera API allows integration of <strong>xOpera library</strong>.</p></li>
-<li><p>xOpera SaaS is a standalone service for application lifecycle management with xOpera orchestrator
+<li><p><a class="reference internal" href="cli.html#xopera-cli-opera"><span class="std std-ref">xOpera CLI (opera)</span></a> is a command line interface to the <strong>xOpera library</strong> for deploying TOSCA templates and
+CSARs.</p></li>
+<li><p><a class="reference internal" href="api.html#xopera-api"><span class="std std-ref">xOpera API</span></a> API allows integration of <strong>xOpera library</strong>.</p></li>
+<li><p><a class="reference internal" href="saas.html#xopera-saas"><span class="std std-ref">xOpera SaaS</span></a> is a standalone service for application lifecycle management with xOpera orchestrator
 through GUI and API.</p></li>
-<li><p>TPS or Template Publishing Service is a library of published TOSCA templates and CSARs</p></li>
+<li><p><a class="reference internal" href="tps.html#xopera-tps-template-library"><span class="std std-ref">xOpera TPS (Template Library)</span></a> or Template Publishing Service is a library of published TOSCA templates and
+CSARs.</p></li>
 </ul>
 <p>Each component is covered by corresponding This documentation will cover all xOpera components.</p>
 <div class="section" id="background">
 <span id="id2"></span><h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-center" id="xopera-core-logo">
+<a class="reference external image-reference" href="_images/xopera-core-mark-black-text-mid.png"><img alt="_images/xopera-core-mark-black-text-mid.png" src="_images/xopera-core-mark-black-text-mid.png" /></a>
+</div>
 <p>xOpera is a TOSCA standard compliant orchestrator that is following the paradigm of having a minimal set of
 features and is currently focusing on Ansible.
 xOpera is following the traditional UNIX philosophy of having a tool that does one thing, and does it right.
@@ -242,7 +247,7 @@ xOpera, in its capacity, takes care of all the untidy inter-playbook coordinatio
 <p>xOpera orchestrator has its own YAML and TOSCA parser which is shown on the image below
 (<a class="reference internal" href="#opera-parser-structure"><span class="std std-numref">Fig. 2</span></a>.)</p>
 <div class="figure align-center" id="id6">
-<span id="opera-parser-structure"></span><a class="reference external image-reference" href="_images/opera-parser-structure.png"><img alt="_images/opera-parser-structure.png" src="_images/opera-parser-structure.png" style="width: 50%;" /></a>
+<span id="opera-parser-structure"></span><a class="reference external image-reference" href="_images/opera-parser-structure.png"><img alt="_images/opera-parser-structure.png" src="_images/opera-parser-structure.png" style="width: 40%;" /></a>
 <p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">xOpera parser and executor</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </div>
 </div>

@@ -4,14 +4,12 @@
 xOpera API
 ***********
 
-.. only:: html
+.. _xopera_api_logo:
 
-    .. _xopera_api_logo:
-
-    .. figure:: /images/xopera-api-mark-black-text-mid.svg
-        :target: _images/xopera-api-mark-black-text-mid.svg
-        :width: 50%
-        :align: center
+.. figure:: /images/xopera-api-mark-black-text-mid.png
+    :target: _images/xopera-api-mark-black-text-mid.png
+    :width: 40%
+    :align: center
 
 .. _API installation:
 

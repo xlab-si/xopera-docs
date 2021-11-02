@@ -374,7 +374,16 @@ Additionally we deploy the `Prometheus helm chart`_ to be able to monitor the Ku
 HPC
 ===
 
-TBD.
+.. _xopera_hpc_logo:
+
+.. figure:: /images/xopera-hpc-mark-black-text-mid.png
+    :target: _images/xopera-hpc-mark-black-text-mid.png
+    :width: 40%
+    :align: center
+
+.. note::
+
+   *TBD*: This part of the documentation will be improved in the future.
 
 .. _Examples TOSCA CSARs:
 
