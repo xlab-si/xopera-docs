@@ -547,6 +547,14 @@ The result of the example consisting of deploy, outputs and undeploy operations 
 More templates and blueprints
 =============================
 
+The following video shows how xOpera examples can be used with different xOpera tools.
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/NZLYWB9uxjk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+
 More examples are available in `opera-examples repository`_.
 Below is a table that lists all the currently available xOpera examples and their purpose.
 
