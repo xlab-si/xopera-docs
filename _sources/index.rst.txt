@@ -23,6 +23,7 @@ Just go to :ref:`Examples` or follow the Table of Contents below.
     tps
     scanner
     examples
+    GitHub <https://github.com/xlab-si/xopera-opera>
 
 ..
    Indices and tables
