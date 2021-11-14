@@ -23,6 +23,7 @@ Just go to :ref:`Examples` or follow the Table of Contents below.
     tps
     scanner
     examples
+    Contact us <xopera@xlab.si>
     GitHub <https://github.com/xlab-si/xopera-opera>
 
 ..
@@ -50,7 +51,9 @@ References
 Contact
 =======
 
-The list of contributors:
+You can contact the xOpera team by sending an email to xopera@xlab.si.
+
+The list of xOpera contributors:
 
 - xOpera orchestration tool core development team:
     - Tadej Borovšak (https://github.com/tadeboro/)
