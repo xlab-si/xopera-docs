@@ -42,6 +42,11 @@ So the simplest way to test ``opera`` is to install it into virtual environment:
     (.venv) $ pip install --upgrade pip
     (.venv) $ pip install opera
 
+The development version of the package is available on `TestPyPI`_ and the installation goes as follows.
+
+.. code-block:: console
+
+    (.venv) $ pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ opera
 
 .. _CLI Quickstart:
 
@@ -1221,6 +1226,7 @@ It also shows an example of deploying a simple image resize solution to AWS Lamb
 
 
 .. _PyPI: https://pypi.org/project/opera/
+.. _TestPyPI: https://test.pypi.org/project/opera/
 .. _opera issues: https://github.com/xlab-si/xopera-opera/issues
 .. _TOSCA interface operations: https://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.3/cos01/TOSCA-Simple-Profile-YAML-v1.3-cos01.html#_Toc26969470
 .. _misc-tosca-types-csar: https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types
