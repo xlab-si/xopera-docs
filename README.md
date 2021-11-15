@@ -8,6 +8,7 @@ This repository holds the documentation for xOpera and is published on https://x
 ## Table of Contents
   - [Description](#purpose-and-description)
   - [Local building and testing](#local-building-and-testing)
+  - [License](#license)
   - [Contact](#contact)
   - [Acknowledgement](#acknowledgement)
 
@@ -39,8 +40,11 @@ sphinx-build -M latexpdf docs build
 After that you will found rendered documentation HTML files in `build` folder and you can open and view them inside 
 your browser. 
 
+## License
+This work is licensed under the [Apache License 2.0].
+
 ## Contact
-You can contact the xOpera team by sending an email to [xopera@xlab.si](mailto:xopera@xlab.si).
+You can contact the xOpera team by sending an email to [xopera@xlab.si].
 
 ## Acknowledgement
 This project has received funding from the European Union’s Horizon 2020 research and innovation programme under Grant 
@@ -49,6 +53,8 @@ Agreements No. 825040 ([RADON]), No. 825480 ([SODALITE]) and No. 101000162 ([PIA
 [xOpera TOSCA orchestration tool]: https://github.com/xlab-si/xopera-opera
 [Sphinx documentation tool]: https://www.sphinx-doc.org/en/master/
 [Read the Docs]: https://readthedocs.org/
+[Apache License 2.0]: https://www.apache.org/licenses/LICENSE-2.0
+[xopera@xlab.si]: mailto:xopera@xlab.si
 [RADON]: http://radon-h2020.eu
 [SODALITE]: http://www.sodalite.eu/
 [PIACERE]: https://www.piacere-project.eu/
