@@ -23,7 +23,11 @@ Just go to :ref:`Examples` or follow the Table of Contents below.
     tps
     scanner
     examples
-    Contact us <xopera@xlab.si>
+
+.. toctree::
+    :caption: More info
+
+    contact
     GitHub <https://github.com/xlab-si/xopera-opera>
 
 ..
