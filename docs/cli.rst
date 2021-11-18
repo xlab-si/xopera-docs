@@ -42,7 +42,7 @@ So the simplest way to test ``opera`` is to install it into virtual environment:
     (.venv) $ pip install --upgrade pip
     (.venv) $ pip install opera
 
-The development version of the package is available on `TestPyPI`_ and the installation goes as follows.
+The development version of the package is available on `Test PyPI`_ and the installation goes as follows.
 
 .. code-block:: console
 
@@ -154,6 +154,10 @@ After that the created directory and file are deleted:
    (venv) examples/hello$ ls -lh /tmp/playing-opera/hello/
    ls: cannot access '/tmp/playing-opera/hello/': No such file or directory
 
+.. tip::
+
+    You can retrieve currently installed version with ``opera --version/-v``.
+
 .. _CLI commands reference:
 
 ======================
@@ -161,7 +165,7 @@ CLI commands reference
 ======================
 
 ``opera`` was originally meant to be used in a terminal as a client and it currently allows users to execute the
-following commands:
+following CLI commands:
 
 +---------------------+--------------------------------------------------------+
 | CLI command         | Purpose and description                                |
@@ -187,8 +191,6 @@ following commands:
 || `opera notify`_    || notify the orchestrator about changes after the       |
 ||                    || deployment and run triggers defined in TOSCA policies |
 +---------------------+--------------------------------------------------------+
-| `opera init`_       | initialize the service template or CSAR (*deprecated*) |
-+---------------------+--------------------------------------------------------+
 
 The commands can be executed in a random order and the orchestrator will warn and the orchestrator will warn you in
 case if any problems.
@@ -201,7 +203,7 @@ Each CLI command is described more in detail in the following sections.
 deploy
 ######
 
-``opera deploy`` - used to deploy and control deployment of the application described in YAML or CSAR.
+``opera deploy`` - used to deploy and control deployment of the TOSCA application described in YAML or CSAR.
 
 .. tabs::
 
@@ -215,11 +217,10 @@ deploy
 
             The ``--resume/-r`` and ``--clean-state/-c`` options are mutually exclusive.
 
-
     .. tab:: Description
 
         The ``opera deploy`` command is used to initiate the deployment orchestration process using the supplied TOSCA
-        service template or the compressed TOSCA CSAR.
+        service template or the compressed (or uncompressed) TOSCA CSAR.
         Within this CLI command the xOpera orchestrator invokes multiple `TOSCA interface operations`_ (TOSCA
         `Standard interface` node operations and also TOSCA `Configure interface` relationship operations).
         The operations are executed in the following order:
@@ -236,7 +237,7 @@ deploy
         corresponding Ansible playbook.
 
         After the deployment the following files and folders will be created in your opera storage directory (by
-        default that is ``.opera`` and can be changed using the ``--instance-path`` flag):
+        default that is ``.opera`` and can be changed using the ``--instance-path/-p`` flag):
 
         - ``root_file`` file - contains the path to the service template or CSAR
         - ``inputs`` file - JSON file with the supplied inputs
@@ -245,12 +246,26 @@ deploy
         - ``csars`` folder contains the extracted copy of your CSAR (created only if you deployed the compressed TOSCA
           CSAR)
 
+        The ``clean-state/-c`` option can be used if you want to clean the current deployment data and status from
+        opera storage (`.opera` by default) and redeploy again from the start.
+        And ``--resume/-r`` can be used to resume the deployment from where it was interrupted (due to some error for
+        instance) and this will deploy only the the nodes that have not been deployed yet.
+        Use ``--force/-f`` option to force the action and skip any possible yes/no prompts.
+        Use ``--verbose/-v`` option to see the outputs from the TOSCA executors.
+
+        The ``opera deploy`` CLI command also includes the ``--workers/-w`` switch, which allows users to specify the
+        amount of orchestration workers (i.e., concurrent threads).
+        This enables simultaneous deployment of multiple independent nodes.
+        By default (if not specified) the number of workers is set to 1 (i.e., only one node is deployed at once).
+        If the number of specified workers is higher than the number of independent nodes, the orchestrator will take
+        case of this and will decrease the amount of workers if needed.
+
     .. tab:: Example
 
-        Follow the next CLI instructions and results for the `hello-world`_ example.
+        Follow the next CLI instructions and results for the `hello-world`_ and `concurrency`_ examples.
 
         .. code-block:: console
-            :emphasize-lines: 2
+            :emphasize-lines: 2, 9, 171
 
             (venv) $ cd misc/hello-world
             (venv) misc/hello-world$ opera deploy service.yaml
@@ -259,6 +274,228 @@ deploy
             [Worker_0]   Deploying hello_0
             [Worker_0]     Executing create on hello_0
             [Worker_0]   Deployment of hello_0 complete
+
+            (venv) csars/misc-tosca-types$ opera deploy -vcf service.yaml
+            [Worker_0]   Deploying my-workstation_0
+            [Worker_0]   Deployment of my-workstation_0 complete
+            [Worker_0]   Deploying hello_0
+            [Worker_0]     Executing create on hello_0
+            ***inputs***
+            ['marker: default-marker']
+            ***inputs***
+            [Worker_0] ------------
+            {
+                "custom_stats": {},
+                "global_custom_stats": {},
+                "plays": [
+                    {
+                        "play": {
+                            "duration": {
+                                "end": "2021-11-18T09:39:50.479629Z",
+                                "start": "2021-11-18T09:39:49.775013Z"
+                            },
+                            "id": "33b7ca13-44dc-e7a3-12b1-000000000006",
+                            "name": "all"
+                        },
+                        "tasks": [
+                            {
+                                "hosts": {
+                                    "opera": {
+                                        "_ansible_no_log": false,
+                                        "action": "file",
+                                        "changed": false,
+                                        "diff": {
+                                            "after": {
+                                                "path": "/tmp/playing-opera/hello"
+                                            },
+                                            "before": {
+                                                "path": "/tmp/playing-opera/hello"
+                                            }
+                                        },
+                                        "gid": 1000,
+                                        "group": "anzoman",
+                                        "invocation": {
+                                            "module_args": {
+                                                "_diff_peek": null,
+                                                "_original_basename": null,
+                                                "access_time": null,
+                                                "access_time_format": "%Y%m%d%H%M.%S",
+                                                "attributes": null,
+                                                "follow": true,
+                                                "force": false,
+                                                "group": null,
+                                                "mode": null,
+                                                "modification_time": null,
+                                                "modification_time_format": "%Y%m%d%H%M.%S",
+                                                "owner": null,
+                                                "path": "/tmp/playing-opera/hello",
+                                                "recurse": true,
+                                                "selevel": null,
+                                                "serole": null,
+                                                "setype": null,
+                                                "seuser": null,
+                                                "src": null,
+                                                "state": "directory",
+                                                "unsafe_writes": false
+                                            }
+                                        },
+                                        "mode": "0775",
+                                        "owner": "anzoman",
+                                        "path": "/tmp/playing-opera/hello",
+                                        "size": 4096,
+                                        "state": "directory",
+                                        "uid": 1000
+                                    }
+                                },
+                                "task": {
+                                    "duration": {
+                                        "end": "2021-11-18T09:39:50.025377Z",
+                                        "start": "2021-11-18T09:39:49.781956Z"
+                                    },
+                                    "id": "33b7ca13-44dc-e7a3-12b1-000000000008",
+                                    "name": "Make the location"
+                                }
+                            },
+                            {
+                                "hosts": {
+                                    "opera": {
+                                        "_ansible_no_log": false,
+                                        "action": "copy",
+                                        "changed": false,
+                                        "checksum": "0bcf4d22cec95aaf8b3814d5cf6a208fa119c731",
+                                        "dest": "/tmp/playing-opera/hello/hello.txt",
+                                        "diff": {
+                                            "after": {
+                                                "path": "/tmp/playing-opera/hello/hello.txt"
+                                            },
+                                            "before": {
+                                                "path": "/tmp/playing-opera/hello/hello.txt"
+                                            }
+                                        },
+                                        "gid": 1000,
+                                        "group": "anzoman",
+                                        "invocation": {
+                                            "module_args": {
+                                                "_diff_peek": null,
+                                                "_original_basename": "tmpexrgiciv",
+                                                "access_time": null,
+                                                "access_time_format": "%Y%m%d%H%M.%S",
+                                                "attributes": null,
+                                                "dest": "/tmp/playing-opera/hello/hello.txt",
+                                                "follow": true,
+                                                "force": false,
+                                                "group": null,
+                                                "mode": null,
+                                                "modification_time": null,
+                                                "modification_time_format": "%Y%m%d%H%M.%S",
+                                                "owner": null,
+                                                "path": "/tmp/playing-opera/hello/hello.txt",
+                                                "recurse": false,
+                                                "selevel": null,
+                                                "serole": null,
+                                                "setype": null,
+                                                "seuser": null,
+                                                "src": null,
+                                                "state": "file",
+                                                "unsafe_writes": false
+                                            }
+                                        },
+                                        "mode": "0664",
+                                        "owner": "anzoman",
+                                        "path": "/tmp/playing-opera/hello/hello.txt",
+                                        "size": 14,
+                                        "state": "file",
+                                        "uid": 1000
+                                    }
+                                },
+                                "task": {
+                                    "duration": {
+                                        "end": "2021-11-18T09:39:50.479629Z",
+                                        "start": "2021-11-18T09:39:50.027874Z"
+                                    },
+                                    "id": "33b7ca13-44dc-e7a3-12b1-000000000009",
+                                    "name": "Ansible was here"
+                                }
+                            }
+                        ]
+                    }
+                ],
+                "stats": {
+                    "opera": {
+                        "changed": 0,
+                        "failures": 0,
+                        "ignored": 0,
+                        "ok": 2,
+                        "rescued": 0,
+                        "skipped": 0,
+                        "unreachable": 0
+                    }
+                }
+            }
+            [Worker_0] ------------
+            [Worker_0] ============
+            [Worker_0]   Deployment of hello_0 complete
+
+            (venv) misc/hello-world$ ../concurrency
+            (venv) misc/concurrency$ opera deploy -w 10 service.yaml
+            [Worker_0]   Deploying my-workstation_0
+            [Worker_0]   Deployment of my-workstation_0 complete
+            [Worker_0]   Deploying hello-1_0
+            [Worker_2]   Deploying hello-2_0
+            [Worker_3]   Deploying hello-3_0
+            [Worker_0]     Executing create on hello-1_0
+            [Worker_4]   Deploying hello-4_0
+            [Worker_5]   Deploying hello-8_0
+            [Worker_3]     Executing create on hello-3_0
+            [Worker_4]     Executing create on hello-4_0
+            [Worker_2]     Executing create on hello-2_0
+            [Worker_1]   Deploying hello-9_0
+            [Worker_7]   Deploying hello-10_0
+            [Worker_5]     Executing create on hello-8_0
+            [Worker_7]     Executing create on hello-10_0
+            [Worker_1]     Executing create on hello-9_0
+            [Worker_1]     Executing start on hello-9_0
+            [Worker_4]     Executing start on hello-4_0
+            [Worker_3]     Executing start on hello-3_0
+            [Worker_7]     Executing start on hello-10_0
+            [Worker_1]   Deployment of hello-9_0 complete
+            [Worker_3]   Deployment of hello-3_0 complete
+            [Worker_6]   Deploying hello-12_0
+            [Worker_6]     Executing create on hello-12_0
+            [Worker_4]   Deployment of hello-4_0 complete
+            [Worker_1]   Deploying hello-13_0
+            [Worker_1]     Executing create on hello-13_0
+            [Worker_5]     Executing start on hello-8_0
+            [Worker_0]     Executing start on hello-1_0
+            [Worker_2]     Executing start on hello-2_0
+            [Worker_6]     Executing start on hello-12_0
+            [Worker_7]   Deployment of hello-10_0 complete
+            [Worker_1]     Executing start on hello-13_0
+            [Worker_6]   Deployment of hello-12_0 complete
+            [Worker_5]   Deployment of hello-8_0 complete
+            [Worker_0]   Deployment of hello-1_0 complete
+            [Worker_3]   Deploying hello-5_0
+            [Worker_3]     Executing create on hello-5_0
+            [Worker_8]   Deploying hello-11_0
+            [Worker_8]     Executing create on hello-11_0
+            [Worker_1]   Deployment of hello-13_0 complete
+            [Worker_2]   Deployment of hello-2_0 complete
+            [Worker_8]     Executing start on hello-11_0
+            [Worker_3]     Executing start on hello-5_0
+            [Worker_8]   Deployment of hello-11_0 complete
+            [Worker_3]   Deployment of hello-5_0 complete
+            [Worker_4]   Deploying hello-6_0
+            [Worker_4]     Executing create on hello-6_0
+            [Worker_4]     Executing start on hello-6_0
+            [Worker_4]   Deployment of hello-6_0 complete
+            [Worker_9]   Deploying hello-7_0
+            [Worker_9]     Executing create on hello-7_0
+            [Worker_9]     Executing start on hello-7_0
+            [Worker_9]   Deployment of hello-7_0 complete
+            [Worker_7]   Deploying hello-14_0
+            [Worker_7]     Executing create on hello-14_0
+            [Worker_7]     Executing start on hello-14_0
+            [Worker_7]   Deployment of hello-14_0 complete
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -290,14 +527,17 @@ undeploy
         2. ``delete``
 
         The operation gets executed if it is defined within the TOSCA service template and has a link to the
-        corresponding implementation (e.g. Ansible playbook).
+        corresponding implementation (e.g., Ansible playbook).
+
+        The undeploy CLI command also accepts flags similar to deploy command: ``--resume/-r``, ``--force/-f`` and
+        ``--workers/-w``.
 
     .. tab:: Example
 
         Follow the next CLI instructions and results for the `hello-world`_ example.
 
         .. code-block:: console
-            :emphasize-lines: 8
+            :emphasize-lines: 9
 
             (venv) $ cd misc/hello-world
             (venv) misc/hello-world$ opera deploy service.yaml
@@ -306,6 +546,7 @@ undeploy
             [Worker_0]   Deploying hello_0
             [Worker_0]     Executing create on hello_0
             [Worker_0]   Deployment of hello_0 complete
+
             (venv) misc/hello-world$ opera undeploy
             [Worker_0]   Undeploying hello_0
             [Worker_0]     Executing delete on hello_0
@@ -338,21 +579,35 @@ validate
         it's properly structured and deployable by opera.
         At the end of this operation you will receive the validation result where opera will warn you about TOSCA
         template inconsistencies if there was any.
-        Since validation can be successful or unsuccessful the `opera validate` commands has corresponding return
+        Since validation can be successful or unsuccessful the ``opera validate`` command has corresponding return
         codes - 0 for success and 1 for failure.
         If the validation succeeds this means that your TOSCA templates are valid and that all their implementations
-        (e.g. Ansible playbooks) can be invoked. However, this doesn't mean that these operations will succeed.
+        (e.g., Ansible playbooks) can be invoked.
+        However, this doesn't mean that these operations will succeed.
+        To also check the executors behind the TOSCA templates, you can use the ``--executors/-e`` options that will
+        not deploy anything, but will just try to run the executors in test mode (e.g., Ansible check mode).
 
     .. tab:: Example
 
-        Follow the next CLI instructions and results for the `misc-tosca-types-csar`_ example.
+        Follow the next CLI instructions and results for the `misc-tosca-types-csar`_ and `hello-world`_ examples.
 
         .. code-block:: console
-            :emphasize-lines: 2
+            :emphasize-lines: 2, 7
 
-            (venv) $ cd misc/hello-world
+            (venv) $ cd csars/misc-tosca-types
             (venv) csars/misc-tosca-types$ opera validate -i inputs.yaml service.yaml
             Validating service template...
+            Done.
+
+            (venv) $ cd ../../hello-world
+            (venv) misc/hello-world$ opera validate --executors service.yaml
+            Validating service template...
+            [Worker_0]   Validating my-workstation_0
+            [Worker_0]   Validation of my-workstation_0 complete
+            [Worker_0]   Validating hello_0
+            [Worker_0]     Executing create on hello_0
+            [Worker_0]     Executing delete on hello_0
+            [Worker_0]   Validation of hello_0 complete
             Done.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -384,7 +639,7 @@ outputs
         Follow the next CLI instructions and results for the `outputs`_ example.
 
         .. code-block:: console
-            :emphasize-lines: 7
+            :emphasize-lines: 7, 15
 
             (venv) $ cd tosca/outputs
             (venv) tosca/outputs$ opera deploy service.yaml
@@ -393,12 +648,24 @@ outputs
             [Worker_0]   Deployment of my_node_0 complete
 
             (venv) tosca/outputs$ opera outputs
-            output_attr:
-            description: Example of attribute output
-            value: my_custom_attribute_value
             output_prop:
-            description: Example of property output
-            value: 123
+              description: Example of property output
+              value: 123
+            output_attr:
+              description: Example of attribute output
+              value: my_custom_attribute_value
+
+            (venv) tosca/outputs$ opera outputs --format json
+            {
+              "output_prop": {
+                "description": "Example of property output",
+                "value": 123
+              },
+              "output_attr": {
+                "description": "Example of attribute output",
+                "value": "my_custom_attribute_value"
+              }
+            }
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -424,43 +691,57 @@ info
         With ``opera info`` user can get the information about the current opera project and can access its storage and
         state.
         This included printing out the path to TOSCA service template entrypoint, extracted CSAR location, path to the
-        storage inputs and status/state of the deployment.
-        The output can be formatted in YAML or JSON. The created json object looks like this:
+        storage inputs, status/state of the deployment, TOSCA CSAR/service template metadata and CSAR validation status.
+        The output can be formatted in YAML or JSON. The created JSON object looks like this:
 
         .. code-block:: json
 
             {
-                "service_template":  "string | null",
-                "content_root":      "string | null",
-                "inputs":            "string | null",
-                "status":            "initialized | deployed | undeployed | interrupted | null"
+                "service_template":          "string | null",
+                "content_root":              "string | null",
+                "inputs":                    "string | null",
+                "status":                    "deploying | deployed | undeploying | undeployed | error | null",
+                "csar_metadata":             "YAML map | null",
+                "service_template_metadata": "YAML map | null",
+                "csar_valid":                "true | false | null"
             }
+
+            xOpera TOSCA orchestration tool now provides the following orchestration states (the are also CLI commands
+            that trigger changing the state in the brackets):
+
+            - `deploying` (``opera deploy``)
+            - `deployed` (``opera deploy``)
+            - `undeploying` (``opera undeploy``)
+            - `undeployed` (``opera undeploy``)
+            - `error` (``opera deploy/undeploy/update/notify``)
+            - `unknown` (for special cases which might happen)
+
+            These state are changed during the execution of TOSCA interface operations (e.g., Ansible playbooks).
 
     .. tab:: Example
 
         Follow the next CLI instructions and results for the `misc-tosca-types-csar`_ example.
 
         .. code-block:: console
-            :emphasize-lines: 2, 12, 34, 56, 84
+            :emphasize-lines: 2, 33, 69, 107
 
             (venv) $ cd csars/misc-tosca-types
             (venv) csars/misc-tosca-types$ opera info
-            content_root: null
-            inputs: null
-            service_template: null
-            status: null
-
-            (venv) csars/misc-tosca-types$ opera init -i inputs.yaml service.yaml
-            Warning: 'opera init' command is deprecated and will probably be removed within one of the next releases. Please use 'opera deploy' to initialize and deploy service templates or compressed CSARs.
-            Service template was initialized
-
-            (venv) csars/misc-tosca-types$ opera info
-            content_root: null
-            inputs: /home/user/Desktop/xopera-examples/csars/misc-tosca-types/.opera/inputs
             service_template: service.yaml
-            status: initialized
+            content_root: .
+            inputs: null
+            status: null
+            csar_metadata:
+              Name: null
+              Content-Type: null
+              TOSCA-Meta-File-Version: '1.1'
+              CSAR-Version: '1.1'
+              Created-By: XLAB
+              Entry-Definitions: service.yaml
+            service_template_metadata: null
+            csar_valid: true
 
-            (venv) csars/misc-tosca-types$ opera deploy
+            (venv) csars/misc-tosca-types$ opera deploy -i inputs.yaml service.yaml
             [Worker_0]   Deploying my-workstation1_0
             [Worker_0]   Deployment of my-workstation1_0 complete
             [Worker_0]   Deploying my-workstation2_0
@@ -476,14 +757,28 @@ info
             ^C[Worker_0] ------------
             KeyboardInterrupt
 
-            (venv) csars/misc-tosca-types$ opera info
+            (venv) csars/misc-tosca-types$ opera info -f json
+            {
+              "service_template": "service.yaml",
+              "content_root": ".",
+              "inputs": {
+                "host_ip": "localhost",
+                "slovenian_greeting": "Hej prijatelj, pojdi z nami!"
+              },
+              "status": "error",
+              "csar_metadata": {
+                "Name": null,
+                "Content-Type": null,
+                "TOSCA-Meta-File-Version": "1.1",
+                "CSAR-Version": "1.1",
+                "Created-By": "XLAB",
+                "Entry-Definitions": "service.yaml"
+              },
+              "service_template_metadata": null,
+              "csar_valid": true
+            }
 
-            content_root: null
-            inputs: /home/user/Desktop/xopera-examples/csars/misc-tosca-types/.opera/inputs
-            service_template: service.yaml
-            status: interrupted
-
-            (venv) csars/misc-tosca-types$ opera deploy -r -f
+            (venv) csars/misc-tosca-types$ opera deploy --resume --force
             [Worker_0]   Deploying interfaces_0
             [Worker_0]     Executing create on interfaces_0
             [Worker_0]     Executing configure on interfaces_0
@@ -498,12 +793,22 @@ info
             [Worker_0]     Executing create on test_0
             [Worker_0]   Deployment of test_0 complete
 
-            (venv) csars/misc-tosca-types$ opera info
-
-            content_root: null
-            inputs: /home/user/Desktop/xopera-examples/csars/misc-tosca-types/.opera/inputs
+            (venv) csars/misc-tosca-types$ opera info -f yaml
             service_template: service.yaml
+            content_root: .
+            inputs:
+              host_ip: localhost
+              slovenian_greeting: Hej prijatelj, pojdi z nami!
             status: deployed
+            csar_metadata:
+              Name: null
+              Content-Type: null
+              TOSCA-Meta-File-Version: '1.1'
+              CSAR-Version: '1.1'
+              Created-By: XLAB
+              Entry-Definitions: service.yaml
+            service_template_metadata: null
+            csar_valid: true
 
             (venv) csars/misc-tosca-types$ opera undeploy
             [Worker_0]   Undeploying my-workstation2_0
@@ -527,11 +832,21 @@ info
             [Worker_0]   Undeployment of test_0 complete
 
             (venv) csars/misc-tosca-types$ opera info
-
-            content_root: null
-            inputs: /home/user/Desktop/xopera-examples/csars/misc-tosca-types/.opera/inputs
             service_template: service.yaml
+            content_root: .
+            inputs:
+              host_ip: localhost
+              slovenian_greeting: Hej prijatelj, pojdi z nami!
             status: undeployed
+            csar_metadata:
+              Name: null
+              Content-Type: null
+              TOSCA-Meta-File-Version: '1.1'
+              CSAR-Version: '1.1'
+              Created-By: XLAB
+              Entry-Definitions: service.yaml
+            service_template_metadata: null
+            csar_valid: true
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -555,15 +870,16 @@ package
     .. tab:: Description
 
         The ``opera package`` command is used to create a valid TOSCA CSAR - a deployable zip (or tar) compressed
-        archive file.
+        archive file (CSAR = Cloud Service Archive).
         TOSCA CSARs contain the blueprint of the application that we want to deploy.
         The process includes packaging together the TOSCA service template and all the accompanying files.
 
         In general, ``opera package`` receives a directory (where user's TOSCA templates and other files are located)
         and produces a compressed CSAR file.
         The command can create the CSAR if there is at least one TOSCA YAML file in the input folder.
-        If the CSAR structure is already present (if `TOSCA-Metadata/TOSCA.meta` exists and all other TOSCA CSAR
-        constraints are satisfied) the CSAR is created without an additional temporary directory.
+        If the CSAR structure is already present (if `TOSCA-Metadata/TOSCA.meta` or exists or ``metadata`` is present
+        in the TOSCA service template and if all other TOSCA CSAR constraints are satisfied) the CSAR is created
+        without an additional temporary directory.
         And if not, the files are copied to the tempdir, where the CSAR structure is created and at the end the tempdir
         is compressed.
         The input folder is the mandatory positional argument, but there are also other command flags that can be used.
@@ -934,8 +1250,8 @@ notify
 
         There are cases when the user would want to execute some tasks after the deployment based on the changes that
         occur on already deployed instances at runtime.
-        With ``opera notify`` command, the user can inform the orchestrator about the changes (e.g. CPU load has
-        increased) and the orchestrator will invoke the operations that are needed to make necessary actions (e.g.
+        With ``opera notify`` command, the user can inform the orchestrator about the changes (e.g., CPU load has
+        increased) and the orchestrator will invoke the operations that are needed to make necessary actions (e.g.,
         horizontal or vertical scaling of the instances).
 
         In general ``opera notify`` is meant to be used after the deployment (after running ``opera deploy``) to notify
@@ -958,7 +1274,7 @@ notify
         use all policy triggers, but just one or two, which you can specify with by trigger's full name or its event
         using ``--trigger/-t`` option.
         It is also recommended that you use the ``--notification/-n`` switch for the path to the notification file
-        (usually a JSON file) that includes changes (e.g. metrics from monitoring tool) that will be exposed to TOSCA
+        (usually a JSON file) that includes changes (e.g., metrics from monitoring tool) that will be exposed to TOSCA
         interfaces as ``notification`` variable (for example in Ansible playbooks you can use Jinja2
         ``{{ notification }}`` template to retrieve and parse the notification file contents).
 
@@ -966,8 +1282,8 @@ notify
 
         With ``opera notify`` and by empowering the orchestrator with the practical usage of TOSCA policies and
         triggers we wanted to enable scaling and other similar use cases that are based on policies and triggers.
-        Many applications and services (e.g. AWS Lambda, Docker containers, Kubernetes solutions etc.) that are
-        deployed with xOpera orchestrator often include the configuration of monitoring tool (e.g. Prometheus) that is
+        Many applications and services (e.g., AWS Lambda, Docker containers, Kubernetes solutions etc.) that are
+        deployed with xOpera orchestrator often include the configuration of monitoring tool (e.g., Prometheus) that is
         able to collect certain metrics like CPU load or memory usage.
         We wanted to ensure scaling of the solutions when certain limits (from TOSCA policies) are reached (like too
         high CPU usage).
@@ -1054,66 +1370,6 @@ notify
 
 ------------------------------------------------------------------------------------------------------------------------
 
-.. _opera init:
-
-init (deprecated)
-#################
-
-``opera init`` - initialize TOSCA CSAR or service template.
-
-.. tabs::
-
-    .. tab:: Usage
-
-        .. argparse::
-            :module: opera.cli
-            :func: create_parser
-            :prog: opera
-            :path: init
-
-    .. tab:: Description
-
-        The deprecated ``opera init`` command is used to initialize the deployment.
-        It either takes a TOSCA template file or a compressed (zipped CSAR) file (and an optional YAML file with
-        inputs).
-
-        When the compressed CSAR is provided to the ``opera init`` command it is then validated to be sure that the
-        CSAR is compliant with TOSCA.
-
-        After the initialization the following files and folders will be created in your opera storage directory (by
-        default that is ``.opera`` and can be changed using the ``--instance-path`` flag):
-
-        - ``root_file`` file - contains the path to the service template or CSAR
-        - ``inputs`` file - JSON file with the supplied inputs
-        - ``csars`` folder contains the extracted copy of your CSAR (created only if you deployed the compressed TOSCA
-          CSAR)
-
-        After running ``opera init`` you will be able to initiate the deployment process using just the
-        ``opera deploy`` command without any positional arguments (however, you can still supply inputs or override
-        TOSCA service template/CSAR).
-
-        .. deprecated:: 0.6.1
-
-    .. tab:: Example
-
-        Follow the next CLI instructions and results for the `misc-tosca-types-csar`_ example.
-
-        .. code-block:: console
-            :emphasize-lines: 2
-
-            (venv) $ cd csars/misc-tosca-types
-            (venv) csars/misc-tosca-types$ opera init -i inputs.yaml service.yaml
-            Warning: 'opera init' command is deprecated and will probably be removed within one of the next releases. Please use 'opera deploy' to initialize and deploy service templates or compressed CSARs.
-            Service template was initialized
-
-.. note::
-
-    The ``opera init`` command is deprecated (since version *0.6.1*) and will probably be removed within one of the
-    next releases.
-    Please use ``opera deploy`` to initialize and deploy service templates or compressed CSARs.
-
-------------------------------------------------------------------------------------------------------------------------
-
 .. _CLI secrets and Environment variables:
 
 =================================
@@ -1139,7 +1395,7 @@ You can use the following environment variables:
 
 .. danger::
 
-    Be very careful with your orchestration secrets (such as SSH private keys, cloud credentials, passwords ans so on)
+    Be very careful with your orchestration secrets (such as SSH private keys, cloud credentials, passwords and so on)
     that are stored as opera inputs.
     To avoid exposing them don't share the inputs file and the created opera storage folder with anyone.
 
@@ -1166,11 +1422,10 @@ file and then source it.
     #!/usr/bin/env bash
     # AUTOMATCALLY GENERATED by `shtab`
 
-    _shtab_opera_options_='-h --help -s --shell-completion'
-    _shtab_opera_commands_='deploy diff info init outputs package undeploy unpackage update validate'
+    _shtab_opera_subparsers=('deploy' 'diff' 'info' 'notify' 'outputs' 'package' 'undeploy' 'unpackage' 'update' 'validate')
 
-    _shtab_opera_deploy='-h --help --instance-path -p --inputs -i --workers -w --resume -r --clean-state -c --force -f --verbose -v'
-    _shtab_opera_deploy_COMPGEN=_shtab_compgen_files
+    _shtab_opera_option_strings=('-h' '--help' '-s' '--shell-completion' '--version' '-v')
+    _shtab_opera_deploy_option_strings=('-h' '--help' '--instance-path' '-p' '--inputs' '-i' '--workers' '-w' '--resume' '-r' '--clean-state' '-c' '--force' '-f' '--verbose' '-v')
     ...
 
     # print out completion script for zsh shell
@@ -1180,15 +1435,24 @@ file and then source it.
     # AUTOMATCALLY GENERATED by `shtab`
 
     _shtab_opera_options_=(
-    "(- :)"{-h,--help}"[show this help message and exit]"
-    {-s,--shell-completion}"[Generate tab completion script for your shell]:shell_completion:(bash zsh)"
+      "(- :)"{-h,--help}"[show this help message and exit]"
+      {-s,--shell-completion}"[Generate tab completion script for your shell]:shell_completion:(bash zsh)"
+      {--version,-v}"[Get current opera package version]:version:"
     )
 
     _shtab_opera_commands_() {
-    local _commands=(
-    "deploy:"
-    "diff:"
-    "info:"
+      local _commands=(
+        "deploy:"
+        "diff:"
+        "info:"
+        "notify:"
+        "outputs:"
+        "package:"
+        "undeploy:"
+        "unpackage:"
+        "update:"
+        "validate:"
+      )
     ...
 
     # activate completion for bash directly
@@ -1209,29 +1473,14 @@ the executed Ansible playbooks.
 Consider using the two switches if you face any problems.
 If the issue persists please have a look at the existing `opera issues`_ or open a new one yourself.
 
-.. _CLI video:
-
-=====
-Video
-=====
-
-This video will help you to get started with xOpera.
-It also shows an example of deploying a simple image resize solution to AWS Lambda:
-
-.. raw:: html
-
-    <div style="text-align: center; margin-bottom: 2em;">
-    <iframe width="100%" height="350" src="https://www.youtube.com/embed/cb1efi3wnpw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-
 .. _PyPI: https://pypi.org/project/opera/
-.. _TestPyPI: https://test.pypi.org/project/opera/
+.. _Test PyPI: https://test.pypi.org/project/opera/
 .. _opera issues: https://github.com/xlab-si/xopera-opera/issues
 .. _TOSCA interface operations: https://docs.oasis-open.org/tosca/TOSCA-Simple-Profile-YAML/v1.3/cos01/TOSCA-Simple-Profile-YAML-v1.3-cos01.html#_Toc26969470
 .. _misc-tosca-types-csar: https://github.com/xlab-si/xopera-examples/tree/master/csars/misc-tosca-types
 .. _small-csar: https://github.com/xlab-si/xopera-examples/tree/master/csars/small
 .. _hello-world: https://github.com/xlab-si/xopera-examples/tree/master/misc/hello-world
+.. _concurrency: https://github.com/xlab-si/xopera-examples/tree/master/misc/concurrency
 .. _outputs: https://github.com/xlab-si/xopera-examples/tree/master/tosca/outputs
 .. _attribute-mapping: https://github.com/xlab-si/xopera-examples/tree/master/tosca/attribute-mapping
 .. _capability-attributes-properties: https://github.com/xlab-si/xopera-examples/tree/master/tosca/capability-attributes-properties

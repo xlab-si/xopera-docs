@@ -37,8 +37,8 @@ OpenStack libraries by running:
     (.venv) $ pip install -U opera[openstack]
 
 Before we can actually use the OpenStack functionality, we also need to obtain the OpenStack credentials.
-If we log into OpenStack and navigate to the ``Access & Security`` -> ``API Access`` page, we can download the rc file
-with all required information.
+If we log into OpenStack and navigate to the :guilabel:`Access & Security` -> :guilabel:`API Access` page, we can
+download the rc file with all required information.
 
 At the start of each session (e.g., when we open a new command line console), we must source the rc file by running:
 
@@ -393,7 +393,7 @@ TOSCA CSARs
 
 xOpera orchestrator can effectively validate, initialize, deploy and undeploy compressed `TOSCA CSAR <https://www.oasis-open.org/committees/download.php/46057/CSAR%20V0-1.docx>`_
 files which represent the main orchestration packages, containing TOSCA templates, their implementations
-(e.g. Ansible playbooks) and all the other accompanying files that are needed for the deployment.
+(e.g., Ansible playbooks) and all the other accompanying files that are needed for the deployment.
 
 .. _CExamples SAR without TOSCA.meta file:
 
@@ -628,7 +628,6 @@ Cloud examples
 || `aws-azure-platform-connection`_           || FaaS solution that connects AWS and Azure cloud providers      |
 ||                                            || with image-resize and image-watermark functionalities          |
 +---------------------------------------------+-----------------------------------------------------------------+
-
 
 .. _aws-thumbnail-generator: https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator
 .. _aws-thumbnail-generator-with-api-gateway: https://github.com/xlab-si/xopera-examples/tree/master/cloud/aws/thumbnail-generator-with-api-gateway
