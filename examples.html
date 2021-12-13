@@ -138,8 +138,9 @@ OpenFaaS.</p>
 <p>This part contains Infrastructure as a Service (IaaS) examples for private cloud providers.</p>
 <div class="section" id="openstack-client-setup">
 <span id="examples-openstack-client-setup"></span><h4>OpenStack client setup<a class="headerlink" href="#openstack-client-setup" title="Permalink to this headline"></a></h4>
-<p>This subsection describes <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/nginx-openstack">nginx-openstack</a> example.
-Because using OpenStack modules from Ansible playbooks is quite common, we can install <code class="docutils literal notranslate"><span class="pre">opera</span></code> with all required
+<p>This subsection describes <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/misc/nginx-openstack">nginx-openstack</a> example, which shows how to deploy and set up an OpenStack VM and an nginx
+site on top of it.</p>
+<p>Because using OpenStack modules from Ansible playbooks is quite common, we can install <code class="docutils literal notranslate"><span class="pre">opera</span></code> with all required
 OpenStack libraries by running:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(.venv)</span> <span class="gp">$ </span>pip install -U opera<span class="o">[</span>openstack<span class="o">]</span>
 </pre></div>
@@ -153,6 +154,34 @@ download the rc file with all required information.</p>
 </div>
 <p>After we enter the password, we are ready to start using the OpenStack modules in playbooks that implement life cycle
 operations.</p>
+<p>After the deployment the sample HTML website will be available on <cite>&lt;YOUR_VM_IP&gt;:80</cite>, so make sure that you unlock the
+(ingress) port <code class="docutils literal notranslate"><span class="pre">80</span></code> within the specified OpenStack security group.</p>
+<p>To deploy and undeploy the example follow the steps below.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> misc/nginx-openstack
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/nginx-openstack$ opera deploy -i inputs.yaml service.yaml</span>
+<span class="go">[Worker_0]   Deploying vm_0</span>
+<span class="go">[Worker_0]     Executing create on vm_0</span>
+<span class="go">[Worker_0]   Deployment of vm_0 complete</span>
+<span class="go">[Worker_0]   Deploying nginx_0</span>
+<span class="go">[Worker_0]     Executing create on nginx_0</span>
+<span class="go">[Worker_0]     Executing post_configure_target on site_0--nginx_0</span>
+<span class="go">[Worker_0]   Deployment of nginx_0 complete</span>
+<span class="go">[Worker_0]   Deploying site_0</span>
+<span class="go">[Worker_0]     Executing create on site_0</span>
+<span class="go">[Worker_0]   Deployment of site_0 complete</span>
+
+<span class="gp gp-VirtualEnv">(venv)</span> <span class="go">misc/nginx-openstack$ opera undeploy</span>
+<span class="go">[Worker_0]   Undeploying site_0</span>
+<span class="go">[Worker_0]     Executing delete on site_0</span>
+<span class="go">[Worker_0]   Undeployment of site_0 complete</span>
+<span class="go">[Worker_0]   Undeploying nginx_0</span>
+<span class="go">[Worker_0]     Executing delete on nginx_0</span>
+<span class="go">[Worker_0]   Undeployment of nginx_0 complete</span>
+<span class="go">[Worker_0]   Undeploying vm_0</span>
+<span class="go">[Worker_0]     Executing delete on vm_0</span>
+<span class="go">[Worker_0]   Undeployment of vm_0 complete</span>
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="faas">
@@ -330,8 +359,8 @@ The following examples show some deployments to get you started.</p>
 <span id="examples-docker-and-minio"></span><h3>Docker and MinIO<a class="headerlink" href="#docker-and-minio" title="Permalink to this headline"></a></h3>
 <p>xOpera orchestrator is able to run Docker containers by using the proper Ansible modules in the Ansible playbooks.
 The <a class="reference external" href="https://github.com/xlab-si/xopera-examples/tree/master/kubernetes/docker">docker</a> example was made to show how the installation of the Docker service and running Docker containers can be
-done with <code class="docutils literal notranslate"><span class="pre">opera</span></code>, TOSCA and Ansible.
-To deploy the example follow the steps below.</p>
+done with <code class="docutils literal notranslate"><span class="pre">opera</span></code>, TOSCA and Ansible.</p>
+<p>To deploy and undeploy the example follow the steps below.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp gp-VirtualEnv">(venv)</span> <span class="gp">$ </span><span class="nb">cd</span> kubernetes/docker
 <span class="gp gp-VirtualEnv">(venv)</span> <span class="go">kubernetes/docker$ opera deploy -i inputs.yaml service.yaml</span>
 <span class="go">[Worker_0]   Deploying my-workstation_0</span>

@@ -59,16 +59,18 @@ You can contact the xOpera team by sending an email to xopera@xlab.si.
 
 The list of xOpera contributors:
 
+- Contacts for projects where xOpera is being or has been used:
+    - Matija Cankar (https://github.com/cankarm/): `RADON`_ and `PIACERE`_
+    - Dragan Radolović (https://github.com/dradX/): `SODALITE`_
+
 - xOpera orchestration tool core development team:
-    - Tadej Borovšak (https://github.com/tadeboro/)
-    - Matej Artač (https://github.com/matejart/)
     - Anže Luzar (https://github.com/anzoman/)
     - Sašo Stanovnik (https://github.com/sstanovnik/)
+    - Matej Artač (https://github.com/matejart/)
     - Alexander Maslennikov (https://github.com/alexmaslenn/)
 
-- Contacts for projects where xOpera is being or has been used:
-    - Matija Cankar (https://github.com/cankarm/): `RADON`_ Horizon 2020 project
-    - Dragan Radolović (https://github.com/dradX/): `SODALITE`_ Horizon 2020 project
+- Former xOpera team members and xOpera developers:
+    - Tadej Borovšak (https://github.com/tadeboro/)
 
 .. _Acknowledgments:
 
