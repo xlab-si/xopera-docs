@@ -15,19 +15,21 @@ Just go to :ref:`Examples` or follow the Table of Contents below.
 
 .. toctree::
     :caption: Table of Contents
+    :hidden:
 
-    introduction
-    cli
-    api
-    saas
-    tps
-    scanner
-    examples
+    01-intro
+    02-cli
+    03-api
+    04-saas
+    05-tps
+    06-scanner
+    07-examples
 
 .. toctree::
     :caption: More info
+    :hidden:
 
-    contact
+    08-contact
     GitHub <https://github.com/xlab-si/xopera-opera>
 
 ..
