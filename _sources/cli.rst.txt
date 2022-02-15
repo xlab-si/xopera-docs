@@ -55,14 +55,19 @@ Quickstart
 ==========
 
 After you `installed xOpera CLI <CLI installation>`_ into virtual environment you can test if everything is working
-as expected. We can now explain how to deploy the `hello-world`_ example.
+as expected.
+We can now explain how to deploy the `hello-world`_ example.
 
 The hello world TOSCA service template is below.
 
 .. code-block:: yaml
 
-    ---
     tosca_definitions_version: tosca_simple_yaml_1_3
+
+    metadata:
+      template_name: "hello-world"
+      template_author: "XLAB"
+      template_version: "1.0"
 
     node_types:
       hello_type:
@@ -70,18 +75,18 @@ The hello world TOSCA service template is below.
         interfaces:
           Standard:
             inputs:
-              content:
-                default: { get_input: content }
+              marker:
+                value: { get_input: marker }
                 type: string
             operations:
-              create: playbooks/create.yml
-              delete: playbooks/delete.yml
+              create: playbooks/create.yaml
+              delete: playbooks/delete.yaml
 
     topology_template:
       inputs:
-        content:
+        marker:
           type: string
-          default: "Hello from Ansible and xOpera!\n"
+          default: default-marker
 
       node_templates:
         my-workstation:
@@ -94,11 +99,44 @@ The hello world TOSCA service template is below.
           type: hello_type
           requirements:
             - host: my-workstation
-    ...
 
 As you can see it is has only one node type defined. This `hello_type` here has two linked implementations that are
-actually two TOSCA operations (create and delete) that are implemented in a form of Ansible playbooks. The Ansible
+actually two TOSCA operations (`create` and `delete`) that are implemented in a form of Ansible playbooks. The Ansible
 playbook for creation is shown below and it is used to create a new folder and hello world file in `/tmp` directory.
+
+The Ansible playbook that implements the `create` TOSCA operation looks like this:
+
+.. code-block:: yaml
+
+    ---
+    - hosts: all
+      gather_facts: false
+
+      tasks:
+        - name: Make the location
+          file:
+            path: /tmp/playing-opera/hello
+            recurse: true
+            state: directory
+
+        - name: Ansible was here
+          copy:
+            dest: /tmp/playing-opera/hello/hello.txt
+            content: "{{ marker }}"
+
+And the playbook for destroying the service is below.
+
+.. code-block:: yaml
+
+    ---
+    - hosts: all
+      gather_facts: false
+
+      tasks:
+        - name: Remove the location
+          file:
+            path: /tmp/playing-opera
+            state: absent
 
 The deployment operation returns the following output:
 
@@ -120,21 +158,6 @@ If nothing went wrong, new empty file has been created at ``/tmp/playing-opera/h
    (venv) examples/hello$ ls -lh /tmp/playing-opera/hello/
    total 0
    -rw-rw-rw- 1 user user 0 Feb 20 16:02 hello.txt
-
-And the playbook for destroying the service is below.
-
-.. code-block:: yaml
-
-    ---
-    - hosts: all
-      gather_facts: false
-
-      tasks:
-        - name: Remove the location
-          file:
-            path: /tmp/opera-test
-            state: absent
-    ...
 
 To delete the created directory, we can undeploy our stuff by running:
 
@@ -180,9 +203,9 @@ following CLI commands:
 +---------------------+--------------------------------------------------------+
 | `opera info`_       | show information about the current project             |
 +---------------------+--------------------------------------------------------+
-| `opera package`_    | retrieve outputs from service template                 |
+| `opera package`_    | package templates and accompanying files into CSAR     |
 +---------------------+--------------------------------------------------------+
-| `opera unpackage`_  | retrieve outputs from service template                 |
+| `opera unpackage`_  | unpackage CSAR into directory                          |
 +---------------------+--------------------------------------------------------+
 | `opera diff`_       | compare service templates and instances                |
 +---------------------+--------------------------------------------------------+
@@ -192,8 +215,7 @@ following CLI commands:
 ||                    || deployment and run triggers defined in TOSCA policies |
 +---------------------+--------------------------------------------------------+
 
-The commands can be executed in a random order and the orchestrator will warn and the orchestrator will warn you in
-case if any problems.
+The commands can be executed in a random order and the orchestrator will warn you in case of any problems.
 Each CLI command is described more in detail in the following sections.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -258,7 +280,7 @@ deploy
         This enables simultaneous deployment of multiple independent nodes.
         By default (if not specified) the number of workers is set to 1 (i.e., only one node is deployed at once).
         If the number of specified workers is higher than the number of independent nodes, the orchestrator will take
-        case of this and will decrease the amount of workers if needed.
+        care of this and will decrease the amount of workers if needed.
 
     .. tab:: Example
 
@@ -617,7 +639,7 @@ validate
 outputs
 #######
 
-``opera outputs`` - print the outputs of the deploy/undeploy.
+``opera outputs`` - print the outputs from service template (after deployment/undeployment).
 
 .. tabs::
 
@@ -690,7 +712,7 @@ info
 
         With ``opera info`` user can get the information about the current opera project and can access its storage and
         state.
-        This included printing out the path to TOSCA service template entrypoint, extracted CSAR location, path to the
+        This includes printing out the path to TOSCA service template entrypoint, extracted CSAR location, path to the
         storage inputs, status/state of the deployment, TOSCA CSAR/service template metadata and CSAR validation status.
         The output can be formatted in YAML or JSON. The created JSON object looks like this:
 
@@ -706,17 +728,17 @@ info
                 "csar_valid":                "true | false | null"
             }
 
-            xOpera TOSCA orchestration tool now provides the following orchestration states (the are also CLI commands
-            that trigger changing the state in the brackets):
+        xOpera TOSCA orchestration tool now provides the following orchestration states (the are also CLI commands
+        that trigger changing the state in the brackets):
 
-            - `deploying` (``opera deploy``)
-            - `deployed` (``opera deploy``)
-            - `undeploying` (``opera undeploy``)
-            - `undeployed` (``opera undeploy``)
-            - `error` (``opera deploy/undeploy/update/notify``)
-            - `unknown` (for special cases which might happen)
+        - `deploying` (``opera deploy``)
+        - `deployed` (``opera deploy``)
+        - `undeploying` (``opera undeploy``)
+        - `undeployed` (``opera undeploy``)
+        - `error` (``opera deploy/undeploy/update/notify``)
+        - `unknown` (for special cases which might happen)
 
-            These state are changed during the execution of TOSCA interface operations (e.g., Ansible playbooks).
+        These state are changed during the execution of TOSCA interface operations (e.g., Ansible playbooks).
 
     .. tab:: Example
 
@@ -906,7 +928,7 @@ package
 unpackage
 ##########
 
-``opera unpackage`` - uncompress TOSCA CSAR.
+``opera unpackage`` - uncompress TOSCA CSAR (to a specified directory).
 
 .. tabs::
 
@@ -921,7 +943,7 @@ unpackage
     .. tab:: Description
 
         The ``opera unpackage`` has the opposite function of the ``opera package`` command.
-        It  serves for unpacking (i.e. validating and extracting) the compressed TOSCA CSAR files.
+        It serves for unpacking (i.e. validating and extracting) the compressed TOSCA CSAR files.
         The opera unpackage command receives a compressed CSAR as a positional argument.
         It then validates and extracts the CSAR to a given location.
 
