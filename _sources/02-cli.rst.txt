@@ -877,7 +877,7 @@ info
 package
 #######
 
-``opera package`` - package TOSCA YAML templates and their accompanying files to a compressed TOSCA CSAR.
+``opera package`` - package TOSCA YAML templates and their accompanying files to a compressed (zipped) TOSCA CSAR.
 
 .. tabs::
 
@@ -891,8 +891,8 @@ package
 
     .. tab:: Description
 
-        The ``opera package`` command is used to create a valid TOSCA CSAR - a deployable zip (or tar) compressed
-        archive file (CSAR = Cloud Service Archive).
+        The ``opera package`` command is used to create a valid TOSCA CSAR - a deployable zip compressed archive file
+        (CSAR = Cloud Service Archive).
         TOSCA CSARs contain the blueprint of the application that we want to deploy.
         The process includes packaging together the TOSCA service template and all the accompanying files.
 
@@ -947,9 +947,8 @@ unpackage
         The opera unpackage command receives a compressed CSAR as a positional argument.
         It then validates and extracts the CSAR to a given location.
 
-        There's no ``--format/-f`` option. Rather than that, the compressed file format (that will be used to extract
-        the CSAR) is determined automatically.
-        Currently, the compressed CSARs can be supplied in two different compression formats - `zip` or `tar`.
+        Currently, the compressed CSARs can be supplied in two different compression formats - `zip` or `tar`, but
+        `zip` is prefferedf because TOSCA CSARs are supposed to be zipped archives.
 
     .. tab:: Example
 
